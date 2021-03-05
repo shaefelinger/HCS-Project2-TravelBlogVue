@@ -1,0 +1,46 @@
+Hi all,
+
+setting up tailwind with vue 3 is temporarily more complicated than it used to be with vue 2!
+
+Until this is fixed you can use this empty project as a starter for a simple vue 3 projects with tailwind.
+
+How to use it
+  - unzip into your target folder, rename folder if necessary
+  - cd into folder
+  - npm install
+  - update name in package.json file
+  - npm run serve
+
+
+
+-----------------------------
+
+These are the steps that are required to properly set up tailwind in vue:
+
+Problem: postcss 8 not working with vue3, use compatibility layer:
+
+npm install -D tailwindcss@npm:@tailwindcss/postcss7-compat @tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
+
+npx tailwindcss init -p
+
+
+edit tailwind.config.js to purge production build
+module.exports = {
+  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  darkMode: false, // or 'media' or 'class'
+  theme: {
+    extend: {},
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+
+create main.css file in your src folder:
+
+/* ./src/main.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
