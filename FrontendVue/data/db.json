@@ -1,5 +1,5 @@
 {
-  "posts": [
+  "blogposts": [
     {
       "id": 1,
       "title": "json-server",
@@ -14,7 +14,7 @@
       "id": 3
     }
   ],
-  "comments": [
+  "users": [
     {
       "id": 1,
       "body": "some comment",
