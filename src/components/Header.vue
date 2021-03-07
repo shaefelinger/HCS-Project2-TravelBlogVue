@@ -2,22 +2,25 @@
   <!-- <p>Header</p> -->
 
   <header class="header h-28 w-full  z-30 bg-white py-0 px-28 flex justify-between items-center border-b-2 border-green-800 shadow-md">
-    <a id="siteName" href="./index.html" class="flex items-center  ">
+    <a id="siteLogoName" href="./index.html" class="flex items-center  ">
       <div class=" w-9 lg:w-16 "><img class=" object-fill   " src="@/assets/world.png" alt="logo" /></div>
       <span class="pl-4 text-2xl lg:text-4xl xl:text-4xl text-gray-900 lg:font-normal font-medium ">Around the World</span>
     </a>
 
     <nav>
-      <!-- <div class="p-6" id="nav">
-        <router-link class="font-bold text-gray-700" to="/">Home</router-link> |
-        <router-link class="font-bold text-gray-700" to="/about">About</router-link>
-      </div> -->
-      <!-- <router-view /> -->
-      <a id="gotoOverviewLink" onclick="gotoOverviewPage()" class="active">overview</a>
+      <div class="p-6" id="nav">
+        <router-link class=" text-gray-700" to="/home">Overview</router-link>
+        <router-link class=" text-gray-700" to="/map">Map</router-link>
+        <router-link class=" text-gray-700" to="/about">About</router-link>
+        <router-link class=" text-gray-700" to="/new">+new post</router-link>
+        <router-link class=" text-gray-700" to="/login">Login/register</router-link>
+      </div> 
+       
+      <!-- <a id="gotoOverviewLink" onclick="gotoOverviewPage()" class="active">overview</a>
       <a id="gotoMapLink" onclick="gotoMapPage()">map</a>
       <a id="gotoNewPostLink" onclick="gotoAddPostPage()">+ add post</a>
       <a id="gotoResetAllLink" onclick="resetLocalStorage()">reset all</a>
-      <a id="gotoAboutPageLink" onclick="gotoAboutPage()">about</a>
+      <a id="gotoAboutPageLink" onclick="gotoAboutPage()">about</a> -->
     </nav>
 
     <a id="burger" class="burger" href="#">
@@ -35,6 +38,7 @@
       </div>
     </div>
   </header>
+  <router-view />
 </template>
 
 <script>
@@ -64,11 +68,11 @@
     height: 27px;
   } */
 
-  #siteName {
+  #siteLogoName {
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     /* color: rgb(17, 17, 17); */
     /* font-size: 1.5rem; */
     /* font-weight: 400; */
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
 
   /* .worldLogo {

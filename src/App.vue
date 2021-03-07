@@ -8,7 +8,6 @@
 
     <!-- <router-view /> -->
   </div>
-
   <Header />
   <DummyContent />
   <Footer />
@@ -33,7 +32,9 @@
 <style>
   /* old default  */
   #nav a.router-link-exact-active {
-    color: #42b983;
+    /* color: #42b983; */
+    color: #111;
+    transform: scale(1.1) translateY(-1px);
   }
   /* =====  */
 
@@ -134,9 +135,9 @@
     'ft ';
 } */
 
-  .header {
-    /* grid-area: hd; */
-  }
+  /* .header {
+    grid-area: hd;
+  } */
 
   .main {
     grid-area: main;
@@ -145,10 +146,10 @@
     background-color: #fff;
   }
 
-  .footer {
-    grid-area: ft;
-    min-height: 400px;
-  }
+  /* .footer {
+    grid-area: ft; 
+     min-height: 200px;
+  } */
 
   #blogContainer {
     display: flex;

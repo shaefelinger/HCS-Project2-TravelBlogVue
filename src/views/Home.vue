@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <HelloWorld msg="now with router and vuex"/>
+    <p>blabla </p>
     <!-- <Header /> -->
   </div>
 </template>

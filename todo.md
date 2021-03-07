@@ -1,1 +1,2 @@
-layout - small horizondtal devices!
+- layout - small horizondtal devices!
+- delete sanitize

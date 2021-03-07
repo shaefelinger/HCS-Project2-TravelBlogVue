@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer   absolute w-full bottom-0 mt-16 bg-center bg-no-repeat bg-cover pt-24 text-center">
+  <footer class="footer  absolute bottom-0  w-full  mt-16 bg-center bg-no-repeat bg-cover pt-24 text-center h-2/6 z-0">
     <div class=" text-sm text-gray-900">
       <a href="https://www.steffen-haefelinger.com/" target="_blank">
         &copy; 2021 Steffen Häfelinger
