@@ -1,6 +1,6 @@
 <template>
-  <div class="">
-    <h1 class="text-center m-40">Content Dummy</h1>
+  <div class="bg-green-100 z-20 m-40 h-96 text-center ">
+    <h1 class=" ">Content Dummy</h1>
     <p>blabla</p>
     <hr>
   </div>

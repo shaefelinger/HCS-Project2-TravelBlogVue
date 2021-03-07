@@ -18,7 +18,7 @@
   // @ is an alias to /src
   import Header from '@/components/Header.vue';
   import DummyContent from '@/components/DummyContent.vue';
-  import Footer from '@/components/Footer.vue';
+  import Footer from '@/components/Footer.vue';  
 
   export default {
     name: 'app',
