@@ -1,11 +1,12 @@
 <template>
-  <div class="bannerPanel mainBanner flex-shrink-0" id="bannerImage">
+  <div class="bannerPanel mainBanner flex-shrink-0" id="bannerImage"  >
     <p class="bannerText" id="bannerTitle">The Travel-Blog</p>
     <button onclick="gotoAboutPage()" id="bannerButton">about</button>
   </div>
   {{ bannerImage }}
 </template>
 <!-- v-bind:style="{ backgroundImage: url('bannerImage') }" -->
+ 
 
  <!-- v-bind:style="{ backgroundImage: url('@/assets/' + bannerImage) }" -->
 
