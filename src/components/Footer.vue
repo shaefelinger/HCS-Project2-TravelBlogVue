@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer  absolute bottom-0  w-full  mt-16 bg-center bg-no-repeat bg-cover pt-24 text-center h-2/6 z-0">
+  <footer class="footer   bottom-0  w-full  mt-16 bg-center bg-no-repeat bg-cover pt-24 text-center h-2/6 z-0">
     <div class=" text-sm text-gray-900">
       <a href="https://www.steffen-haefelinger.com/" target="_blank">
         &copy; 2021 Steffen Häfelinger
@@ -28,7 +28,7 @@
   };
 </script>
 
-<style>
+<style scoped>
   .footer {
     background-image: linear-gradient(to top, rgba(255, 0, 0, 0.1), rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)), url(../assets/footerPic1000x1200.jpg);
   }

@@ -1,7 +1,7 @@
 <template>
   <!-- <p>Header</p> -->
 
-  <header class="header h-28 w-full  z-30 bg-white py-0 px-28 flex justify-between items-center border-b-2 border-green-800 shadow-md">
+  <header class="header h-28 w-full  z-30 bg-white py-0 px-20 flex justify-between items-center border-b-2 border-green-800 shadow-md">
     <a id="siteLogoName" href="./index.html" class="flex items-center  ">
       <div class=" w-9 lg:w-16 "><img class=" object-fill   " src="@/assets/world.png" alt="logo" /></div>
       <span class="pl-4 text-2xl lg:text-4xl xl:text-4xl text-gray-900 lg:font-normal font-medium ">Around the World</span>
@@ -38,7 +38,7 @@
       </div>
     </div>
   </header>
-  <router-view />
+  <!-- <router-view /> -->
 </template>
 
 <script>
@@ -47,7 +47,7 @@
   };
 </script>
 
-<style>
+<style scoped>
   /* ========================================================================== */
   /* HEADER   */
   /* ========================================================================== */

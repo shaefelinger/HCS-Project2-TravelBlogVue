@@ -1,29 +1,33 @@
 <template>
-  <div class="container">
-    <!-- <div class="p-6" id="nav">
+  <!-- <div class="container">
+    <div class="p-6" id="nav">
       <router-link class="font-bold text-gray-700" to="/">Home</router-link> |
       <router-link class="font-bold text-gray-700" to="/about">About</router-link>
-    </div> -->
-    <!-- <router-view /> -->
+    </div>
+    <router-view />
+  </div> -->
 
-    <!-- <router-view /> -->
+
+  <div class="flex flex-col justify-between h-screen">
+    <Header class="flex-shrink-0"/>
+      <router-view />
+   
+    <!-- <DummyContent /> -->
+    <Footer />
   </div>
-  <Header />
-  <DummyContent />
-  <Footer />
 </template>
 
 <script>
   // @ is an alias to /src
   import Header from '@/components/Header.vue';
-  import DummyContent from '@/components/DummyContent.vue';
+  // import DummyContent from '@/components/DummyContent.vue';
   import Footer from '@/components/Footer.vue';  
 
   export default {
     name: 'app',
     components: {
       Header,
-      DummyContent,
+      // DummyContent,
       Footer,
     },
   };
@@ -37,8 +41,11 @@
     transform: scale(1.1) translateY(-1px);
   }
   /* =====  */
-
-  /* ========================================================================== */
+  html {
+    position: relative;
+      min-height: 100%;
+  }
+    /* ========================================================================== */
   /* BASIC STYLING */
   /* ========================================================================== */
 
@@ -127,13 +134,13 @@
   /* MAIN-PAGE LAYOUT */
   /* ========================================================================== */
 
-  /* .container {
+  .container {
   display: grid;
   grid-template-areas:
     'hd '
     'main'
     'ft ';
-} */
+}
 
   /* .header {
     grid-area: hd;
