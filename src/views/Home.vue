@@ -1,26 +1,29 @@
 <template>
   <div class="home">
-    <Banner bannerImage="fickdich banner1.jpg"/>
+    <Banner  />
     <!-- <Banner /> -->
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import Banner from '@/components/Banner.vue'
+  // @ is an alias to /src
+  import Banner from '@/components/Banner.vue';
 
-export default {
-  name: 'Home',
-  components: {
-    Banner,
-  },
+  export default {
+    name: 'Home',
+    components: {
+      Banner,
+    },
 
-  computed: {
+    computed: {
       bannerImage() {
         return this.$store.getters.bannerImage;
       },
     },
-
-  
-}
+    methods: {
+      BannerImage(imageURL) {
+        this.$store.commit('setBannerImage', imageURL);
+      },
+    },
+  };
 </script>

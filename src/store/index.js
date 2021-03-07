@@ -14,6 +14,19 @@ export default createStore({
   },
 
   mutations: {
+
+    initialized: (state, data) => {
+      state.initialized = data;
+    },
+
+    user: (state, data) => {
+      state.user = data;
+    },
+
+    bannerImage: (state, data) => {
+      state.bannerImage = data;
+    },
+
   },
   actions: {
   },
