@@ -7,18 +7,17 @@
     <router-view />
   </div> -->
 
-
   <div class="flex flex-col justify-between h-screen">
-    <Header class="flex-shrink-0"/>
-      <router-view class="mb-80"/>
-    <Footer class="flex-shrink-0"/>
+    <Header class="flex-shrink-0" />
+    <router-view class="mb-80" />
+    <Footer class="flex-shrink-0" />
   </div>
 </template>
 
 <script>
   // @ is an alias to /src
   import Header from '@/components/Header.vue';
-  import Footer from '@/components/Footer.vue';  
+  import Footer from '@/components/Footer.vue';
 
   export default {
     name: 'app',
@@ -27,6 +26,8 @@
       Footer,
     },
 
+    
+
     computed: {
       initialized() {
         return this.$store.getters.initialized;
@@ -34,12 +35,10 @@
 
       user() {
         return this.$store.getters.user;
-      }
-  }
+      },
+    },
   };
 </script>
-
-
 
 <style>
   /* old default  */
@@ -51,9 +50,9 @@
   /* =====  */
   html {
     position: relative;
-      min-height: 100%;
+    min-height: 100%;
   }
-    /* ========================================================================== */
+  /* ========================================================================== */
   /* BASIC STYLING */
   /* ========================================================================== */
 
@@ -143,12 +142,12 @@
   /* ========================================================================== */
 
   .container {
-  display: grid;
-  grid-template-areas:
-    'hd '
-    'main'
-    'ft ';
-}
+    display: grid;
+    grid-template-areas:
+      'hd '
+      'main'
+      'ft ';
+  }
 
   /* .header {
     grid-area: hd;

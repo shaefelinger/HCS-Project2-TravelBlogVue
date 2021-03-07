@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <Banner msg="now with router and vuex"/>
+    <Banner bannerImage="fickdich banner1.jpg"/>
+    <!-- <Banner /> -->
   </div>
 </template>
 
@@ -12,6 +13,14 @@ export default {
   name: 'Home',
   components: {
     Banner,
-  }
+  },
+
+  computed: {
+      bannerImage() {
+        return this.$store.getters.bannerImage;
+      },
+    },
+
+  
 }
 </script>
