@@ -5,132 +5,128 @@
       <router-link class="font-bold text-gray-700" to="/about">About</router-link>
     </div> -->
     <!-- <router-view /> -->
-  
+
     <!-- <router-view /> -->
   </div>
 
   <Header />
-    <DummyContent />
-    <Footer />
-
+  <DummyContent />
+  <Footer />
 </template>
 
 <script>
-// @ is an alias to /src
-import Header from '@/components/Header.vue'
-import DummyContent from '@/components/DummyContent.vue'
-import Footer from '@/components/Footer.vue'
+  // @ is an alias to /src
+  import Header from '@/components/Header.vue';
+  import DummyContent from '@/components/DummyContent.vue';
+  import Footer from '@/components/Footer.vue';
 
-
-export default {
-  name: 'app',
-  components: {
-    Header,
-    DummyContent,
-    Footer
-  }
-}
-
+  export default {
+    name: 'app',
+    components: {
+      Header,
+      DummyContent,
+      Footer,
+    },
+  };
 </script>
 
-
 <style>
-/* old default  */
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-/* =====  */
+  /* old default  */
+  #nav a.router-link-exact-active {
+    color: #42b983;
+  }
+  /* =====  */
 
-/* ========================================================================== */
-/* BASIC STYLING */
-/* ========================================================================== */
+  /* ========================================================================== */
+  /* BASIC STYLING */
+  /* ========================================================================== */
 
-h1,
-h2,
-h3,
-p {
-  color: #1f2937;
-}
+  h1,
+  h2,
+  h3,
+  p {
+    color: #1f2937;
+  }
 
-h4 {
-  color: #666;
-  font-size: 1.4rem;
-}
+  h4 {
+    color: #666;
+    font-size: 1.4rem;
+  }
 
-.hidden {
-  display: none !important;
-}
+  .hidden {
+    display: none !important;
+  }
 
-/* Buttons 
-/* ========================================================================== */
-
-button {
-  padding: 0.6rem 2rem;
-  margin: 0.4rem 0;
-  width: 100%;
-  height: 50px;
-  font-size: 0.8rem;
-  letter-spacing: 0.3em;
-  font-weight: 700;
-  text-transform: uppercase;
-  transition: all 100ms ease;
-}
-
-button:hover {
-  cursor: pointer;
-}
-
-.primaryButton {
-  color: white;
-  background-color: hsl(150, 63%, 23%);
-  border: 2px solid hsl(150, 63%, 23%);
-}
-
-.primaryButton:hover {
-  background-color: hsl(150, 63%, 15%);
-}
-
-.secondaryButton {
-  background-color: #white;
-  border: 2px solid hsl(150, 63%, 23%);
-  color: #155e39;
-}
-
-.secondaryButton:hover {
-  background-color: hsla(0, 0%, 93%, 0.5);
-}
-
-.resetButton {
-  color: #777;
-}
-
-.resetButton:hover {
-  color: #777;
-  background-color: hsla(0, 0%, 93%, 0.5);
-}
-
-.bannerPanel button {
-  width: 160px;
-  height: 40px;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.4);
-  border: solid 2px white;
-  text-shadow: 0 0 20px black;
-  letter-spacing: 0.3em;
-  font-weight: 700;
-  transition: all 800ms ease;
-}
-
-.bannerPanel button:hover {
-  color: #111;
-  background-color: #fefefe;
-}
-
-/* ========================================================================== */
-/* MAIN-PAGE LAYOUT */
+  /* Buttons 
 /* ========================================================================== */
 
-/* .container {
+  button {
+    padding: 0.6rem 2rem;
+    margin: 0.4rem 0;
+    width: 100%;
+    height: 50px;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 100ms ease;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+
+  .primaryButton {
+    color: white;
+    background-color: hsl(150, 63%, 23%);
+    border: 2px solid hsl(150, 63%, 23%);
+  }
+
+  .primaryButton:hover {
+    background-color: hsl(150, 63%, 15%);
+  }
+
+  .secondaryButton {
+    background-color: #white;
+    border: 2px solid hsl(150, 63%, 23%);
+    color: #155e39;
+  }
+
+  .secondaryButton:hover {
+    background-color: hsla(0, 0%, 93%, 0.5);
+  }
+
+  .resetButton {
+    color: #777;
+  }
+
+  .resetButton:hover {
+    color: #777;
+    background-color: hsla(0, 0%, 93%, 0.5);
+  }
+
+  .bannerPanel button {
+    width: 160px;
+    height: 40px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: solid 2px white;
+    text-shadow: 0 0 20px black;
+    letter-spacing: 0.3em;
+    font-weight: 700;
+    transition: all 800ms ease;
+  }
+
+  .bannerPanel button:hover {
+    color: #111;
+    background-color: #fefefe;
+  }
+
+  /* ========================================================================== */
+  /* MAIN-PAGE LAYOUT */
+  /* ========================================================================== */
+
+  /* .container {
   display: grid;
   grid-template-areas:
     'hd '
@@ -138,43 +134,37 @@ button:hover {
     'ft ';
 } */
 
-.header {
-  /* grid-area: hd; */
-  /* height: 7rem; */
-  /* width: 100%; */
-  /* position: fixed; */
-  /* z-index: 10000; */
-}
-
-.main {
-  grid-area: main;
-  min-height: 800px;
-  margin-top: 7rem;
-  background-color: #fff;
-}
-
-.footer {
-  grid-area: ft;
-  min-height: 400px;
-}
-
-#blogContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* MAIN-PAGE RESPONSIVE */
-/* ========================================================================== */
-
-/* 640px */
-@media (min-width: 640px) {
-  #blogContainer {
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
+  .header {
+    /* grid-area: hd; */
   }
-}
 
+  .main {
+    grid-area: main;
+    min-height: 800px;
+    margin-top: 7rem;
+    background-color: #fff;
+  }
 
+  .footer {
+    grid-area: ft;
+    min-height: 400px;
+  }
+
+  #blogContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* MAIN-PAGE RESPONSIVE */
+  /* ========================================================================== */
+
+  /* 640px */
+  @media (min-width: 640px) {
+    #blogContainer {
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
 </style>

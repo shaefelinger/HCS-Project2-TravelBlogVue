@@ -1,7 +1,7 @@
 <template>
   <!-- <p>Header</p> -->
 
-  <header class="header h-28 w-full fixed z-30 bg-white py-0 px-28 flex justify-between items-center border-b-2 border-green-800 shadow-md">
+  <header class="header h-28 w-full  z-30 bg-white py-0 px-28 flex justify-between items-center border-b-2 border-green-800 shadow-md">
     <a id="siteName" href="./index.html" class="flex items-center  ">
       <div class=" w-9 lg:w-16 "><img class=" object-fill   " src="@/assets/world.png" alt="logo" /></div>
       <span class="pl-4 text-2xl lg:text-4xl xl:text-4xl text-gray-900 lg:font-normal font-medium ">Around the World</span>
@@ -13,14 +13,18 @@
         <router-link class="font-bold text-gray-700" to="/about">About</router-link>
       </div> -->
       <!-- <router-view /> -->
-      <!-- <a id="gotoOverviewLink" onclick="gotoOverviewPage()" class="active">overview</a>
+      <a id="gotoOverviewLink" onclick="gotoOverviewPage()" class="active">overview</a>
       <a id="gotoMapLink" onclick="gotoMapPage()">map</a>
       <a id="gotoNewPostLink" onclick="gotoAddPostPage()">+ add post</a>
       <a id="gotoResetAllLink" onclick="resetLocalStorage()">reset all</a>
-      <a id="gotoAboutPageLink" onclick="gotoAboutPage()">about</a> -->
+      <a id="gotoAboutPageLink" onclick="gotoAboutPage()">about</a>
     </nav>
 
-    <!-- <a id="burger" class="burger" href="#"><i class="fas fa-bars"></i></a>
+    <a id="burger" class="burger" href="#">
+        <!-- <i class="fas fa-bars">🍔</i> -->
+        <!-- <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg> -->
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </a>
     <div id="sideMenu" class="sideMenu-hiding">
       <div>
         <a id="gotoOverviewSideMenu" onclick="gotoOverviewPage()" class="active">overview</a>
@@ -29,7 +33,7 @@
         <a id="gotoResetAllSideMenu" onclick="resetLocalStorage()">reset all</a>
         <a id="gotoAboutPageSideMenu" onclick="gotoAboutPage()">about</a>
       </div>
-    </div> -->
+    </div>
   </header>
 </template>
 
