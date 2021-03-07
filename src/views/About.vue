@@ -1,13 +1,14 @@
 <template>
-  
+    <Banner />
     <div id="aboutContainer" >
     <div class="aboutArticle">
       <h2>Project 1 - Travel Blog</h2>
 
-      <p>
-        This is my contribution for the first Project for the Full-Stack Web Development-Course at the
+      <p>This is my contribution for the second Project for the Full-Stack Web Development-Course at the
         <a target="_blank" href="https://hamburgcodingschool.com/">Hamburg Coding School.</a>
       </p>
+
+
       <p>
         It uses no Frameworks, just vanilla HTML, CSS and Javascript.
       </p>
@@ -25,7 +26,7 @@
   
     </div>
   </div>
-  <section class="aboutBottom">
+  <section class="aboutBottom ">
     <div class="aboutAuthorInfo">
       <div class="authorPic  aboutAuthorPic">
         <img src="@/assets/Steffen_square.png">
@@ -40,6 +41,25 @@
   </section>
 </template>
 
+
+
+
+
+<script>
+// @ is an alias to /src
+import Banner from '@/components/Banner.vue'
+
+export default {
+  name: 'About',
+  components: {
+    Banner,
+  }
+}
+</script>
+// ========================================== 
+
+
+
 <style scoped>
 #aboutContainer {
   display: flex;
@@ -47,6 +67,7 @@
   width: 100%;
   /* min-height: 800px; */
   margin-top: 7rem;
+
 }
 
 .authorPic img {
