@@ -11,32 +11,23 @@
   <!-- <img :src="bannerImage"> -->
 </template>
 <!-- v-bind:style="{ backgroundImage: url('bannerImage') }" -->
- 
 
- <!-- v-bind:style="{ backgroundImage: url('@/assets/' + bannerImage) }" -->
+<!-- v-bind:style="{ backgroundImage: url('@/assets/' + bannerImage) }" -->
 
 <script>
   export default {
     props: ['bannerImage', 'bannerText', 'bannerButtonText', 'bannerButtonLink'],
-
+    data() {
+      // return {
+      //   bannerImage: 'https://images.unsplash.com/photo-1473615695634-d284ec918736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2900&q=80',
+      // }
     // computed: {
     //   bannerImage() {
     //     return this.$store.getters.bannerImage;
     //   },
     // },
-  };
+  }}
 </script>
-
-
-
-
-
-
-
-
-
-
-
 
 <style>
   /* ========================================================================== */
