@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
-    
+  
   </div>
 </template>
 
