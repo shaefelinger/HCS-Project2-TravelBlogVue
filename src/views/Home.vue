@@ -1,11 +1,12 @@
 <template>
   <div class="home">
-    <Banner :bannerImage="bannerImage" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
+    <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
     
   </div>
 </template>
 
 <script>
+  import bannerImage from '@/assets/banner1.jpg'
   // @ is an alias to /src
   import Banner from '@/components/Banner.vue';
 
@@ -17,7 +18,9 @@
 
     data() {
       return {
-        bannerImage: 'https://picsum.photos/id/116/1000/535',
+        // bannerImage: 'https://picsum.photos/id/116/1000/535',
+        bannerImage,
+        bannerText: 'The Travel Blog',
         bannerButtonText: 'About',
         bannerButtonLink: 'About'
       };

@@ -1,9 +1,10 @@
 <template>
   <div class="bannerPanel mainBanner flex-shrink-0" id="bannerImage" :style="{ backgroundImage: `url(${bannerImage})` }">
-    <p class="bannerText" id="bannerTitle">The Travel-Blog</p>
+    <p class="bannerText" id="bannerTitle">{{ bannerText }}</p>
     <button onclick="gotoAboutPage()" id="bannerButton">{{ bannerButtonText }}</button>
   </div>
   {{ bannerImage }}
+  {{ bannerText }}
   {{ bannerButtonText }}
   {{ bannerButtonLink }}
   <!-- <img src="@/assets/banner1.jpg"> -->
@@ -16,7 +17,7 @@
 
 <script>
   export default {
-    props: ['bannerImage', 'bannerButtonText', 'bannerButtonLink'],
+    props: ['bannerImage', 'bannerText', 'bannerButtonText', 'bannerButtonLink'],
 
     // computed: {
     //   bannerImage() {
