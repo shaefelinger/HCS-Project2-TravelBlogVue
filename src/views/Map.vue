@@ -1,5 +1,6 @@
 <template>
-  <div class="h-4/5"> dasdas</div>
+  <div class="h-4/5"> Map</div>
+
 </template>
 
 <script>

@@ -12,6 +12,7 @@
         <router-link class=" text-gray-700" :to="{ name: 'Home' }">Overview</router-link>
         <router-link class=" text-gray-700" to="/map">Map</router-link>
         <router-link class=" text-gray-700" to="/about">About</router-link>
+        <router-link class=" text-gray-700" to="/details">details</router-link>
         <router-link v-if="user" class=" text-gray-700" to="/new">+new post</router-link>
         <router-link v-if="!user" class=" text-gray-700" to="/login">Login/register</router-link>
         <router-link v-else class=" text-gray-700" to="/login">Logout</router-link>

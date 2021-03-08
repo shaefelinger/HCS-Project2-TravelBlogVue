@@ -7,12 +7,21 @@
     <p>{{ user.name }}</p>
   </div> -->
 
-  <div v-for="blogpost in blogposts" :key="blogpost._id">
-    <p>{{ blogpost._id }}</p>
-    <p>{{ blogpost.name }}</p>
-    <p>{{ blogpost.longName }}</p>
-    <p>{{ blogpost.title }}</p>
-    <p>{{ blogpost.coords }}</p>
+  <div id="blogContainer">
+    <div v-for="blogpost in blogposts" :key="blogpost._id" @click="selectBlogpost(blogpost)">
+      <!-- <router-link :to="{ name: 'BlogpostDetails', params: { title: blogpost.title } }"> -->
+      <!-- <router-link :to="{ name: `About/${blogpost._id}`, params: { blogpost: blogpost._id }} ">
+        <h2>testlink:  {{ blogpost.name }}</h2>
+        <p>{{ blogpost._id }}</p>
+      </router-link> -->
+
+      <!-- <p>{{ blogpost._id }}</p>
+      <p>{{ blogpost.name }}</p>
+      <p>{{ blogpost.longName }}</p>
+      <p>{{ blogpost.title }}</p>
+      <p>{{ blogpost.coords }}</p> -->
+      <OverviewCard :blogpost="blogpost" />
+    </div>
   </div>
 
   <!-- POSTS: {{ blogpost }} -->
@@ -23,6 +32,7 @@
   // @ is an alias to /src
   import bannerImage from '@/assets/banner1.jpg';
   import Banner from '@/components/Banner.vue';
+  import OverviewCard from '@/components/OverviewCard.vue';
 
   import { getBlogposts, getUsers, to } from '../utils/io.js';
 
@@ -30,6 +40,7 @@
     name: 'Home',
     components: {
       Banner,
+      OverviewCard,
     },
 
     data() {
@@ -44,6 +55,23 @@
         users: [],
       };
     },
+
+    methods: {
+      selectBlogpost(blogpost) {
+        console.log('selectCharacter was clicked: ' + blogpost.name);
+        const link = '/details/' + blogpost._id;
+        console.log(link);
+
+        this.$router.push(link);
+        // this.$emit('selectionChanged', blogpost_id);
+      },
+    },
+
+    // methods: {
+    //   blogSelected(blog_id) {
+    //     console.log('In App  Selected ', blog_id);
+    //   },
+    // },
 
     async mounted() {
       // load  list of blogposts

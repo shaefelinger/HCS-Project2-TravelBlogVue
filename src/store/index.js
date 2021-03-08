@@ -4,6 +4,10 @@ export default createStore({
   state: {
     initialized: true,
     user: 1,
+    allBlogposts: [],
+    allUsers: [],
+    currentBlogpost: {},
+    currentUser: {}
     // bannerImage: '@/assets/banner1.jpg',
   },
 
