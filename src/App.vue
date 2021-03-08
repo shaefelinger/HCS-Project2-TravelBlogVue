@@ -29,9 +29,9 @@
     
 
     computed: {
-      initialized() {
-        return this.$store.getters.initialized;
-      },
+      // initialized() {
+      //   return this.$store.getters.initialized;
+      // },
 
       user() {
         return this.$store.getters.user;

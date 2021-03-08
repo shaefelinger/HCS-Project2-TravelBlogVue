@@ -3,10 +3,10 @@
     <p class="bannerText" id="bannerTitle">{{ bannerText }}</p>
     <button onclick="gotoAboutPage()" id="bannerButton">{{ bannerButtonText }}</button>
   </div>
-  {{ bannerImage }}
+  <!-- {{ bannerImage }}
   {{ bannerText }}
   {{ bannerButtonText }}
-  {{ bannerButtonLink }}
+  {{ bannerButtonLink }} -->
   <!-- <img src="@/assets/banner1.jpg"> -->
   <!-- <img :src="bannerImage"> -->
 </template>
