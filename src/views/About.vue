@@ -1,5 +1,6 @@
 <template>
-  <Banner bannerImage="@assets/banner3.jpg" />
+      <Banner :bannerImage="bannerImage" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
+
 
   <div id="aboutContainer">
     <div class="aboutArticle">
@@ -51,7 +52,9 @@
 
     data() {
       return {
-        bannerImage: '',
+        bannerImage: '@/assets/banner2.jpg',
+        bannerButtonText: 'Back',
+        bannerButtonLink: 'Home'
       };
     },
   };

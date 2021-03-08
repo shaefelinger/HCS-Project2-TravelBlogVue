@@ -1,9 +1,13 @@
 <template>
-  <div class="bannerPanel mainBanner flex-shrink-0" id="bannerImage"  >
+  <div class="bannerPanel mainBanner flex-shrink-0" id="bannerImage" :style="{ backgroundImage: `url(${bannerImage})` }">
     <p class="bannerText" id="bannerTitle">The Travel-Blog</p>
-    <button onclick="gotoAboutPage()" id="bannerButton">about</button>
+    <button onclick="gotoAboutPage()" id="bannerButton">{{ bannerButtonText }}</button>
   </div>
   {{ bannerImage }}
+  {{ bannerButtonText }}
+  {{ bannerButtonLink }}
+  <!-- <img src="@/assets/banner1.jpg"> -->
+  <!-- <img :src="bannerImage"> -->
 </template>
 <!-- v-bind:style="{ backgroundImage: url('bannerImage') }" -->
  
@@ -12,13 +16,13 @@
 
 <script>
   export default {
-   
+    props: ['bannerImage', 'bannerButtonText', 'bannerButtonLink'],
 
-    computed: {
-      bannerImage() {
-        return this.$store.getters.bannerImage;
-      },
-    },
+    // computed: {
+    //   bannerImage() {
+    //     return this.$store.getters.bannerImage;
+    //   },
+    // },
   };
 </script>
 
@@ -40,7 +44,7 @@
 
   .mainBanner {
     /* background-image: url('https://picsum.photos/id/116/1000/535'); */
-    background-image: url(../assets/banner1.jpg);
+    /* background-image: url(../assets/banner1.jpg); */
   }
 
   .bannerPanel {

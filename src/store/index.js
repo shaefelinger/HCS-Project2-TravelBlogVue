@@ -4,13 +4,13 @@ export default createStore({
   state: {
     initialized: true,
     user: 1,
-    bannerImage: '@/assets/banner1.jpg',
+    // bannerImage: '@/assets/banner1.jpg',
   },
 
   getters: {
     initialized: state => state.initialized,
     user: state => state.user,
-    bannerImage: state => state.bannerImage
+    // bannerImage: state => state.bannerImage
   },
 
   mutations: {
@@ -23,9 +23,9 @@ export default createStore({
       state.user = data;
     },
 
-    bannerImage: (state, data) => {
-      state.bannerImage = data;
-    },
+    // bannerImage: (state, data) => {
+    //   state.bannerImage = data;
+    // },
 
   },
   actions: {

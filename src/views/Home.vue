@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <Banner  />
-    <!-- <Banner /> -->
+    <Banner :bannerImage="bannerImage" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
+    
   </div>
 </template>
 
@@ -15,15 +15,25 @@
       Banner,
     },
 
-    computed: {
-      bannerImage() {
-        return this.$store.getters.bannerImage;
-      },
+    data() {
+      return {
+        bannerImage: 'https://picsum.photos/id/116/1000/535',
+        bannerButtonText: 'About',
+        bannerButtonLink: 'About'
+      };
     },
-    methods: {
-      BannerImage(imageURL) {
-        this.$store.commit('setBannerImage', imageURL);
-      },
-    },
+
+
+
+    // computed: {
+    //   bannerImage() {
+    //     return this.$store.getters.bannerImage;
+    //   },
+    // },
+    // methods: {
+    //   BannerImage(imageURL) {
+    //     this.$store.commit('setBannerImage', imageURL);
+    //   },
+    // },
   };
 </script>
