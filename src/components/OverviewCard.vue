@@ -18,15 +18,13 @@
     <img class="h-52 w-full object-cover  " v-bind:src="blogpost.image1URL" alt="character" />
     <!-- <div class="blogImage" :style="{ backgroundImage: `url(${blogpost.image1URL})` }"></div> -->
     <div class="blogTextWrapper h-60 overflow-hidden px-8 pb-10">
-      <h2 class="mt-2 text-sm text-gray-600">{{ blogpost.longName }}</h2>
-      <h3 class="text-2xl my-8">{{ blogpost.title }}</h3>
+      <h2 class="mt-6 text-base text-gray-600">{{ blogpost.longName }}</h2>
+
+      <h3 class="text-2xl my-4">{{ blogpost.title }}</h3>
       <p class="font-light text-gray-600 text-base ">{{ blogpost.description || blogpost.wiki }}</p>
     </div>
     <div class="cardBottom">
       <div>
-        <!-- <svg class="ratingContainer">
-            <use xlink:href="#starRating${element.rating}">
-          </svg> -->
         <div class="mt-4 flex items-center">
           <svg
             v-for="i in 5"
@@ -39,6 +37,11 @@
             <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
           </svg>
           <p class="text-gray-400 text-sm ml-2">Visited in {{ blogpost.month }} {{ blogpost.year }}</p>
+        </div>
+
+        <div class="mt-5 flex items-center">
+          <img class="rounded-full w-12" src="@/assets/Steffen_square.png" alt="" />
+          <p class="ml-4 text-gray-500">Steffen Häfelinger</p>
         </div>
       </div>
     </div>
