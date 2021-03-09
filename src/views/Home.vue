@@ -6,6 +6,7 @@
     <p>{{ user._id }}</p>
     <p>{{ user.name }}</p>
   </div> -->
+  <!-- {{ getAllBlogposts }} -->
 
   <div id="blogContainer">
     <div v-for="blogpost in blogposts" :key="blogpost._id" @click="selectBlogpost(blogpost)">
@@ -20,6 +21,7 @@
       <p>{{ blogpost.longName }}</p>
       <p>{{ blogpost.title }}</p>
       <p>{{ blogpost.coords }}</p> -->
+      <!-- {{ index }} -->
       <OverviewCard :blogpost="blogpost" />
     </div>
   </div>
@@ -35,6 +37,8 @@
   import OverviewCard from '@/components/OverviewCard.vue';
 
   import { getBlogposts, getUsers, to } from '../utils/io.js';
+
+  import { mapGetters } from 'vuex';
 
   export default {
     name: 'Home',
@@ -61,10 +65,15 @@
         console.log('selectCharacter was clicked: ' + blogpost.name);
         const link = '/details/' + blogpost._id;
         console.log(link);
-
+        // console.log(blogpost);
+        this.$emit('selectionChanged', blogpost);
         this.$router.push(link);
-        // this.$emit('selectionChanged', blogpost_id);
       },
+      // storeCurrentBlogpost(data) {
+      //   this.$store.dispatch({
+      //     type: 'currentBlogpost', // name of the mutation
+      //     data
+      // });
     },
 
     // methods: {
@@ -80,6 +89,7 @@
         const { data, error } = await to(getBlogposts());
         if (!error) {
           this.blogposts = data;
+          this.$store.dispatch('setAllBlogposts', data);
           console.log('👍Got blogposts from Server');
         } else {
           console.log('🚫Error getting Blogpost-Data from Server');
@@ -96,14 +106,12 @@
       }
     },
 
+    computed: {
+      ...mapGetters(['getAllBlogposts']),
+    },
     // computed: {
     //   bannerImage() {
     //     return this.$store.getters.bannerImage;
-    //   },
-    // },
-    // methods: {
-    //   BannerImage(imageURL) {
-    //     this.$store.commit('setBannerImage', imageURL);
     //   },
     // },
   };

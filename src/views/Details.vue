@@ -1,30 +1,35 @@
 <template>
-    <h1>Details Page</h1>
-  <p>The  ID is: {{ id }}</p>  
+  <h1>Details Page</h1>
+  <p>The ID is: {{ id }}</p>
+  {{ getAllBlogposts.find((el) => el._id === id) }}
   <!-- {{blogpost[0]}} -->
 </template>
 
 <script>
-export default {
-  inject: ['blogposts'],
-  
-   data() {
-        return {
-            id: this.$route.params.id
-        }
+  import { mapGetters } from 'vuex';
+
+  export default {
+    inject: ['blogposts'],
+    props: ['selectionChanged'],
+
+    data() {
+      return {
+        id: this.$route.params.id,
+      };
     },
 
     created() {
       // const blogID = this.$route.params.id
       // const selectedBlog = this.blo
       // console.log(blogposts);
-    }
-}
+    },
 
-// console.log(this.$route);
+    computed: {
+      ...mapGetters(['getAllBlogposts']),
+    },
+  };
+
+  // console.log(this.$route);
 </script>
 
-
-<style>
-
-</style>
+<style></style>
