@@ -2,7 +2,11 @@
 // Get it here: https://console.cloud.google.com/google/maps-apis
 // const API_KEY = 'AIzaSyCWAaBJsI1234TI18PITVy7p0Qb6ht123';
 
-
+{
+  /* <script
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key=AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs"
+        type="text/javascript"></script> */
+}
 
 const API_KEY = 'AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs';
 const CALLBACK_NAME = 'gmapsCallback';

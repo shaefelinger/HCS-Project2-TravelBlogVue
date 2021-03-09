@@ -1,5 +1,5 @@
 <template>
-  <div class="App  p-96">hallo</div>
+  <div class="App p-96">hallo</div>
 </template>
 
 <script>
@@ -45,7 +45,7 @@
 </script>
 
 <style>
-  /* html,
+  html,
   body {
     margin: 0;
     padding: 0;
@@ -54,5 +54,5 @@
   .App {
     width: 100vw;
     height: 100vh;
-  } */
+  }
 </style>
