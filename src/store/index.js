@@ -1,4 +1,4 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
 
 export default createStore({
   state: {
@@ -7,33 +7,50 @@ export default createStore({
     allBlogposts: [],
     allUsers: [],
     currentBlogpost: {},
-    currentUser: {}
+    currentUser: {},
+    isLoggedIn: false,
     // bannerImage: '@/assets/banner1.jpg',
   },
 
   getters: {
-    initialized: state => state.initialized,
-    user: state => state.user,
+    userIsAuthenticated(state) {
+      return state.isLoggedIn;
+    },
+    initialized: (state) => state.initialized,
+    user: (state) => state.user,
+    allBlogposts: (state) => state.allBlogposts,
     // bannerImage: state => state.bannerImage
   },
 
   mutations: {
-
     initialized: (state, data) => {
       state.initialized = data;
     },
-
     user: (state, data) => {
       state.user = data;
+    },
+    setAuth(state, payload) {
+      state.isLoggedIn = payload.isAuth;
     },
 
     // bannerImage: (state, data) => {
     //   state.bannerImage = data;
     // },
-
   },
   actions: {
+    //  async init({ state, commit }) {
+    //   if (state.initialized) {
+    //     console.log('👍init called but already initialized')
+    //     return;
+    //   }
+    login(context) {
+      context.commit('setAuth', { isAuth: true });
+      console.log('login');
+    },
+    logout(context) {
+      context.commit('setAuth', { isAuth: false });
+      console.log('logout');
+    },
   },
-  modules: {
-  }
-})
+  modules: {},
+});
