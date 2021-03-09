@@ -13,11 +13,13 @@
         <router-link class=" text-gray-700" to="/map">Map</router-link>
         <router-link class=" text-gray-700" to="/about">About</router-link>
         <router-link class=" text-gray-700" to="/details">details</router-link>
-        <router-link v-if="user" class=" text-gray-700" to="/new">+new post</router-link>
-        <router-link v-if="!user" class=" text-gray-700" to="/login">Login/register</router-link>
-        <router-link v-else class=" text-gray-700" to="/login">Logout</router-link>
-      </div> 
-       
+        <router-link v-if="isAuth" class=" text-gray-700" to="/new">+new post</router-link>
+        <!-- <router-link v-if="!user" class=" text-gray-700" to="/login">Login/register</router-link>
+        <router-link v-else class=" text-gray-700" to="/login">Logout</router-link> -->
+        <button @click="login" v-if="!isAuth">Login</button>
+        <button @click="logout" v-if="isAuth">Logout</button>
+      </div>
+
       <!-- <a id="gotoOverviewLink" onclick="gotoOverviewPage()" class="active">overview</a>
       <a id="gotoMapLink" onclick="gotoMapPage()">map</a>
       <a id="gotoNewPostLink" onclick="gotoAddPostPage()">+ add post</a>
@@ -26,10 +28,12 @@
     </nav>
 
     <a id="burger" class="burger" href="#">
-        <!-- <i class="fas fa-bars">🍔</i> -->
-        <!-- <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg> -->
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-        </a>
+      <!-- <i class="fas fa-bars">🍔</i> -->
+      <!-- <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg> -->
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </a>
     <div id="sideMenu" class="sideMenu-hiding">
       <div>
         <a id="gotoOverviewSideMenu" onclick="gotoOverviewPage()" class="active">overview</a>
@@ -46,32 +50,24 @@
 <script>
   export default {
     name: 'Header',
-
+    methods: {
+      login() {
+        this.$store.dispatch('login');
+      },
+      logout() {
+        this.$store.dispatch('logout');
+      },
+    },
     computed: {
       user() {
         return this.$store.getters.user;
-      }
-    }
-
-  }
-
-
-  
+      },
+      isAuth() {
+        return this.$store.getters.userIsAuthenticated;
+      },
+    },
+  };
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <style scoped>
   /* ========================================================================== */
@@ -95,7 +91,7 @@
   } */
 
   #siteLogoName {
-      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     /* color: rgb(17, 17, 17); */
     /* font-size: 1.5rem; */
     /* font-weight: 400; */
