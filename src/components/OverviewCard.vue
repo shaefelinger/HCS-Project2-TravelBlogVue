@@ -24,11 +24,22 @@
     </div>
     <div class="cardBottom">
       <div>
-        <p class="text-gray-400 text-sm">Visited in {{ blogpost.month }} {{ blogpost.year }}</p>
         <!-- <svg class="ratingContainer">
             <use xlink:href="#starRating${element.rating}">
           </svg> -->
-        {{ blogpost.rating }}
+        <div class="mt-4 flex items-center">
+          <svg
+            v-for="i in 5"
+            :key="i"
+            :class="i <= blogpost.rating ? 'text-yellow-500' : 'text-gray-300'"
+            class="h-4 w-4 fill-current  "
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+          </svg>
+          <p class="text-gray-400 text-sm ml-2">Visited in {{ blogpost.month }} {{ blogpost.year }}</p>
+        </div>
       </div>
     </div>
   </div>
