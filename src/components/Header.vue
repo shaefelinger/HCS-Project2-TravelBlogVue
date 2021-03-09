@@ -56,7 +56,6 @@
     name: 'Header',
     methods: {
       ...mapActions(['login', 'logout']),
-
       // login() {
       //   this.$store.dispatch('login');
       // },
