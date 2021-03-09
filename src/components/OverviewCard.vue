@@ -15,32 +15,32 @@
       </div>
     </div> -->
 
-    <img class="h-52 w-full object-cover  " v-bind:src="blogpost.image1URL" alt="character" />
+    <img class="h-60 w-full object-cover  " v-bind:src="blogpost.image1URL" alt="character" />
     <!-- <div class="blogImage" :style="{ backgroundImage: `url(${blogpost.image1URL})` }"></div> -->
     <div class="blogTextWrapper h-60 overflow-hidden px-8 pb-10">
-      <h2 class="mt-6 text-base text-gray-600">{{ blogpost.longName }}</h2>
+      <div class="mt-4 flex items-center">
+        <svg
+          v-for="i in 5"
+          :key="i"
+          :class="i <= blogpost.rating ? 'text-yellow-500' : 'text-gray-300'"
+          class="h-4 w-4 fill-current  "
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+        >
+          <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+        </svg>
+        <p class="text-gray-400 text-sm ml-2">Visited in {{ blogpost.month }} {{ blogpost.year }}</p>
+      </div>
+
+      <h2 class="mt-1 text-base text-gray-600">{{ blogpost.longName }}</h2>
 
       <h3 class="text-2xl my-4">{{ blogpost.title }}</h3>
       <p class="font-light text-gray-600 text-base ">{{ blogpost.description || blogpost.wiki }}</p>
     </div>
     <div class="cardBottom">
       <div>
-        <div class="mt-4 flex items-center">
-          <svg
-            v-for="i in 5"
-            :key="i"
-            :class="i <= blogpost.rating ? 'text-yellow-500' : 'text-gray-300'"
-            class="h-4 w-4 fill-current  "
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-          >
-            <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-          </svg>
-          <p class="text-gray-400 text-sm ml-2">Visited in {{ blogpost.month }} {{ blogpost.year }}</p>
-        </div>
-
         <div class="mt-5 flex items-center">
-          <img class="rounded-full w-12" src="@/assets/Steffen_square.png" alt="" />
+          <img class="rounded-full w-11" src="@/assets/Steffen_square.png" alt="" />
           <p class="ml-4 text-gray-500">Steffen Häfelinger</p>
         </div>
       </div>
