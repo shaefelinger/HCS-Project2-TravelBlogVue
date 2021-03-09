@@ -22,10 +22,14 @@
       // const blogID = this.$route.params.id
       // const selectedBlog = this.blo
       // console.log(blogposts);
+      // const currentBlogpost = getAllBlogposts.find((el) => el._id === id);
     },
 
     computed: {
       ...mapGetters(['getAllBlogposts']),
+      // current() {
+      //   return this.$store.getters.getAllBlogposts;
+      // },
     },
   };
 
