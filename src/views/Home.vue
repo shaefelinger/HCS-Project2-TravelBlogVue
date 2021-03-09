@@ -7,8 +7,8 @@
     <p>{{ user.name }}</p>
   </div> -->
   <!-- id="blogContainer" -->
-  <div class="flex flex-col items-center sm:flex-wrap sm:flex-row sm:justify-center">
-    <div v-for="blogpost in blogposts" :key="blogpost._id" @click="selectBlogpost(blogpost)">
+  <div class="flex flex-col items-center  sm:flex-wrap sm:flex-row sm:justify-center">
+    <div class="" v-for="blogpost in blogposts" :key="blogpost._id" @click="selectBlogpost(blogpost)">
       <OverviewCard :blogpost="blogpost" />
     </div>
   </div>
@@ -106,6 +106,7 @@
 
 <style>
   /* KANN WAHRSCHEINLICH WEG  */
+
   #blogContainer {
     display: flex;
     flex-direction: column;

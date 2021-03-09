@@ -9,8 +9,8 @@
   import { mapGetters } from 'vuex';
 
   export default {
-    inject: ['blogposts'],
-    props: ['selectionChanged'],
+    // inject: ['blogposts'],
+    // props: ['selectionChanged'],
 
     data() {
       return {

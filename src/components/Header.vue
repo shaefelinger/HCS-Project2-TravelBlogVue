@@ -14,8 +14,8 @@
         <router-link class=" text-gray-700" to="/about">About</router-link>
         <router-link class=" text-gray-700" to="/details">details</router-link>
         <router-link v-if="isAuth" class=" text-gray-700" to="/new">+new post</router-link>
-        <a v-if="!isAuth" @click="login" class=" text-gray-700">Login/register</a>
-        <a v-if="isAuth" @click="logout" class=" text-gray-700">Logout</a>
+        <a v-if="!isAuth" @click="login" class=" text-gray-700 bg-green-700 p-3 rounded">Login/register</a>
+        <a v-if="isAuth" @click="logout" class=" text-gray-700 bg-green-700 p-3 rounded">Logout</a>
         <!-- <router-link v-if="!user" class=" text-gray-700" to="/login">Login/register</router-link>
         <router-link v-else class=" text-gray-700" to="/login">Logout</router-link> -->
         <!-- <button @click="login" v-if="!isAuth">Login</button> -->
