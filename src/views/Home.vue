@@ -108,3 +108,23 @@
     // },
   };
 </script>
+
+<style>
+  #blogContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* MAIN-PAGE RESPONSIVE */
+  /* ========================================================================== */
+
+  /* 640px */
+  @media (min-width: 640px) {
+    #blogContainer {
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+</style>

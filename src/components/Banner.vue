@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bannerPanel bg-cover bg-center mt-8 mb-12 mx-0 sm:my-8 flex flex-col justify-evenly items-center flex-shrink-0"
+    class="bannerPanel bg-cover bg-center mt-8 mb-12 mx-0 sm:mx-8 flex flex-col justify-evenly items-center flex-shrink-0"
     id="bannerImage"
     :style="{ backgroundImage: `url(${bannerImage})` }"
   >

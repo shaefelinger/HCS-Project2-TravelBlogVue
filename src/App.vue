@@ -26,8 +26,6 @@
       Footer,
     },
 
-    
-
     computed: {
       // initialized() {
       //   return this.$store.getters.initialized;
@@ -56,7 +54,7 @@
   /* BASIC STYLING */
   /* ========================================================================== */
 
-  h1,
+  /* h1,
   h2,
   h3,
   p {
@@ -66,7 +64,7 @@
   h4 {
     color: #666;
     font-size: 1.4rem;
-  }
+  } */
 
   .hidden {
     display: none !important;
@@ -164,22 +162,4 @@
     grid-area: ft; 
      min-height: 200px;
   } */
-
-  #blogContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  /* MAIN-PAGE RESPONSIVE */
-  /* ========================================================================== */
-
-  /* 640px */
-  @media (min-width: 640px) {
-    #blogContainer {
-      flex-wrap: wrap;
-      flex-direction: row;
-      justify-content: center;
-    }
-  }
 </style>
