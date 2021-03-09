@@ -50,23 +50,30 @@
 </template>
 
 <script>
+  import { mapActions, mapGetters } from 'vuex';
+
   export default {
     name: 'Header',
     methods: {
-      login() {
-        this.$store.dispatch('login');
-      },
-      logout() {
-        this.$store.dispatch('logout');
-      },
+      ...mapActions(['login', 'logout']),
+
+      // login() {
+      //   this.$store.dispatch('login');
+      // },
+      // logout() {
+      //   this.$store.dispatch('logout');
+      // },
     },
     computed: {
-      user() {
-        return this.$store.getters.user;
-      },
-      isAuth() {
-        return this.$store.getters.userIsAuthenticated;
-      },
+      ...mapGetters({
+        isAuth: 'userIsAuthenticated',
+      }),
+      // user() {
+      //   return this.$store.getters.user;
+      // },
+      // isAuth() {
+      //   return this.$store.getters.userIsAuthenticated;
+      // },
     },
   };
 </script>
