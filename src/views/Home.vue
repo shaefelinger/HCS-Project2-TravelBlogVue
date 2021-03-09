@@ -6,22 +6,9 @@
     <p>{{ user._id }}</p>
     <p>{{ user.name }}</p>
   </div> -->
-  <!-- {{ getAllBlogposts }} -->
-
-  <div id="blogContainer">
+  <!-- id="blogContainer" -->
+  <div class="flex flex-col items-center sm:flex-wrap sm:flex-row sm:justify-center">
     <div v-for="blogpost in blogposts" :key="blogpost._id" @click="selectBlogpost(blogpost)">
-      <!-- <router-link :to="{ name: 'BlogpostDetails', params: { title: blogpost.title } }"> -->
-      <!-- <router-link :to="{ name: `About/${blogpost._id}`, params: { blogpost: blogpost._id }} ">
-        <h2>testlink:  {{ blogpost.name }}</h2>
-        <p>{{ blogpost._id }}</p>
-      </router-link> -->
-
-      <!-- <p>{{ blogpost._id }}</p>
-      <p>{{ blogpost.name }}</p>
-      <p>{{ blogpost.longName }}</p>
-      <p>{{ blogpost.title }}</p>
-      <p>{{ blogpost.coords }}</p> -->
-      <!-- {{ index }} -->
       <OverviewCard :blogpost="blogpost" />
     </div>
   </div>
@@ -118,6 +105,7 @@
 </script>
 
 <style>
+  /* KANN WAHRSCHEINLICH WEG  */
   #blogContainer {
     display: flex;
     flex-direction: column;
