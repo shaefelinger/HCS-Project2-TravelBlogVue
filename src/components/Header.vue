@@ -11,7 +11,6 @@
       <Modal theme="" @closeModal="toggleModal">
         <template v-slot:links>
           <a href="#">sign up now</a>
-          <a href="#">sign in</a>
         </template>
         <p>SignIn</p>
       </Modal>
@@ -73,7 +72,7 @@
       },
       logout() {
         this.$store.dispatch('logout');
-        // this.showModal = !this.showModal;
+        this.showModal = !this.showModal;
       },
 
       toggleModal() {

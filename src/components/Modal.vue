@@ -1,10 +1,17 @@
 <template>
   <div class="backdrop" @click.self="closeModal">
-    <div class="modal w-80 p-8 m-10 rounded-xl shadow-2xl bg-white fixed z-50 right-16 border-2">
-      <slot>Default content if no data was passed</slot>
-      <div class="actions">
+    <div class="modal w-96 p-8 m-10 rounded-xl shadow-2xl absolute z-50 bg-white right-16 border-4 border-gray-200  ">
+      <!-- <slot>Default content if no data was passed</slot> -->
+      <input class="h-6 py-6 px-3  my-2 w-full text-sm border-2 border-gray-200 rounded " type="email" placeholder="email " />
+      <input class="h-6 py-6 px-3  my-2 w-full text-sm border-2 border-gray-200 rounded" type="password" placeholder="password " />
+      <!-- <div class="actions">
         <slot name="links"></slot>
-      </div>
+      </div> -->
+      <button class="primaryButton ">Log In</button>
+
+      <hr />
+      <p>or</p>
+      <button class="secondaryButton">register</button>
     </div>
   </div>
 </template>
@@ -35,7 +42,7 @@
     width: 100%;
     height: 100%;
   } */
-  .modal .actions {
+  /* .modal .actions {
     text-align: center;
     margin: 30px 0 20px 0;
   }
@@ -46,5 +53,5 @@
     border-radius: 4px;
     text-decoration: none;
     margin: 10px;
-  }
+  } */
 </style>
