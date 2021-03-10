@@ -1,60 +1,53 @@
 <template>
-  <div class="App" />
+  <!-- Lat: {{ currPos.lat.toFixed(2) }}, Long: {{ currPos.lng.toFixed(2) }} -->
+  <div id="overviewMapContainer">
+    <div id="overviewMap" ref="mapDiv"></div>
+  </div>
+  <!-- POSTS: {{ allBlogposts }} -->
 </template>
 
 <script>
-  import gmapsInit from '@/utils/gmaps';
+  /* eslint-disable no-undef */
+  import { computed, ref, onMounted } from 'vue';
+  import { Loader } from '@googlemaps/js-api-loader';
+  const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
   export default {
     name: 'App',
-    async mounted() {
-      try {
-        const google = await gmapsInit();
-        const geocoder = new google.maps.Geocoder();
-        const map = new google.maps.Map(this.$el);
+    computed: {
+      allBlogposts() {
+        return this.$store.getters.getAllBlogposts;
+      },
+    },
+    setup() {
+      const currPos = computed(() => ({
+        lat: 47.3768866,
+        lng: 8.541694,
+      }));
 
-        const locations = [
-          {
-            position: {
-              lat: 53.5510846,
-              lng: 9.9936818,
-            },
-          },
-          {
-            position: {
-              lat: 48.17427,
-              lng: 16.32962,
-            },
-          },
-          // ...
-        ];
-
-        geocoder.geocode({ address: 'Austria' }, (results, status) => {
-          if (status !== 'OK' || !results[0]) {
-            throw new Error(status);
-          }
-
-          map.setCenter(results[0].geometry.location);
-          map.fitBounds(results[0].geometry.viewport);
+      const loader = new Loader({ apiKey: GOOGLE_MAPS_API_KEY });
+      const mapDiv = ref(null);
+      const options = {
+        zoom: 6,
+        center: currPos.value,
+        mapTypeId: 'hybrid',
+        disableDefaultUI: true,
+      };
+      onMounted(async () => {
+        await loader.load();
+        const map = new google.maps.Map(mapDiv.value, options);
+        const marker = new google.maps.Marker({
+          position: currPos.value,
+          map: map,
         });
-        // const markers = locations.map((x) => new google.maps.Marker({ ...x, map }));
-        const markers = locations.map((x) => new google.maps.Marker({ ...x, map }));
-      } catch (error) {
-        console.error(error);
-      }
+        console.log(marker);
+      });
+
+      return { mapDiv };
     },
   };
 </script>
 
-<style>
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-  }
+<!-- ======================================================= -->
 
-  .App {
-    width: 100vw;
-    height: 100vh;
-  }
-</style>
+<style></style>

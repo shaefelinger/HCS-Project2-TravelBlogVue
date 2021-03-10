@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  POSTS: {{ allBlogposts }}
+  <!-- POSTS: {{ allBlogposts }} -->
   <!-- USERS: {{ users }} -->
 </template>
 
@@ -25,7 +25,7 @@
 
   import { getBlogposts, getUsers, to } from '../utils/io.js';
 
-  import { mapGetters } from 'vuex';
+  // import { mapGetters } from 'vuex';
 
   export default {
     name: 'Home',
