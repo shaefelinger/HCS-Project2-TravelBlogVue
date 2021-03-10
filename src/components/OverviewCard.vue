@@ -19,7 +19,8 @@
     <!-- <div class="blogImage" :style="{ backgroundImage: `url(${blogpost.image1URL})` }"></div> -->
     <div class="blogTextWrapper h-60 overflow-hidden px-8 pb-10">
       <div class="mt-4 flex items-center">
-        <svg
+        <StarRating :rating="blogpost.rating" />
+        <!-- <svg
           v-for="i in 5"
           :key="i"
           :class="i <= blogpost.rating ? 'text-yellow-500' : 'text-gray-300'"
@@ -28,7 +29,7 @@
           viewBox="0 0 20 20"
         >
           <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-        </svg>
+        </svg> -->
         <p class="text-gray-400 text-sm ml-2">Visited in {{ blogpost.month }} {{ blogpost.year }}</p>
       </div>
 
@@ -54,11 +55,15 @@
   Purpose:  displays information about a single blogpost, card style, with image, name ...
   Requires: the full data object of a single character, passed via props
   Events:   CharacterSelected payload: char_id (number) ???
-
 */
+
+  import StarRating from '@/components/StarRating.vue';
+
   export default {
     name: 'OverviewCard',
-
+    components: {
+      StarRating,
+    },
     props: {
       blogpost: Object,
     },

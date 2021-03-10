@@ -1,6 +1,5 @@
 <template>
-      <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
-
+  <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
 
   <div id="aboutContainer">
     <div class="aboutArticle">
@@ -42,9 +41,8 @@
 </template>
 
 <script>
-  import bannerImage from '@/assets/banner3.jpg'
+  import bannerImage from '@/assets/banner3.jpg';
   import Banner from '@/components/Banner.vue';
-
 
   export default {
     name: 'About',
@@ -54,11 +52,10 @@
 
     data() {
       return {
-        // bannerImage: '@/assets/banner2.jpg',
         bannerImage,
         bannerText: 'About this Project',
         bannerButtonText: 'Back',
-        bannerButtonLink: 'Home'
+        bannerButtonLink: 'Home',
       };
     },
   };

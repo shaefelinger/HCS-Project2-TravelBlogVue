@@ -7,7 +7,7 @@
 
 <script>
   /* eslint-disable no-undef */
-  import { computed, ref, onMounted } from 'vue';
+  import { ref, onMounted } from 'vue';
   import { Loader } from '@googlemaps/js-api-loader';
   const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
