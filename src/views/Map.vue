@@ -1,58 +1,158 @@
-<template>
-  <div class="App p-96">hallo</div>
-</template>
-
 <script>
-  import gmapsInit from '@/utils/gmaps';
+  /* eslint-disable no-undef */
+  import { computed, ref, onMounted } from 'vue';
+  import { Loader } from '@googlemaps/js-api-loader';
+  const GOOGLE_MAPS_API_KEY = 'AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs';
 
   export default {
     name: 'App',
-    async mounted() {
-      try {
-        const google = await gmapsInit();
-        const geocoder = new google.maps.Geocoder();
-        const map = new google.maps.Map(this.$el);
-        console.log('🙈maps');
-        const locations = [
+    setup() {
+      const currPos = computed(() => ({
+        lat: 47.3768866,
+        lng: 8.541694,
+      }));
+
+      const loader = new Loader({ apiKey: GOOGLE_MAPS_API_KEY });
+      const mapDiv = ref(null);
+      // const options = {
+      //   zoom: 6,
+      //   center: currPos.value,
+      //   mapTypeId: 'hybrid',
+      //   disableDefaultUI: true,
+      // };
+      onMounted(async () => {
+        await loader.load();
+        // const map = new google.maps.Map(mapDiv.value, options);
+        // const marker = new google.maps.Marker({
+        //   position: currPos.value,
+        //   map: map,
+        // });
+        // console.log(marker);
+        // -------
+        const options = {
+          maxZoom: 10,
+          minZoom: 2,
+          // zoom: 5,
+          mapTypeControl: false,
+          streetViewControl: false,
+          center: currPos.value,
+        };
+        const overviewMap = new google.maps.Map(mapDiv.value, options);
+        let bounds = new google.maps.LatLngBounds();
+
+        const markers = [
           {
-            position: {
+            coords: {
               lat: 53.5510846,
               lng: 9.9936818,
             },
+            name: 'Hamburg',
+            title: 'The most beautiful city in the world',
+            image1URL:
+              'https://images.unsplash.com/photo-1473615695634-d284ec918736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2900&q=80',
           },
           {
-            position: {
+            coords: {
               lat: 48.17427,
               lng: 16.32962,
             },
+            name: 'Zürich',
+          },
+          {
+            coords: {
+              lat: 34.052235,
+              lng: -118.243683,
+            },
+            name: 'Los Angeles',
           },
         ];
 
-        geocoder.geocode({ address: 'Austria' }, (results, status) => {
-          if (status !== 'OK' || !results[0]) {
-            throw new Error(status);
-          }
+        function addMarker(location, i) {
+          console.log(location.coords);
+          const marker = new google.maps.Marker({
+            position: location.coords,
+            map: overviewMap,
+          });
 
-          map.setCenter(results[0].geometry.location);
-          map.fitBounds(results[0].geometry.viewport);
-        });
-        const markers = locations.map((x) => new google.maps.Marker({ ...x, map }));
-      } catch (error) {
-        console.error(error);
-      }
+          const infoWindow = new google.maps.InfoWindow({
+            content: `
+      <div class="infoWindow" onclick="gotoDetailsPage(${i})" style="width: 200px;">
+        <h3>${location.name}</h3>
+        <p>${location.title}</p>
+        <div class="infoWindowImage" style="background-image: url(${location.image1URL});"></div>
+        <button class="miniButton">read more</button>
+      </div>
+      `,
+          });
+          marker.addListener('click', function() {
+            infoWindow.open(overviewMap, marker);
+          });
+
+          bounds.extend(location.coords);
+        }
+
+        markers.forEach(addMarker);
+        overviewMap.fitBounds(bounds);
+      });
+
+      return { mapDiv };
     },
   };
 </script>
 
+<template>
+  <!-- Lat: {{ currPos.lat.toFixed(2) }}, Long: {{ currPos.lng.toFixed(2) }} -->
+  <div id="overviewMapContainer">
+    <div id="overviewMap" ref="mapDiv"></div>
+  </div>
+</template>
+
+<!-- ======================================================= -->
+
 <style>
-  html,
-  body {
-    margin: 0;
-    padding: 0;
+  #overviewMap {
+    height: 700px;
+    width: 100%;
   }
 
-  .App {
-    width: 100vw;
-    height: 100vh;
+  #overviewMapContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .infoWindow:hover {
+    cursor: pointer;
+  }
+
+  .infoWindow:hover * {
+    opacity: 0.85;
+  }
+
+  .infoWindow * {
+    transition: all 500ms ease;
+  }
+
+  .infoWindow {
+    /* height: 220px; */
+    padding: 0 10px;
+  }
+
+  .miniButton {
+    font-size: 0.6rem;
+    height: 2rem;
+    /* padding: 10px; */
+
+    color: #555;
+  }
+
+  .infoWindowImage {
+    width: 100%;
+    height: 110px;
+    margin: 15px auto 0;
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.5);
   }
 </style>
