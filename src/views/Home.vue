@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <!-- POSTS: {{ allBlogposts }} -->
+  POSTS: {{ allBlogposts }}
   <!-- USERS: {{ users }} -->
 </template>
 

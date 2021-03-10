@@ -1,11 +1,17 @@
 <template>
+  POSTS: {{ allBlogposts }}
   <div id="overviewMapContainer">
     <div id="overviewMap" ref="mapDiv"></div>
   </div>
-  <!-- POSTS: {{ allBlogposts }} -->
+
+  <!-- <div class="" v-for="blogpost in allBlogposts" :key="blogpost._id" @click="selectBlogpost(blogpost)">
+    <OverviewCard :blogpost="blogpost" />
+  </div> -->
+  <!-- <OverviewCard /> -->
 </template>
 
 <script>
+  // import OverviewCard from '@/components/OverviewCard.vue';
   /* eslint-disable no-undef */
   import { ref, onMounted } from 'vue';
   import { Loader } from '@googlemaps/js-api-loader';
@@ -13,6 +19,9 @@
 
   export default {
     name: 'App',
+    components: {
+      // OverviewCard,
+    },
     computed: {
       allBlogposts() {
         return this.$store.getters.getAllBlogposts;
