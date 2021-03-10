@@ -10,12 +10,18 @@
         </div>
       </div>
       <div>
-        <h2>{{ currentBlogpost.longName }}</h2>
-        <StarRating :rating="currentBlogpost.rating" />
-        <p>Visited in {{ currentBlogpost.month }} {{ currentBlogpost.year }}</p>
-        <h3>{{ currentBlogpost.postTitle }}</h3>
-        <p>{{ currentBlogpost.postDescription }}</p>
-        <p>{{ currentBlogpost.wiki }}</p>
+        <h2 class="mt-4">{{ currentBlogpost.longName }}</h2>
+        <div class="flex flex-row items-center  py-4">
+          <StarRating :rating="currentBlogpost.rating" />
+          <p class="ml-4 text-gray-500">Visited in {{ currentBlogpost.month }} {{ currentBlogpost.year }}</p>
+        </div>
+        <h3 class="text-2xl">{{ currentBlogpost.title }}</h3>
+        <p class="mt-4">{{ currentBlogpost.description }}</p>
+        <p class="mt-4">{{ currentBlogpost.wiki }}</p>
+      </div>
+      <div class="mt-5 flex items-center">
+        <img class="rounded-full w-11" src="@/assets/Steffen_square.png" alt="" />
+        <p class="ml-4 text-gray-500">Steffen Häfelinger</p>
       </div>
       <!-- <div class="detailsInfoContainer">
           <div id="weatherContainer"></div>
@@ -26,7 +32,7 @@
           </div>
         </div> -->
       <!-- <div id="map">map</div> -->
-      <div id="overviewMap" ref="mapDiv"></div>
+      <div id="overviewMap" ref="mapDiv" class="mt-4"></div>
 
       <button class="secondaryButton" onclick="eraseEntryFromLocalStorage()">DELETE POST</button>
       <button class="primaryButton" onclick="gotoOverviewPage()">&lt; BACK</button>
@@ -138,11 +144,11 @@
     position: relative;
   }
 
-  .detailsArticle p {
+  /* .detailsArticle p {
     color: #666;
     margin-bottom: 4px;
     margin-top: 30px;
-  }
+  } */
 
   .detailsArticle h2 {
     font-size: 2.4rem;
