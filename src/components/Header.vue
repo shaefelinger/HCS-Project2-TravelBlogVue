@@ -7,16 +7,25 @@
       <span class="pl-4 text-2xl lg:text-4xl xl:text-4xl text-gray-900 lg:font-normal font-medium ">Around the World</span>
     </a>
 
+    <div v-if="showModal">
+      <Modal theme="" @closeModal="toggleModal">
+        <template v-slot:links>
+          <a href="#">sign up now</a>
+          <a href="#">sign in</a>
+        </template>
+        <p>SignIn</p>
+      </Modal>
+    </div>
     <nav>
       <div class="p-6" id="nav">
         <router-link class=" text-gray-700" :to="{ name: 'Home' }">Overview</router-link>
         <router-link class=" text-gray-700" to="/map">Map</router-link>
-        <router-link class=" text-gray-700" to="/map2">Map2</router-link>
+        <!-- <router-link class=" text-gray-700" to="/map3">Map3</router-link> -->
         <router-link class=" text-gray-700" to="/about">About</router-link>
         <!-- <router-link class=" text-gray-700" to="/details">details</router-link> -->
         <router-link v-if="isAuth" class=" text-gray-700" to="/new">+new post</router-link>
-        <a v-if="!isAuth" @click="login" class=" text-gray-700 bg-green-700 p-3 rounded">Login/register</a>
-        <a v-if="isAuth" @click="logout" class=" text-gray-700 bg-green-700 p-3 rounded">Logout</a>
+        <a @click="login" v-if="!isAuth" class=" text-gray-700 bg-green-700 p-3 rounded">Login/register</a>
+        <a @click="logout" v-if="isAuth" class=" text-gray-700 bg-green-700 p-3 rounded">Logout</a>
         <!-- <router-link v-if="!user" class=" text-gray-700" to="/login">Login/register</router-link>
         <router-link v-else class=" text-gray-700" to="/login">Logout</router-link> -->
         <!-- <button @click="login" v-if="!isAuth">Login</button> -->
@@ -52,17 +61,24 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex';
+  import Modal from '@/components/Modal.vue';
 
   export default {
     name: 'Header',
     methods: {
-      ...mapActions(['login', 'logout']),
-      // login() {
-      //   this.$store.dispatch('login');
-      // },
-      // logout() {
-      //   this.$store.dispatch('logout');
-      // },
+      // ...mapActions(['login', 'logout']),
+      login() {
+        this.$store.dispatch('login');
+        this.showModal = !this.showModal;
+      },
+      logout() {
+        this.$store.dispatch('logout');
+        // this.showModal = !this.showModal;
+      },
+
+      toggleModal() {
+        this.showModal = !this.showModal;
+      },
     },
     computed: {
       ...mapGetters({
@@ -74,6 +90,14 @@
       // isAuth() {
       //   return this.$store.getters.userIsAuthenticated;
       // },
+    },
+    data() {
+      return {
+        showModal: true,
+      };
+    },
+    components: {
+      Modal,
     },
   };
 </script>
