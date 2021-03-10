@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <!-- POSTS: {{ blogpost }} -->
+  POSTS: {{ allBlogposts }}
   <!-- USERS: {{ users }} -->
 </template>
 
@@ -56,18 +56,7 @@
         this.$emit('selectionChanged', blogpost);
         this.$router.push(link);
       },
-      // storeCurrentBlogpost(data) {
-      //   this.$store.dispatch({
-      //     type: 'currentBlogpost', // name of the mutation
-      //     data
-      // });
     },
-
-    // methods: {
-    //   blogSelected(blog_id) {
-    //     console.log('In App  Selected ', blog_id);
-    //   },
-    // },
 
     async mounted() {
       // load  list of blogposts
@@ -94,13 +83,10 @@
     },
 
     computed: {
-      ...mapGetters(['getAllBlogposts']),
+      allBlogposts() {
+        return this.$store.getters.getAllBlogposts;
+      },
     },
-    // computed: {
-    //   bannerImage() {
-    //     return this.$store.getters.bannerImage;
-    //   },
-    // },
   };
 </script>
 
