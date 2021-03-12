@@ -1,19 +1,15 @@
 <template>
-  POSTS: {{ allBlogposts }}
+  <!-- POSTS: {{ allBlogposts }} -->
   <div id="overviewMapContainer">
     <div id="overviewMap" ref="mapDiv"></div>
   </div>
-
-  <!-- <div class="" v-for="blogpost in allBlogposts" :key="blogpost._id" @click="selectBlogpost(blogpost)">
-    <OverviewCard :blogpost="blogpost" />
-  </div> -->
-  <!-- <OverviewCard /> -->
 </template>
 
 <script>
-  // import OverviewCard from '@/components/OverviewCard.vue';
   /* eslint-disable no-undef */
-  import { ref, onMounted } from 'vue';
+  import { ref, onMounted, computed } from 'vue';
+  import { useStore } from 'vuex';
+
   import { Loader } from '@googlemaps/js-api-loader';
   const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
@@ -32,6 +28,10 @@
       const loader = new Loader({ apiKey: GOOGLE_MAPS_API_KEY });
       const mapDiv = ref(null);
 
+      const store = useStore();
+
+      console.log(store.getters.getAllBlogposts);
+      const markers = store.getters.getAllBlogposts;
       onMounted(async () => {
         await loader.load();
 
@@ -44,32 +44,32 @@
         const overviewMap = new google.maps.Map(mapDiv.value, options);
         let bounds = new google.maps.LatLngBounds();
 
-        const markers = [
-          {
-            coords: {
-              lat: 53.5510846,
-              lng: 9.9936818,
-            },
-            name: 'Hamburg',
-            title: 'The most beautiful city in the world',
-            image1URL:
-              'https://images.unsplash.com/photo-1473615695634-d284ec918736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2900&q=80',
-          },
-          {
-            coords: {
-              lat: 48.17427,
-              lng: 16.32962,
-            },
-            name: 'Zürich',
-          },
-          {
-            coords: {
-              lat: 34.052235,
-              lng: -118.243683,
-            },
-            name: 'Los Angeles',
-          },
-        ];
+        // const markers = [
+        //   {
+        //     coords: {
+        //       lat: 53.5510846,
+        //       lng: 9.9936818,
+        //     },
+        //     name: 'Hamburg',
+        //     title: 'The most beautiful city in the world',
+        //     image1URL:
+        //       'https://images.unsplash.com/photo-1473615695634-d284ec918736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2900&q=80',
+        //   },
+        //   {
+        //     coords: {
+        //       lat: 48.17427,
+        //       lng: 16.32962,
+        //     },
+        //     name: 'Zürich',
+        //   },
+        //   {
+        //     coords: {
+        //       lat: 34.052235,
+        //       lng: -118.243683,
+        //     },
+        //     name: 'Los Angeles',
+        //   },
+        // ];
 
         function addMarker(location, i) {
           console.log(location.coords);

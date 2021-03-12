@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import Map from '../views/Map.vue';
+import Map2 from '../views/Map2.vue';
 import Map3 from '../views/Map3.vue';
 import Details from '../views/Details.vue';
 import About from '../views/About.vue';

@@ -2,7 +2,7 @@
   <div>
     <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
   </div>
-  <Login />
+  <!-- <Login /> -->
   <!-- <div v-for="user in users" :key="user._id">
     <p>{{ user._id }}</p>
     <p>{{ user.name }}</p>
@@ -24,7 +24,7 @@
   import bannerImage from '@/assets/banner1.jpg';
   import Banner from '@/components/Banner.vue';
   import OverviewCard from '@/components/OverviewCard.vue';
-  import Login from '@/components/Login.vue';
+  // import Login from '@/components/Login.vue';
 
   import { getBlogposts, getUsers, to } from '../utils/io.js';
 
@@ -35,7 +35,7 @@
     components: {
       Banner,
       OverviewCard,
-      Login,
+      // Login,
     },
 
     data() {
