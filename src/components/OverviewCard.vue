@@ -70,7 +70,6 @@
     },
     computed: {
       snippet() {
-        console.log(this.blogpost);
         let snippet = this.blogpost.description || this.blogpost.wiki;
         const maxlength = 140;
         if (snippet.length > maxlength) {
