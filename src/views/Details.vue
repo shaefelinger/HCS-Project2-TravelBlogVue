@@ -46,6 +46,8 @@
 
   /* eslint-disable no-undef */
   import { computed, ref, onMounted } from 'vue';
+  import { useStore } from 'vuex';
+
   import { Loader } from '@googlemaps/js-api-loader';
   const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
@@ -66,6 +68,8 @@
       };
     },
 
+
+
     computed: {
       allBlogposts() {
         return this.$store.getters.getAllBlogposts;
@@ -80,6 +84,8 @@
         lat: 47.3768866,
         lng: 8.541694,
       }));
+
+      const store = useStore();
 
       const loader = new Loader({ apiKey: GOOGLE_MAPS_API_KEY });
       const mapDiv = ref(null);

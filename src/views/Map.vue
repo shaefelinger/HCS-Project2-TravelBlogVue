@@ -30,7 +30,7 @@
 
       const store = useStore();
 
-      console.log(store.getters.getAllBlogposts);
+      // console.log(store.getters.getAllBlogposts);
       const markers = store.getters.getAllBlogposts;
       onMounted(async () => {
         await loader.load();

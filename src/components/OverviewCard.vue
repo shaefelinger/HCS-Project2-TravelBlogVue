@@ -36,7 +36,8 @@
       <h2 class="mt-1 text-base text-gray-600">{{ blogpost.longName }}</h2>
 
       <h3 class="text-2xl my-4">{{ blogpost.title }}</h3>
-      <p class="font-light text-gray-600 text-base ">{{ blogpost.description || blogpost.wiki }}</p>
+      <!-- <p class="font-light text-gray-600 text-base ">{{ blogpost.description || blogpost.wiki }}</p> -->
+      <p class="font-light text-gray-600 text-base ">{{ snippet }}</p>
     </div>
     <div class="cardBottom">
       <div>
@@ -67,8 +68,17 @@
     props: {
       blogpost: Object,
     },
-
-    emits: ['BlogpostSelected'],
+    computed: {
+      snippet() {
+        console.log(this.blogpost);
+        let snippet = this.blogpost.description || this.blogpost.wiki;
+        const maxlength = 140;
+        if (snippet.length > maxlength) {
+          snippet = snippet.substring(0, maxlength) + '…';
+        }
+        return snippet;
+      },
+    },
 
     //   methods: {
     //     blogpostSelected(char_id) {
