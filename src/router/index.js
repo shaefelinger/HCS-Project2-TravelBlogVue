@@ -5,7 +5,7 @@ import Map3 from '../views/Map3.vue';
 import Details from '../views/Details.vue';
 import About from '../views/About.vue';
 import NewPost from '../views/NewPost.vue';
-import Login from '../views/Login.vue';
+import Check from '../views/Check.vue';
 import NotFound from '../views/NotFound.vue';
 
 const routes = [
@@ -41,9 +41,9 @@ const routes = [
     props: true,
   },
   {
-    path: '/Login',
-    name: 'Login',
-    component: Login,
+    path: '/check',
+    name: 'Check',
+    component: Check,
   },
   {
     path: '/about',

@@ -2,18 +2,20 @@
   <div>
     <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
   </div>
+  <Login />
   <!-- <div v-for="user in users" :key="user._id">
     <p>{{ user._id }}</p>
     <p>{{ user.name }}</p>
   </div> -->
   <!-- id="blogContainer" -->
+  <p v-if="!allBlogposts.length">DATA loading - Server is sleeping 😴</p>
   <div class="flex flex-col items-center  sm:flex-wrap sm:flex-row sm:justify-center">
     <div class="" v-for="blogpost in blogposts" :key="blogpost._id" @click="selectBlogpost(blogpost)">
       <OverviewCard :blogpost="blogpost" />
     </div>
   </div>
 
-  POSTS: {{ allBlogposts }}
+  <!-- POSTS: {{ allBlogposts }} -->
   <!-- USERS: {{ users }} -->
 </template>
 
@@ -22,6 +24,7 @@
   import bannerImage from '@/assets/banner1.jpg';
   import Banner from '@/components/Banner.vue';
   import OverviewCard from '@/components/OverviewCard.vue';
+  import Login from '@/components/Login.vue';
 
   import { getBlogposts, getUsers, to } from '../utils/io.js';
 
@@ -32,11 +35,11 @@
     components: {
       Banner,
       OverviewCard,
+      Login,
     },
 
     data() {
       return {
-        // bannerImage: 'https://picsum.photos/id/116/1000/535',
         bannerImage,
         bannerText: 'The Travel Blog',
         bannerButtonText: 'About',

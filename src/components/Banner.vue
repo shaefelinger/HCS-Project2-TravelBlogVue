@@ -5,7 +5,7 @@
     :style="{ backgroundImage: `url(${bannerImage})` }"
   >
     <p class="bannerText text-3xl sm:text-5xl lg:text-6xl font-extralight text-white  " id="bannerTitle">{{ bannerText }}</p>
-    <button class="" onclick="gotoAboutPage()" id="bannerButton">{{ bannerButtonText }}</button>
+    <button class="uppercase " onclick="gotoAboutPage()" id="bannerButton">{{ bannerButtonText }}</button>
   </div>
   <!-- {{ bannerImage }}
   {{ bannerText }}

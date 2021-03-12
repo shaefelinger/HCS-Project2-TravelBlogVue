@@ -4,17 +4,16 @@
 */
 
 // const url = "https://www.breakingbadapi.com/api/"
-const url = "https://aroundtheworld-blog-server.herokuapp.com/"
-// const url = "http://localhost:3000/"
+const url = 'https://aroundtheworld-blog-server.herokuapp.com/';
+// const url = 'http://localhost:3000/';
 
 export function getBlogposts() {
-    return fetch(url + "blogposts");
+  return fetch(url + 'blogposts');
 }
 
 export function getUsers() {
-    return fetch(url + "users");
+  return fetch(url + 'users');
 }
-
 
 /*
 
@@ -41,7 +40,8 @@ continue normally with data object extracted from backend response
 */
 
 export function to(promise) {
-    return promise.then(response => response.json())
-        .then(data => ({ data, error: null }))
-        .catch(error => ({ data: null, error }));
+  return promise
+    .then((response) => response.json())
+    .then((data) => ({ data, error: null }))
+    .catch((error) => ({ data: null, error }));
 }

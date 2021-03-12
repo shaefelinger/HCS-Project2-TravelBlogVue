@@ -1,12 +1,4 @@
 <template>
-  <!-- <div class="container">
-    <div class="p-6" id="nav">
-      <router-link class="font-bold text-gray-700" to="/">Home</router-link> |
-      <router-link class="font-bold text-gray-700" to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div> -->
-
   <div class="flex flex-col justify-between h-screen">
     <Header class="flex-shrink-0" />
     <router-view class="mb-80" />
@@ -27,10 +19,6 @@
     },
 
     computed: {
-      // initialized() {
-      //   return this.$store.getters.initialized;
-      // },
-
       user() {
         return this.$store.getters.user;
       },
