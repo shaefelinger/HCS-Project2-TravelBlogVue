@@ -43,12 +43,14 @@
 <script>
   import Banner from '@/components/Banner.vue';
   import StarRating from '@/components/StarRating.vue';
+  import { useRouter, useRoute } from 'vue-router';
 
   /* eslint-disable no-undef */
   import { computed, ref, onMounted } from 'vue';
   import { useStore } from 'vuex';
 
   import { Loader } from '@googlemaps/js-api-loader';
+  import router from '../router';
   const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
   export default {
@@ -78,18 +80,33 @@
     },
 
     setup() {
-      const currPos = computed(() => ({
-        lat: 47.3768866,
-        lng: 8.541694,
-      }));
+      // const currPos = computed(() => ({
+      //   lat: 47.3768866,
+      //   lng: 8.541694,
+      // }));
+
+      // const router = useRouter();
 
       const store = useStore();
+      const route = useRoute();
+
+      const allPosts = store.getters.getAllBlogposts;
+      const currentID = route.params.id;
+      const currentPost = allPosts.find((el) => el._id === currentID);
+
+      const currPos = currentPost.coords;
+      console.log(currPos);
+      // console.log(currentPost.coords);
+
+      // console.log('route', route.params.id);
+
+      // console.log(router.params.id);
 
       const loader = new Loader({ apiKey: GOOGLE_MAPS_API_KEY });
       const mapDiv = ref(null);
       const options = {
         zoom: 6,
-        center: currPos.value,
+        center: currPos,
         mapTypeId: 'hybrid',
         disableDefaultUI: true,
       };
@@ -97,10 +114,10 @@
         await loader.load();
         const map = new google.maps.Map(mapDiv.value, options);
         const marker = new google.maps.Marker({
-          position: currPos.value,
+          position: currPos,
           map: map,
         });
-        console.log(marker);
+        // console.log(marker);
       });
 
       return { mapDiv };

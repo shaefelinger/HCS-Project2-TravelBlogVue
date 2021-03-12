@@ -12,6 +12,7 @@
 
   import { Loader } from '@googlemaps/js-api-loader';
   const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
+  // console.log(GOOGLE_MAPS_API_KEY);
 
   export default {
     name: 'App',
@@ -30,8 +31,8 @@
 
       const store = useStore();
 
-      // console.log(store.getters.getAllBlogposts);
       const markers = store.getters.getAllBlogposts;
+
       onMounted(async () => {
         await loader.load();
 
@@ -44,35 +45,8 @@
         const overviewMap = new google.maps.Map(mapDiv.value, options);
         let bounds = new google.maps.LatLngBounds();
 
-        // const markers = [
-        //   {
-        //     coords: {
-        //       lat: 53.5510846,
-        //       lng: 9.9936818,
-        //     },
-        //     name: 'Hamburg',
-        //     title: 'The most beautiful city in the world',
-        //     image1URL:
-        //       'https://images.unsplash.com/photo-1473615695634-d284ec918736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2900&q=80',
-        //   },
-        //   {
-        //     coords: {
-        //       lat: 48.17427,
-        //       lng: 16.32962,
-        //     },
-        //     name: 'Zürich',
-        //   },
-        //   {
-        //     coords: {
-        //       lat: 34.052235,
-        //       lng: -118.243683,
-        //     },
-        //     name: 'Los Angeles',
-        //   },
-        // ];
-
         function addMarker(location, i) {
-          console.log(location.coords);
+          // console.log(location.coords);
           const marker = new google.maps.Marker({
             position: location.coords,
             map: overviewMap,
