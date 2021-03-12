@@ -1,6 +1,7 @@
 <template>
   <div>
     <h2>Dashboard</h2>
+
     <p>Name: {{ user.name }}</p>
   </div>
 </template>
@@ -9,6 +10,7 @@
   import router from '../router';
   export default {
     name: 'Login',
+    components: {},
     data() {
       return {
         user: {
@@ -19,8 +21,8 @@
     methods: {
       getUserData: function() {
         let self = this;
-        const tempURL = 'https://aroundtheworld-blog-server.herokuapp.com';
-        // const tempURL = '';
+        // const tempURL = 'https://aroundtheworld-blog-server.herokuapp.com';
+        const tempURL = '';
         axios.defaults.withCredentials = true;
         axios
           .get(tempURL + '/auth/user')

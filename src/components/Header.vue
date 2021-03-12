@@ -93,7 +93,7 @@
     },
     data() {
       return {
-        showModal: true,
+        showModal: false,
       };
     },
     components: {
