@@ -68,8 +68,6 @@
       };
     },
 
-
-
     computed: {
       allBlogposts() {
         return this.$store.getters.getAllBlogposts;

@@ -8,7 +8,7 @@ export default createStore({
     allUsers: [],
     currentBlogpost: {},
     currentUser: {},
-    isLoggedIn: false,
+    isLoggedIn: true,
     // bannerImage: '@/assets/banner1.jpg',
   },
 
