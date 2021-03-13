@@ -10,7 +10,7 @@
   import bannerImage from '@/assets/banner2.jpg';
 
   import axios from 'axios';
-  import router from '../router';
+  // import router from '../router';
 
   export default {
     name: 'NewPost',
@@ -32,34 +32,33 @@
       };
     },
 
-    methods: {
-      getUserData: function() {
-        let self = this;
-        // const tempURL = 'http://localhost:3000';
-        const tempURL = 'https://aroundtheworld-blog-server.herokuapp.com/';
-        ç;
-        // const tempURL = '';
+    // methods: {
+    //   getUserData: function() {
+    //     let self = this;
+    //     // const tempURL = 'http://localhost:3000';
+    //     // const tempURL = 'https://aroundtheworld-blog-server.herokuapp.com/';
+    //     // const tempURL = '';
 
-        axios
-          .get('auth/user')
-          .then((response) => {
-            console.log(this.user);
-            console.log(response.data.user);
-            this.user = response.data.user;
-            console.log('success 😎');
-            this.status = 'drin';
-            // self.$set(this, 'user', response.data.user);
-          })
-          .catch((errors) => {
-            console.log(errors);
-            this.status = 'nööö';
-            // router.push('/');
-          });
-      },
-    },
-    mounted() {
-      this.getUserData();
-    },
+    //     axios
+    //       .get('auth/user')
+    //       .then((response) => {
+    //         console.log(this.user);
+    //         // console.log(response.data.user);
+    //         this.user = response.data.user;
+    //         // console.log('success 😎');
+    //         this.status = 'drin';
+    //         // self.$set(this, 'user', response.data.user);
+    //       })
+    //       .catch((errors) => {
+    //         console.log(errors);
+    //         this.status = 'nööö';
+    //         // router.push('/');
+    //       });
+    //   },
+    // },
+    // mounted() {
+    //   this.getUserData();
+    // },
   };
 </script>
 
