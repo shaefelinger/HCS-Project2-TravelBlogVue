@@ -28,30 +28,17 @@
 <style>
   /* old default  */
   #nav a.router-link-exact-active {
-    /* color: #42b983; */
     color: #111;
     transform: scale(1.1) translateY(-1px);
   }
-  /* =====  */
-  html {
+  /* html {
     position: relative;
     min-height: 100%;
-  }
+  } */
+
   /* ========================================================================== */
   /* BASIC STYLING */
   /* ========================================================================== */
-
-  /* h1,
-  h2,
-  h3,
-  p {
-    color: #1f2937;
-  }
-
-  h4 {
-    color: #666;
-    font-size: 1.4rem;
-  } */
 
   .hidden {
     display: none !important;

@@ -51,7 +51,7 @@
 
   import { Loader } from '@googlemaps/js-api-loader';
   import router from '../router';
-  const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
+  const GOOGLE_MAPS_API_KEY = process.env.VUE_APP_GOOGLE_MAPS_API_KEY;
 
   export default {
     name: 'Details',

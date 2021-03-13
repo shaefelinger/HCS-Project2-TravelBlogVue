@@ -60,7 +60,7 @@
 </template>
 
 <script>
-  import { mapActions, mapGetters } from 'vuex';
+  import { mapGetters } from 'vuex';
   import Modal from '@/components/Modal.vue';
 
   export default {
@@ -108,32 +108,11 @@
   /* ========================================================================== */
 
   .header {
-    /* background-color: #fff; */
-    /* border-bottom: 0.125rem #155e39 solid; */
-    /* border-bottom:  #155e39 solid; */
-    /* box-shadow: 0 0px 20px 2px rgba(0, 0, 0, 0.2); */
-    /* padding: 0 7%; */
-    /* z-index: 30000; */
-    /* display: flex; */
-    /* justify-content: space-between; */
-    /* align-items: center; */
   }
-
-  /* .header .logo {
-    height: 27px;
-  } */
 
   #siteLogoName {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    /* color: rgb(17, 17, 17); */
-    /* font-size: 1.5rem; */
-    /* font-weight: 400; */
   }
-
-  /* .worldLogo {
-    margin-bottom: 10px;
-    height: 2rem;
-  } */
 
   /* NAV */
   /* ========================================================================== */

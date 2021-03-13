@@ -11,8 +11,7 @@
   import { useStore } from 'vuex';
 
   import { Loader } from '@googlemaps/js-api-loader';
-  const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
-  // console.log(GOOGLE_MAPS_API_KEY);
+  // const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
   export default {
     name: 'App',
@@ -26,6 +25,10 @@
     },
 
     setup() {
+      const GOOGLE_MAPS_API_KEY = process.env.VUE_APP_GOOGLE_MAPS_API_KEY;
+
+      // console.log('test-key:', GOOGLE_MAPS_API_KEY);
+
       const loader = new Loader({ apiKey: GOOGLE_MAPS_API_KEY });
       const mapDiv = ref(null);
 
@@ -35,7 +38,7 @@
 
       onMounted(async () => {
         await loader.load();
-
+        // console.log('mounted:', process.env.VUE_APP_GOOGLE_MAPS_API_KEY);
         const options = {
           maxZoom: 10,
           minZoom: 2,
