@@ -4,10 +4,11 @@
       <input class="h-6 py-6 px-3  my-2 w-full text-sm border-2 border-gray-200 rounded " type="email" placeholder="email " />
       <input class="h-6 py-6 px-3  my-2 w-full text-sm border-2 border-gray-200 rounded" type="password" placeholder="password " />
       <button class="primaryButton uppercase">Log In</button>
-
-      <hr />
+      <p>login: testuser@test.com</p>
+      <p>pw: test123</p>
+      <!-- <hr />
       <p>or</p>
-      <button class="secondaryButton uppercase">register</button>
+      <button class="secondaryButton uppercase">register</button> -->
     </div>
   </div>
 </template>
