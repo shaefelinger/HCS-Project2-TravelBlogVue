@@ -14,14 +14,6 @@
 
   export default {
     name: 'App',
-    components: {
-      // OverviewCard,
-    },
-    // computed: {
-    //   allBlogposts() {
-    //     return this.$store.getters.getAllBlogposts;
-    //   },
-    // },
 
     setup() {
       const GOOGLE_MAPS_API_KEY = process.env.VUE_APP_GOOGLE_MAPS_API_KEY;
@@ -51,13 +43,13 @@
 
           const infoWindow = new google.maps.InfoWindow({
             content: `
-      <div class="infoWindow" onclick="gotoDetailsPage(${i})" style="width: 200px;">
-        <h3>${location.name}</h3>
-        <p>${location.title}</p>
-        <div class="infoWindowImage" style="background-image: url(${location.image1URL});"></div>
-        <a href="/details/${location._id}"> <button class="miniButton">read more</button></a>
-      </div>
-      `,
+            <div class="infoWindow" style="width: 200px;">
+              <h3>${location.name}</h3>
+              <p>${location.title}</p>
+              <div class="infoWindowImage" style="background-image: url(${location.image1URL});"></div>
+              <a href="/details/${location._id}"> <button class="miniButton">read more</button></a>
+            </div>
+            `,
           });
           marker.addListener('click', function() {
             infoWindow.open(overviewMap, marker);

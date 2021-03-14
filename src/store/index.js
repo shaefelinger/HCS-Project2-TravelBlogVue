@@ -6,10 +6,8 @@ export default createStore({
     user: 1,
     allBlogposts: [],
     allUsers: [],
-    currentBlogpost: {},
     currentUser: {},
     isLoggedIn: true,
-    // bannerImage: '@/assets/banner1.jpg',
   },
 
   getters: {
@@ -19,7 +17,6 @@ export default createStore({
     initialized: (state) => state.initialized,
     user: (state) => state.user,
     getAllBlogposts: (state) => state.allBlogposts,
-    // currentBlogpost: (state) => state.allBlogposts,
   },
 
   mutations: {
@@ -36,20 +33,8 @@ export default createStore({
       console.log('😎all blogbosts mutated');
       state.allBlogposts = data;
     },
-    setCurrentBlogpost: (state, data) => {
-      state.currentBlogpost = data;
-    },
-
-    // bannerImage: (state, data) => {
-    //   state.bannerImage = data;
-    // },
   },
   actions: {
-    //  async init({ state, commit }) {
-    //   if (state.initialized) {
-    //     console.log('👍init called but already initialized')
-    //     return;
-    //   }
     login(context) {
       context.commit('setAuth', { isAuth: true });
       console.log('login');
@@ -61,10 +46,6 @@ export default createStore({
     setAllBlogposts(context, data) {
       console.log('action: store all blogposts in store');
       context.commit('setAllBlogposts', data);
-    },
-    currentBlogpost(context, data) {
-      console.log('store current blogposts in store');
-      context.commit('setCurrentBlogpost', data);
     },
   },
   modules: {},

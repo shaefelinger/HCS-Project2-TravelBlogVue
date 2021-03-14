@@ -1,22 +1,22 @@
 <template>
-  <Banner :bannerImage="currentBlogpost.image1URL" :bannerText="currentBlogpost.name" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
+  <Banner :bannerImage="currentPost.image1URL" :bannerText="currentPost.name" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
 
   <div class="flex justify-center">
     <div class="detailsArticle ">
       <div>
         <div class="detailsTopContainer">
-          <img class="detailsImg2" :src="currentBlogpost.image2URL" alt="" />
+          <img class="detailsImg2" :src="currentPost.image2URL" alt="" />
         </div>
       </div>
       <div>
-        <h2 class="mt-4">{{ currentBlogpost.longName }}</h2>
+        <h2 class="mt-4">{{ currentPost.longName }}</h2>
         <div class="flex flex-row items-center  py-4">
-          <StarRating :rating="currentBlogpost.rating" />
-          <p class="ml-4 text-gray-500">Visited in {{ currentBlogpost.month }} {{ currentBlogpost.year }}</p>
+          <StarRating :rating="currentPost.rating" />
+          <p class="ml-4 text-gray-500">Visited in {{ currentPost.month }} {{ currentPost.year }}</p>
         </div>
-        <h3 class="text-2xl">{{ currentBlogpost.title }}</h3>
-        <p class="mt-4">{{ currentBlogpost.description }}</p>
-        <p class="mt-4">{{ currentBlogpost.wiki }}</p>
+        <h3 class="text-2xl">{{ currentPost.title }}</h3>
+        <p class="mt-4">{{ currentPost.description }}</p>
+        <p class="mt-4">{{ currentPost.wiki }}</p>
       </div>
       <div class="mt-5 flex items-center">
         <img class="rounded-full w-11" src="@/assets/Steffen_square.png" alt="" />
@@ -91,9 +91,9 @@
       const route = useRoute();
 
       const allPosts = store.getters.getAllBlogposts;
+      console.log('all', allPosts);
       const currentID = route.params.id;
       const currentPost = allPosts.find((el) => el._id === currentID);
-      console.log(currentPost);
 
       const currPos = currentPost.coords;
       // console.log(currPos);
