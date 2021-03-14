@@ -28,7 +28,7 @@
   import Spinner from '@/components/Spinner.vue';
   // import Login from '@/components/Login.vue';
 
-  // import { getBlogposts, getUsers, to } from '../utils/io.js';
+  import { getBlogposts, getUsers, to } from '../utils/io.js';
 
   export default {
     name: 'Home',
@@ -63,29 +63,29 @@
       return { blogposts, error };
     },
 
-    // // load  list of blogposts:
-    // async mounted() {
-    //   console.log('/home mounted');
-    //   {
-    //     const { data, error } = await to(getBlogposts());
-    //     if (!error) {
-    //       this.blogposts = data;
-    //       this.$store.dispatch('setAllBlogposts', data);
-    //       console.log('👍Got blogposts from Server');
-    //     } else {
-    //       console.log('🚫Error getting Blogpost-Data from Server');
-    //     }
-    //   }
-    //   {
-    //     const { data, error } = await to(getUsers());
-    //     if (!error) {
-    //       this.users = data;
-    //       console.log('👍Got users from Server');
-    //     } else {
-    //       console.log('🚫Error getting user-Data from Server');
-    //     }
-    //   }
-    // },
+    // load  list of blogposts:
+    async mounted() {
+      console.log('/home mounted');
+      {
+        const { data, error } = await to(getBlogposts());
+        if (!error) {
+          this.blogposts = data;
+          this.$store.dispatch('setAllBlogposts', data);
+          console.log('👍Got blogposts from Server');
+        } else {
+          console.log('🚫Error getting Blogpost-Data from Server');
+        }
+      }
+      {
+        const { data, error } = await to(getUsers());
+        if (!error) {
+          this.users = data;
+          console.log('👍Got users from Server');
+        } else {
+          console.log('🚫Error getting user-Data from Server');
+        }
+      }
+    },
 
     // mounted() {
     //   console.log('mounted', this.blogposts);

@@ -1,18 +1,25 @@
 <template>
-  <div id="overviewMapContainer">
-      <div id="overviewMap">
-    <div id="map"></div>
+  <div>{{ blogposts }}</div>
 
-      </div>
+  <div id="overviewMapContainer">
+    <div id="overviewMap">
+      <div id="map"></div>
+    </div>
   </div>
 </template>
 
 <script>
   /* eslint-disable no-undef */
+  import getPosts from '@/composables/getPosts.js';
 
   import { Loader } from '@googlemaps/js-api-loader';
 
   export default {
+    setup() {
+      const { blogposts, error, load } = getPosts();
+      load();
+      return { blogposts, error };
+    },
     mounted() {
       const markers = [
         {
@@ -37,6 +44,7 @@
           },
         },
       ];
+      //   console.log(this.blogposts);
 
       const loader = new Loader({
         apiKey: process.env.VUE_APP_GOOGLE_MAPS_API_KEY,
