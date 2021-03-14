@@ -49,14 +49,12 @@
     methods: {
       selectBlogpost(blogpost) {
         const link = '/details/' + blogpost._id;
-        // this.$emit('selectionChanged', blogpost);
         this.$router.push(link);
       },
     },
     setup() {
       const { blogposts, error, load } = getPosts();
       load();
-
       return { blogposts, error };
     },
 
