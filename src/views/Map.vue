@@ -14,6 +14,8 @@
 
   export default {
     name: 'Map',
+   
+    
 
     setup() {
       const GOOGLE_MAPS_API_KEY = process.env.VUE_APP_GOOGLE_MAPS_API_KEY;
@@ -23,6 +25,29 @@
 
       const store = useStore();
       const markers =  store.getters.getAllBlogposts;
+      // const markers = [
+      //   {
+      //     id: 'hello',
+      //     coords: {
+      //       lat: 51.093048,
+      //       lng: 6.84212,
+      //     },
+      //   },
+      //   {
+      //     id: 'hamburg',
+      //     coords: {
+      //       lat: 53.551086,
+      //       lng: 9.993682,
+      //     },
+      //   },
+      //   {
+      //     id: 'hamburg',
+      //     coords: {
+      //       lat: 43.551086,
+      //       lng: 0.993682,
+      //     },
+      //   },
+      // ];
 
       onMounted(async () => {
         

@@ -1,6 +1,6 @@
 <template>
-  <div>{{ blogposts }}</div>
-
+  <!-- <div>{{ blogposts }}</div> -->
+  <!-- <p>{{blogpostsFromStore}}</p> -->
   <div id="overviewMapContainer">
     <div id="overviewMap">
       <div id="map"></div>
@@ -10,40 +10,48 @@
 
 <script>
   /* eslint-disable no-undef */
-  import getPosts from '@/composables/getPosts.js';
+  // import getPosts from '@/composables/getPosts.js';
 
   import { Loader } from '@googlemaps/js-api-loader';
 
   export default {
-    setup() {
-      const { blogposts, error, load } = getPosts();
-      load();
-      return { blogposts, error };
+    computed: {
+      blogpostsFromStore() {
+        return this.$store.getters.getAllBlogposts;
+      },
     },
+
+    // setup() {
+
+    //   const { blogposts, error, load } = getPosts();
+    //   load();
+    //   return { blogposts, error };
+    // },
     mounted() {
-      const markers = [
-        {
-          id: 'hello',
-          coords: {
-            lat: 51.093048,
-            lng: 6.84212,
-          },
-        },
-        {
-          id: 'hamburg',
-          coords: {
-            lat: 53.551086,
-            lng: 9.993682,
-          },
-        },
-        {
-          id: 'hamburg',
-          coords: {
-            lat: 43.551086,
-            lng: 0.993682,
-          },
-        },
-      ];
+      const markers =(this.blogpostsFromStore);
+      // const markers = [
+      //   {
+      //     id: 'hello',
+      //     coords: {
+      //       lat: 51.093048,
+      //       lng: 6.84212,
+      //     },
+      //   },
+      //   {
+      //     id: 'hamburg',
+      //     coords: {
+      //       lat: 53.551086,
+      //       lng: 9.993682,
+      //     },
+      //   },
+      //   {
+      //     id: 'hamburg',
+      //     coords: {
+      //       lat: 43.551086,
+      //       lng: 0.993682,
+      //     },
+      //   },
+      // ];
       //   console.log(this.blogposts);
 
       const loader = new Loader({
@@ -89,15 +97,15 @@
             });
 
             const infoWindow = new google.maps.InfoWindow({
-              //     content: `
-              //     <div class="infoWindow" style="width: 200px;">
-              //       <h3>${location.name}</h3>
-              //       <p>${location.title}</p>
-              //       <div class="infoWindowImage" style="background-image: url(${location.image1URL});"></div>
-              //       <a href="/details/${location._id}"> <button class="miniButton">read more</button></a>
-              //     </div>
-              //     `,
-              content: 'hallo',
+                  content: `
+                  <div class="infoWindow" style="width: 200px;">
+                    <h3>${location.name}</h3>
+                    <p>${location.title}</p>
+                    <div class="infoWindowImage" style="background-image: url(${location.image1URL});"></div>
+                    <a href="/details/${location._id}"> <button class="miniButton">read more</button></a>
+                  </div>
+                  `,
+              // content: 'hallo',
             });
             marker.addListener('click', function() {
               infoWindow.open(overviewMap, marker);

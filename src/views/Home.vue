@@ -10,6 +10,8 @@
         <OverviewCard :blogpost="blogpost" />
       </div>
     </div>
+
+
   </div>
   <div v-else>
     <p>Loading...</p>
@@ -75,6 +77,8 @@
 
 
 
+
+
         } else {
           console.log('🚫Error getting Blogpost-Data from Server');
         }
@@ -88,9 +92,6 @@
           console.log('🚫Error getting user-Data from Server');
         }
       }
-
-
-
     },
 
   
