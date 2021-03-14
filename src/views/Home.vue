@@ -3,11 +3,6 @@
     <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
   </div>
   <Login />
-  <!-- <div v-for="user in users" :key="user._id">
-    <p>{{ user._id }}</p>
-    <p>{{ user.name }}</p>
-  </div> -->
-  <!-- id="blogContainer" -->
   <p v-if="!allBlogposts.length">DATA loading - Server is sleeping 😴</p>
   <div class="flex flex-col items-center  sm:flex-wrap sm:flex-row sm:justify-center">
     <div class="" v-for="blogpost in blogposts" :key="blogpost._id" @click="selectBlogpost(blogpost)">
@@ -15,8 +10,6 @@
     </div>
   </div>
 
-  <!-- POSTS: {{ allBlogposts }} -->
-  <!-- USERS: {{ users }} -->
 </template>
 
 <script>
@@ -52,10 +45,7 @@
 
     methods: {
       selectBlogpost(blogpost) {
-        // console.log('selectCharacter was clicked: ' + blogpost.name);
         const link = '/details/' + blogpost._id;
-        // console.log(link);
-        // console.log(blogpost);
         // this.$emit('selectionChanged', blogpost);
         this.$router.push(link);
       },

@@ -1,22 +1,22 @@
 <template>
-  <Banner :bannerImage="currentBlogpost.image1URL" :bannerText="currentBlogpost.name" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
+  <Banner :bannerImage="currentPost.image1URL" :bannerText="currentPost.name" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
 
   <div class="flex justify-center">
     <div class="detailsArticle ">
       <div>
         <div class="detailsTopContainer">
-          <img class="detailsImg2" :src="currentBlogpost.image2URL" alt="" />
+          <img class="detailsImg2" :src="currentPost.image2URL" alt="" />
         </div>
       </div>
       <div>
-        <h2 class="mt-4">{{ currentBlogpost.longName }}</h2>
+        <h2 class="mt-4">{{ currentPost.longName }}</h2>
         <div class="flex flex-row items-center  py-4">
-          <StarRating :rating="currentBlogpost.rating" />
-          <p class="ml-4 text-gray-500">Visited in {{ currentBlogpost.month }} {{ currentBlogpost.year }}</p>
+          <StarRating :rating="currentPost.rating" />
+          <p class="ml-4 text-gray-500">Visited in {{ currentPost.month }} {{ currentPost.year }}</p>
         </div>
-        <h3 class="text-2xl">{{ currentBlogpost.title }}</h3>
-        <p class="mt-4">{{ currentBlogpost.description }}</p>
-        <p class="mt-4">{{ currentBlogpost.wiki }}</p>
+        <h3 class="text-2xl">{{ currentPost.title }}</h3>
+        <p class="mt-4">{{ currentPost.description }}</p>
+        <p class="mt-4">{{ currentPost.wiki }}</p>
       </div>
       <div class="mt-5 flex items-center">
         <img class="rounded-full w-11" src="@/assets/Steffen_square.png" alt="" />
@@ -43,8 +43,6 @@
 <script>
   /* eslint-disable no-undef */
 
-  import { getOneBlogpost, to } from '../utils/io.js';
-
   import Banner from '@/components/Banner.vue';
   import StarRating from '@/components/StarRating.vue';
   import { useRouter, useRoute } from 'vue-router';
@@ -68,67 +66,57 @@
         bannerButtonText: 'back',
         bannerButtonLink: 'About',
 
-        currentBlogpost: [],
         // blogposts: [],
         // users: [],
       };
     },
 
-    // computed: {
-    //   allBlogposts() {
-    //     return this.$store.getters.getAllBlogposts;
-    //   },
-    // },
+    computed: {
+      allBlogposts() {
+        return this.$store.getters.getAllBlogposts;
+      },
+      // currentBlogpost() {
+      //   console.log('get current');
+      //   const current = this.$store.getters.getAllBlogposts.find((el) => el._id === this.$route.params.id);
+      //   console.log(this.$store.getters.getAllBlogposts);
 
-    async mounted() {
-      // load  list of ONE blogpost
-      console.log('/details mounted', this.$route.params.id);
-      {
-        const { data, error } = await to(getOneBlogpost(this.$route.params.id));
-        if (!error) {
-          this.currentBlogpost = data;
-          console.log('👍Got one blogposts from Server');
-
-          const currPos = data.coords;
-          console.log(currPos);
-        } else {
-          console.log('🚫Error getting ONE Blogpost-Data from Server');
-        }
-      }
+      //   return this.$store.getters.getAllBlogposts.find((el) => el._id === this.$route.params.id);
+      // },
     },
 
-    // setup() {
-    //   // const router = useRouter();
+    setup() {
+      // const router = useRouter();
 
-    //   const store = useStore();
-    //   const route = useRoute();
+      const store = useStore();
+      const route = useRoute();
 
-    //   const allPosts = store.getters.getAllBlogposts;
-    //   console.log('all', allPosts);
-    //   const currentID = route.params.id;
-    //   const currentPost = allPosts.find((el) => el._id === currentID);
+      const allPosts = store.getters.getAllBlogposts;
+      console.log('all', allPosts);
+      const currentID = route.params.id;
+      const currentPost = allPosts.find((el) => el._id === currentID);
 
-    //   const currPos = currentPost.coords;
+      const currPos = currentPost.coords;
+      // console.log(currPos);
 
-    //   const loader = new Loader({ apiKey: GOOGLE_MAPS_API_KEY });
-    //   const mapDiv = ref(null);
-    //   const options = {
-    //     zoom: 6,
-    //     center: currPos,
-    //     mapTypeId: 'hybrid',
-    //     disableDefaultUI: true,
-    //   };
-    //   onMounted(async () => {
-    //     await loader.load();
-    //     const map = new google.maps.Map(mapDiv.value, options);
-    //     const marker = new google.maps.Marker({
-    //       position: currPos,
-    //       map: map,
-    //     });
-    //   });
+      const loader = new Loader({ apiKey: GOOGLE_MAPS_API_KEY });
+      const mapDiv = ref(null);
+      const options = {
+        zoom: 6,
+        center: currPos,
+        mapTypeId: 'hybrid',
+        disableDefaultUI: true,
+      };
+      onMounted(async () => {
+        await loader.load();
+        const map = new google.maps.Map(mapDiv.value, options);
+        const marker = new google.maps.Marker({
+          position: currPos,
+          map: map,
+        });
+      });
 
-    //   return { mapDiv, allPosts, currentPost };
-    // },
+      return { mapDiv, allPosts, currentPost };
+    },
   };
 </script>
 

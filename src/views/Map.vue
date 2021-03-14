@@ -1,5 +1,4 @@
 <template>
-  <!-- POSTS: {{ allBlogposts }} -->
   <div id="overviewMapContainer">
     <div id="overviewMap" ref="mapDiv"></div>
   </div>
@@ -7,14 +6,13 @@
 
 <script>
   /* eslint-disable no-undef */
-  import { ref, onMounted, computed } from 'vue';
+  import { ref, onMounted } from 'vue';
   import { useStore } from 'vuex';
 
   import { Loader } from '@googlemaps/js-api-loader';
 
   export default {
-    name: 'App',
-
+    name: 'Map',
     setup() {
       const GOOGLE_MAPS_API_KEY = process.env.VUE_APP_GOOGLE_MAPS_API_KEY;
 
@@ -57,11 +55,9 @@
 
           bounds.extend(location.coords);
         }
-
         markers.forEach(addMarker);
         overviewMap.fitBounds(bounds);
       });
-
       return { mapDiv };
     },
   };

@@ -3,12 +3,15 @@
     this file handles all interaction with the  backend
 */
 
-// const url = "https://www.breakingbadapi.com/api/"
 const url = 'https://aroundtheworld-blog-server.herokuapp.com/';
 // const url = 'http://localhost:3000/';
 
 export function getBlogposts() {
   return fetch(url + 'blogposts');
+}
+
+export function getOneBlogpost(id) {
+  return fetch(url + 'blogposts/' + id);
 }
 
 export function getUsers() {
