@@ -69,8 +69,12 @@
         if (!error) {
           console.log('data:', data);
           this.blogposts = data;
+          let array = data;
           this.$store.dispatch('setAllBlogposts', data);
           console.log('👍Got blogposts from Server');
+
+
+
         } else {
           console.log('🚫Error getting Blogpost-Data from Server');
         }
@@ -84,6 +88,9 @@
           console.log('🚫Error getting user-Data from Server');
         }
       }
+
+
+
     },
 
   

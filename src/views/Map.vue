@@ -22,11 +22,10 @@
       const mapDiv = ref(null);
 
       const store = useStore();
-        const markers =  store.getters.getAllBlogposts;
+      const markers =  store.getters.getAllBlogposts;
 
       onMounted(async () => {
         
-
         await loader.load();
         const options = {
           maxZoom: 10,

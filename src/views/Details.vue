@@ -105,9 +105,6 @@
           const currPos = data.coords;
           console.log(currPos);
 
-
-
-          
         } else {
           console.log('🚫Error getting ONE Blogpost-Data from Server');
         }
