@@ -52,11 +52,11 @@
 
     methods: {
       selectBlogpost(blogpost) {
-        console.log('selectCharacter was clicked: ' + blogpost.name);
+        // console.log('selectCharacter was clicked: ' + blogpost.name);
         const link = '/details/' + blogpost._id;
-        console.log(link);
+        // console.log(link);
         // console.log(blogpost);
-        this.$emit('selectionChanged', blogpost);
+        // this.$emit('selectionChanged', blogpost);
         this.$router.push(link);
       },
     },

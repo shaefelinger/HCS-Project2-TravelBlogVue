@@ -19,8 +19,7 @@ export default createStore({
     initialized: (state) => state.initialized,
     user: (state) => state.user,
     getAllBlogposts: (state) => state.allBlogposts,
-    currentBlogpost: (state) => state.allBlogposts,
-    // bannerImage: state => state.bannerImage
+    // currentBlogpost: (state) => state.allBlogposts,
   },
 
   mutations: {

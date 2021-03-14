@@ -19,7 +19,7 @@
       <div class="p-6" id="nav">
         <router-link class=" text-gray-700" :to="{ name: 'Home' }">Overview</router-link>
         <router-link class=" text-gray-700" to="/map">Map</router-link>
-        <!-- <router-link class=" text-gray-700" to="/map3">Map3</router-link> -->
+        <router-link class=" text-gray-700" to="/map3">Map3</router-link>
         <router-link class=" text-gray-700" to="/about">About</router-link>
         <!-- <router-link class=" text-gray-700" to="/details">details</router-link> -->
         <router-link class=" text-gray-700" to="/check">Check</router-link>

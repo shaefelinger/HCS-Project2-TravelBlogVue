@@ -11,34 +11,29 @@
   import { useStore } from 'vuex';
 
   import { Loader } from '@googlemaps/js-api-loader';
-  // const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
   export default {
     name: 'App',
     components: {
       // OverviewCard,
     },
-    computed: {
-      allBlogposts() {
-        return this.$store.getters.getAllBlogposts;
-      },
-    },
+    // computed: {
+    //   allBlogposts() {
+    //     return this.$store.getters.getAllBlogposts;
+    //   },
+    // },
 
     setup() {
       const GOOGLE_MAPS_API_KEY = process.env.VUE_APP_GOOGLE_MAPS_API_KEY;
-
-      // console.log('test-key:', GOOGLE_MAPS_API_KEY);
 
       const loader = new Loader({ apiKey: GOOGLE_MAPS_API_KEY });
       const mapDiv = ref(null);
 
       const store = useStore();
-
       const markers = store.getters.getAllBlogposts;
 
       onMounted(async () => {
         await loader.load();
-        // console.log('mounted:', process.env.VUE_APP_GOOGLE_MAPS_API_KEY);
         const options = {
           maxZoom: 10,
           minZoom: 2,
@@ -49,7 +44,6 @@
         let bounds = new google.maps.LatLngBounds();
 
         function addMarker(location, i) {
-          // console.log(location.coords);
           const marker = new google.maps.Marker({
             position: location.coords,
             map: overviewMap,
@@ -61,7 +55,7 @@
         <h3>${location.name}</h3>
         <p>${location.title}</p>
         <div class="infoWindowImage" style="background-image: url(${location.image1URL});"></div>
-        <button class="miniButton">read more</button>
+        <a href="/details/${location._id}"> <button class="miniButton">read more</button></a>
       </div>
       `,
           });

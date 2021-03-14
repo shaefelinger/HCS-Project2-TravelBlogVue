@@ -3,6 +3,58 @@
   New Post
   {{ status }}
   <p>Name: {{ user.name }}</p>
+
+  <div class="formContainer">
+    <form action="" id="addPostForm">
+      <label for="locationField" id="locationLabel">Enter a Location*</label>
+      <input id="searchTextField" name="locationField" type="text" size="50" placeholder="" autocomplete="on" />
+      <hr id="searchTextUnderline" class="hidden" />
+
+      <label for="titleField">Enter a Title for the post*</label>
+      <input required type="text" placeholder="" name="titleField" id="titleField" />
+
+      <label for="monthInput">Enter the date of your trip</label>
+      <div class="dateContainer">
+        <select required name="monthInput" id="monthField">
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="Oktober">Oktober</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+        </select>
+        <input required class="yearInput" type="number" placeholder="Enter the year" value="2020" min="1900" max="2100" id="yearField" />
+      </div>
+
+      <label for="rating">Rate your trip </label>
+      <select name="rating" id="ratingField">
+        <option value="0" disabled="disabled" selected="selected">Enter Rating</option>
+        <option class="star" value="1">★</option>
+        <option value="2">★★</option>
+        <option value="3">★★★</option>
+        <option value="4">★★★★</option>
+        <option value="5">★★★★★</option>
+      </select>
+      <label for="descriptionField">Enter a description</label>
+      <textarea id="descriptionField" name="descriptionField" rows="6" cols="80" placeholder=""></textarea>
+
+      <label for="wikiField">Edit Wikipedia Information</label>
+      <textarea id="wikiField" name="wikiField" rows="6" cols="80" placeholder=""></textarea>
+      <p class="miniText">* = required</p>
+
+      <!-- <div class="buttonContainer">
+        <button class="primaryButton" id="submitButton" type="button">SUBMIT</button>
+        <button class="secondaryButton" onclick="gotoOverviewPage()" type="button">CANCEL</button>
+        <button class="resetButton" onclick="resetInputForm()" type="button">reset form</button>
+      </div> -->
+    </form>
+  </div>
 </template>
 
 <script>
@@ -50,9 +102,99 @@
       },
     },
     mounted() {
-      this.getUserData();
+      this.getUserData(); // check, if user is logged in
     },
   };
 </script>
 
-<style></style>
+<style>
+  #addPostForm {
+    max-width: 600px;
+    color: #333;
+    padding: 0 2rem;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:focus,
+  a:focus {
+    outline: none;
+    box-shadow: 0 0 0px 1px #777;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    border-radius: 5px;
+  }
+
+  input,
+  select {
+    height: 50px;
+  }
+
+  input {
+    display: block;
+  }
+
+  .dateContainer * {
+    display: inline;
+  }
+
+  .formContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .formContainer input,
+  .formContainer textarea {
+    width: 100%;
+  }
+
+  #ratingField {
+    color: #777;
+  }
+
+  label {
+    color: #777;
+    margin: 0;
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+  }
+
+  .miniText {
+    font-size: 0.6rem;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  #monthField,
+  #yearField {
+    width: 7rem;
+    margin-top: 0;
+  }
+
+  #searchTextField {
+    font-size: 1.4rem;
+    margin-top: 0;
+  }
+
+  #searchTextField:disabled {
+    border: 0;
+    padding-left: 0;
+    font-size: 1.9rem;
+    color: #111;
+    font-weight: 800;
+  }
+
+  #titleField {
+    font-size: 1.4rem;
+  }
+</style>

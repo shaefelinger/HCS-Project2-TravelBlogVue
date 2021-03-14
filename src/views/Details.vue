@@ -5,7 +5,6 @@
     <div class="detailsArticle ">
       <div>
         <div class="detailsTopContainer">
-          <!-- <div class="detailsImg2" :style="{ backgroundImage: `url(${currentBlogpost.image2URL})` }" > -->
           <img class="detailsImg2" :src="currentBlogpost.image2URL" alt="" />
         </div>
       </div>
@@ -23,6 +22,7 @@
         <img class="rounded-full w-11" src="@/assets/Steffen_square.png" alt="" />
         <p class="ml-4 text-gray-500">Steffen Häfelinger</p>
       </div>
+
       <!-- <div class="detailsInfoContainer">
           <div id="weatherContainer"></div>
           <div id="watchContainer">
@@ -31,7 +31,7 @@
             </p>
           </div>
         </div> -->
-      <!-- <div id="map">map</div> -->
+
       <div id="overviewMap" ref="mapDiv" class="mt-4"></div>
 
       <button class="secondaryButton" onclick="eraseEntryFromLocalStorage()">DELETE POST</button>
@@ -41,11 +41,12 @@
 </template>
 
 <script>
+  /* eslint-disable no-undef */
+
   import Banner from '@/components/Banner.vue';
   import StarRating from '@/components/StarRating.vue';
   import { useRouter, useRoute } from 'vue-router';
 
-  /* eslint-disable no-undef */
   import { computed, ref, onMounted } from 'vue';
   import { useStore } from 'vuex';
 
@@ -61,12 +62,12 @@
     },
     data() {
       return {
-        // id: this.$route.params.id,
+        id: this.$route.params.id,
         bannerButtonText: 'back',
         bannerButtonLink: 'About',
 
-        blogposts: [],
-        users: [],
+        // blogposts: [],
+        // users: [],
       };
     },
 
@@ -74,17 +75,16 @@
       allBlogposts() {
         return this.$store.getters.getAllBlogposts;
       },
-      currentBlogpost() {
-        return this.$store.getters.getAllBlogposts.find((el) => el._id === this.$route.params.id);
-      },
+      // currentBlogpost() {
+      //   console.log('get current');
+      //   const current = this.$store.getters.getAllBlogposts.find((el) => el._id === this.$route.params.id);
+      //   console.log(this.$store.getters.getAllBlogposts);
+
+      //   return this.$store.getters.getAllBlogposts.find((el) => el._id === this.$route.params.id);
+      // },
     },
 
     setup() {
-      // const currPos = computed(() => ({
-      //   lat: 47.3768866,
-      //   lng: 8.541694,
-      // }));
-
       // const router = useRouter();
 
       const store = useStore();
@@ -93,14 +93,10 @@
       const allPosts = store.getters.getAllBlogposts;
       const currentID = route.params.id;
       const currentPost = allPosts.find((el) => el._id === currentID);
+      console.log(currentPost);
 
       const currPos = currentPost.coords;
-      console.log(currPos);
-      // console.log(currentPost.coords);
-
-      // console.log('route', route.params.id);
-
-      // console.log(router.params.id);
+      // console.log(currPos);
 
       const loader = new Loader({ apiKey: GOOGLE_MAPS_API_KEY });
       const mapDiv = ref(null);
@@ -117,10 +113,9 @@
           position: currPos,
           map: map,
         });
-        // console.log(marker);
       });
 
-      return { mapDiv };
+      return { mapDiv, allPosts, currentPost };
     },
   };
 </script>
