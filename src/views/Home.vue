@@ -5,16 +5,14 @@
       <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
     </div>
     <!-- <Login /> -->
-<div class="flex">
-<div class="flex flex-col items-center  sm:flex-wrap sm:flex-row sm:justify-center">
-      <div class="" v-for="blogpost in blogposts" :key="blogpost._id" @click="selectBlogpost(blogpost)">
-        <OverviewCard :blogpost="blogpost" />
+      <Map :locations="blogposts" />
+    <div class="flex ">
+      <div class="flex flex-col items-center  sm:flex-wrap sm:flex-row sm:justify-center">
+        <div class="" v-for="blogpost in blogposts" :key="blogpost._id" @click="selectBlogpost(blogpost)">
+          <OverviewCard :blogpost="blogpost" />
+        </div>
       </div>
     </div>
-
-    <Map :locations="blogposts" />
-</div>
-    
   </div>
   <div v-else>
     <p>Loading...</p>
@@ -33,7 +31,7 @@
   // import Login from '@/components/Login.vue';
 
   import { getBlogposts, getUsers, to } from '../utils/io.js';
-import { createHydrationRenderer } from '@vue/runtime-core';
+  import { createHydrationRenderer } from '@vue/runtime-core';
 
   export default {
     name: 'Home',
@@ -41,7 +39,7 @@ import { createHydrationRenderer } from '@vue/runtime-core';
       Banner,
       OverviewCard,
       Spinner,
-      Map
+      Map,
       // Login,
     },
 
@@ -80,11 +78,6 @@ import { createHydrationRenderer } from '@vue/runtime-core';
           let array = data;
           this.$store.dispatch('setAllBlogposts', data);
           console.log('👍Got blogposts from Server');
-
-
-
-
-
         } else {
           console.log('🚫Error getting Blogpost-Data from Server');
         }
@@ -100,7 +93,6 @@ import { createHydrationRenderer } from '@vue/runtime-core';
       }
     },
 
-  
     // computed: {
     //   allBlogposts() {
     //     return this.$store.getters.getAllBlogposts;

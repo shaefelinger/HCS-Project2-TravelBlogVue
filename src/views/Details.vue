@@ -25,7 +25,8 @@
           <p class="ml-4 text-gray-500">Steffen Häfelinger</p>
         </div>
         <!-- <div id="overviewMap" ref="mapDiv" class="mt-4"></div> -->
-        <div id="overviewMap" class="mt-4"></div>
+        <!-- <div id="overviewMap" class="mt-4"></div> -->
+        <SingleMap  :location="post.coords"/>
 
         <button class="secondaryButton" onclick="eraseEntryFromLocalStorage()">DELETE POST</button>
         <button class="primaryButton" onclick="gotoOverviewPage()">&lt; BACK</button>
@@ -49,8 +50,9 @@
 
 <script>
   /* eslint-disable no-undef */
+  import SingleMap from '@/components/SingleMap.vue';
 
-  import getPost from '@/composables/getPost';
+  // import getPost from '@/composables/getPost';
 
   import { getOneBlogpost, to } from '../utils/io.js';
 
@@ -73,6 +75,7 @@
       Banner,
       StarRating,
       Spinner,
+      SingleMap
       // GoogleMap,
     },
     props: ['id'],
@@ -102,8 +105,8 @@
           this.post = data;
           console.log('👍Got one blogposts from Server');
 
-          const currPos = data.coords;
-          console.log(currPos);
+          // const currPos = data.coords;
+          // console.log(currPos);
 
         } else {
           console.log('🚫Error getting ONE Blogpost-Data from Server');

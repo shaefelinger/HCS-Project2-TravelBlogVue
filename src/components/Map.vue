@@ -1,5 +1,5 @@
 <template>
-  <div id="mapComponent"></div>
+  <div id="mapComponent" class="mt-8 mb-12 mx-0 sm:mx-8 flex flex-col justify-evenly items-center flex-shrink-0"></div>
 </template>
 
 <script>
@@ -103,7 +103,7 @@
 
 <style>
   #mapComponent {
-    width: 100vw;
-    height: 600px;
+    /* width: 100vw; */
+    height: 400px;
   }
 </style>

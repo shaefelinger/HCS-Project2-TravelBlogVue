@@ -15,7 +15,7 @@
       </div>
     </div> -->
 
-    <img class="h-60 w-full object-cover  " v-bind:src="blogpost.image1URL" alt="character" />
+    <img class="h-52   w-full object-cover  " v-bind:src="blogpost.image1URL" alt="character" />
     <!-- <div class="blogImage" :style="{ backgroundImage: `url(${blogpost.image1URL})` }"></div> -->
     <div class="blogTextWrapper h-60 overflow-hidden px-8 pb-10">
       <div class="mt-4 flex items-center">

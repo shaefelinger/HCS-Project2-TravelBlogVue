@@ -5,6 +5,13 @@ export default createStore({
     initialized: true,
     user: 1,
     allBlogposts: [],
+    currentBlogpost: {
+      name: 'store',
+      coords: {
+        lat: 34.052235,
+        lng: -118.243683,
+      },
+    },
     allUsers: [],
     currentUser: {},
     isLoggedIn: true,
@@ -17,6 +24,7 @@ export default createStore({
     initialized: (state) => state.initialized,
     user: (state) => state.user,
     getAllBlogposts: (state) => state.allBlogposts,
+    getCurrentBlogpost: (state) => state.currentBlogpost,
   },
 
   mutations: {
@@ -33,6 +41,10 @@ export default createStore({
       console.log('😎all blogbosts mutated');
       state.allBlogposts = data;
     },
+    setCurrentBlogpost: (state, data) => {
+      console.log('currentBlogpost  mutated');
+      state.currentBlogpost = data;
+    },
   },
   actions: {
     login(context) {
@@ -46,6 +58,10 @@ export default createStore({
     setAllBlogposts(context, data) {
       console.log('action: store all blogposts in store');
       context.commit('setAllBlogposts', data);
+    },
+    setCurrentBlogpost(context, data) {
+      console.log('action: store current blogposts in store');
+      context.commit('setCurrentBlogpost', data);
     },
   },
   modules: {},
