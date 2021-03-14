@@ -5,13 +5,16 @@
       <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
     </div>
     <!-- <Login /> -->
-    <div class="flex flex-col items-center  sm:flex-wrap sm:flex-row sm:justify-center">
+<div class="flex">
+<div class="flex flex-col items-center  sm:flex-wrap sm:flex-row sm:justify-center">
       <div class="" v-for="blogpost in blogposts" :key="blogpost._id" @click="selectBlogpost(blogpost)">
         <OverviewCard :blogpost="blogpost" />
       </div>
     </div>
 
-  <Map :locations="blogposts" />
+    <Map :locations="blogposts" />
+</div>
+    
   </div>
   <div v-else>
     <p>Loading...</p>

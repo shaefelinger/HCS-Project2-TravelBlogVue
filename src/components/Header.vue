@@ -18,12 +18,12 @@
     <nav>
       <div class="p-6" id="nav">
         <router-link class=" text-gray-700" :to="{ name: 'Home' }">Overview</router-link>
-        <router-link class=" text-gray-700" to="/map">Map</router-link>
-        <router-link class=" text-gray-700" to="/map4">Map4</router-link>
+        <!-- <router-link class=" text-gray-700" to="/map">Map</router-link> -->
+        <!-- <router-link class=" text-gray-700" to="/map4">Map4</router-link> -->
         <!-- <router-link class=" text-gray-700" to="/map2">Map2</router-link> -->
         <router-link class=" text-gray-700" to="/about">About</router-link>
         <!-- <router-link class=" text-gray-700" to="/details">details</router-link> -->
-        <router-link class=" text-gray-700" to="/check">Check</router-link>
+        <!-- <router-link class=" text-gray-700" to="/check">Check</router-link> -->
         <router-link v-if="isAuth" class=" text-gray-700" to="/new">+new post</router-link>
         <a @click="login" v-if="!isAuth" class=" text-gray-700 bg-green-700 p-3 rounded">Login/register</a>
         <a @click="logout" v-if="isAuth" class=" text-gray-700 bg-green-700 p-3 rounded">Logout</a>
