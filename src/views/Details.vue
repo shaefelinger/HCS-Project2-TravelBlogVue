@@ -1,7 +1,6 @@
 <template>
   <div v-if="error">😱Error: {{ error }}</div>
   <div v-if="post">
-
     <Banner :bannerImage="post.image1URL" :bannerText="post.name" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
     <div class="flex justify-center">
       <div class="detailsArticle ">
@@ -26,7 +25,7 @@
         </div>
         <!-- <div id="overviewMap" ref="mapDiv" class="mt-4"></div> -->
         <!-- <div id="overviewMap" class="mt-4"></div> -->
-        <SingleMap  :location="post.coords"/>
+        <SingleMap :location="post.coords" />
 
         <button class="secondaryButton" onclick="eraseEntryFromLocalStorage()">DELETE POST</button>
         <button class="primaryButton" onclick="gotoOverviewPage()">&lt; BACK</button>
@@ -36,7 +35,7 @@
   <div v-else>
     <p>Loading...</p>
     <Spinner />
-  </div>  
+  </div>
 
   <!-- <div class="detailsInfoContainer">
           <div id="weatherContainer"></div>
@@ -75,7 +74,7 @@
       Banner,
       StarRating,
       Spinner,
-      SingleMap
+      SingleMap,
       // GoogleMap,
     },
     props: ['id'],
@@ -103,11 +102,15 @@
         const { data, error } = await to(getOneBlogpost(this.$route.params.id));
         if (!error) {
           this.post = data;
+          this.$store.dispatch({
+            type: 'setCurrentBlogpost', // name of the mutation
+            value: data,
+          });
+
           console.log('👍Got one blogposts from Server');
 
           // const currPos = data.coords;
           // console.log(currPos);
-
         } else {
           console.log('🚫Error getting ONE Blogpost-Data from Server');
         }

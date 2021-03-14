@@ -9,7 +9,7 @@ export default createStore({
       name: 'store',
       coords: {
         lat: 34.052235,
-        lng: -118.243683,
+        lng: 118.243683,
       },
     },
     allUsers: [],
@@ -24,7 +24,10 @@ export default createStore({
     initialized: (state) => state.initialized,
     user: (state) => state.user,
     getAllBlogposts: (state) => state.allBlogposts,
-    getCurrentBlogpost: (state) => state.currentBlogpost,
+    getCurrentBlogpost: (state) => {
+      console.log('getCurrentBlogpost',state.currentBlogpost);
+      return state.currentBlogpost}
+
   },
 
   mutations: {
@@ -42,7 +45,7 @@ export default createStore({
       state.allBlogposts = data;
     },
     setCurrentBlogpost: (state, data) => {
-      console.log('currentBlogpost  mutated');
+      console.log('currentBlogpost mutated', data);
       state.currentBlogpost = data;
     },
   },

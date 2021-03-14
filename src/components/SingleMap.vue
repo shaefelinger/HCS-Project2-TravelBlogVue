@@ -10,7 +10,7 @@
 
   export default {
     computed: {
-      currentBlogpostsFromStore() {
+      currentBlogpostFromStore() {
         return this.$store.getters.getCurrentBlogpost;
       },
     },
@@ -19,8 +19,10 @@
     
     },
     mounted() {
-      const markers = this.currentBlogpostsFromStore;
+      const markers = this.currentBlogpostFromStore;
+  //  const markers = this.$store.getters.getCurrentBlogpost;
 
+      console.log('im siglemap', markers);
       
 
       // console.log('single-map prop', this.location);
