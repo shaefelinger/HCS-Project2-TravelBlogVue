@@ -1,13 +1,13 @@
 <template>
   <div class="flex flex-col justify-between h-screen">
     <Header class="flex-shrink-0" />
-    <!-- <router-view class="mb-80" /> -->
+    <router-view class="mb-80" />
 
-    <router-view class="mb-80" v-slot="{ Component }">
+    <!-- <router-view class="mb-80" v-slot="{ Component }">
       <keep-alive>
         <component :is="Component" />
       </keep-alive>
-    </router-view>
+    </router-view> -->
 
     <Footer class="flex-shrink-0" />
   </div>
