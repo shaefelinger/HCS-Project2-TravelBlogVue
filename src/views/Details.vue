@@ -26,8 +26,9 @@
           <img class="rounded-full w-11" src="@/assets/Steffen_square.png" alt="" />
           <p class="ml-4 text-gray-500">Steffen Häfelinger</p>
         </div>
-
-        <div id="overviewMap" ref="mapDiv" class="mt-4"></div>
+    {{post.coords}}
+        <!-- <div id="overviewMap" ref="mapDiv" class="mt-4"></div> -->
+        <!-- <GoogleMap :markers="post.coords" :center="post.coords"/> -->
 
         <button class="secondaryButton" onclick="eraseEntryFromLocalStorage()">DELETE POST</button>
         <button class="primaryButton" onclick="gotoOverviewPage()">&lt; BACK</button>
@@ -37,7 +38,7 @@
   <div v-else>
     <p>Loading...</p>
     <Spinner />
-  </div>
+  </div>  
 
   <!-- <div class="detailsInfoContainer">
           <div id="weatherContainer"></div>
@@ -51,6 +52,7 @@
 
 <script>
   /* eslint-disable no-undef */
+  // import GoogleMap from '@/components/GoogleMap.vue';
 
   import getPost from '@/composables/getPost';
 
@@ -75,6 +77,7 @@
       Banner,
       StarRating,
       Spinner,
+      // GoogleMap,
     },
     props: ['id'],
     data() {
