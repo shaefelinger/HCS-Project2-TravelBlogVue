@@ -2,6 +2,7 @@
   <div class="flex flex-col justify-between h-screen">
     <Header class="flex-shrink-0" />
     <router-view class="mb-80" />
+
     <Footer class="flex-shrink-0" />
   </div>
 </template>
