@@ -11,7 +11,7 @@
       </div>
     </div>
 
-
+  <Map :locations="blogposts" />
   </div>
   <div v-else>
     <p>Loading...</p>
@@ -25,10 +25,12 @@
   import bannerImage from '@/assets/banner1.jpg';
   import Banner from '@/components/Banner.vue';
   import OverviewCard from '@/components/OverviewCard.vue';
+  import Map from '@/components/Map.vue';
   import Spinner from '@/components/Spinner.vue';
   // import Login from '@/components/Login.vue';
 
   import { getBlogposts, getUsers, to } from '../utils/io.js';
+import { createHydrationRenderer } from '@vue/runtime-core';
 
   export default {
     name: 'Home',
@@ -36,6 +38,7 @@
       Banner,
       OverviewCard,
       Spinner,
+      Map
       // Login,
     },
 

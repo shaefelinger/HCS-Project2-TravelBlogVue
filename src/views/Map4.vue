@@ -27,8 +27,9 @@
     //   load();
     //   return { blogposts, error };
     // },
-    mounted() {
-      const markers =(this.blogpostsFromStore);
+     mounted() {
+       const markers =this.blogpostsFromStore;
+
       // const markers = [
       //   {
       //     id: 'hello',
@@ -71,16 +72,6 @@
         mapTypeControl: false,
         streetViewControl: false,
       };
-      // Promise
-      //   loader
-      //     .load()
-      //     .then(() => {
-      //       new google.maps.Map(document.getElementById('map'), mapOptions);
-      //     })
-      //     .then()
-      //     .catch((e) => {
-      //         console.log(e);
-      //     });
 
       loader.loadCallback((e) => {
         if (e) {
