@@ -9,19 +9,17 @@
       <OverviewCard :blogpost="blogpost" />
     </div>
   </div>
-
 </template>
 
 <script>
-  // @ is an alias to /src
+  import getPosts from '@/composables/getPosts.js';
+
   import bannerImage from '@/assets/banner1.jpg';
   import Banner from '@/components/Banner.vue';
   import OverviewCard from '@/components/OverviewCard.vue';
   import Login from '@/components/Login.vue';
 
-  import { getBlogposts, getUsers, to } from '../utils/io.js';
-
-  // import { mapGetters } from 'vuex';
+  // import { getBlogposts, getUsers, to } from '../utils/io.js';
 
   export default {
     name: 'Home',
@@ -38,7 +36,7 @@
         bannerButtonText: 'About',
         bannerButtonLink: 'About',
 
-        blogposts: [],
+        // blogposts: [],
         users: [],
       };
     },
@@ -50,30 +48,36 @@
         this.$router.push(link);
       },
     },
+    setup() {
+      const { blogposts, error, load } = getPosts();
+      load();
 
-    async mounted() {
-      // load  list of blogposts
-      console.log('/home mounted');
-      {
-        const { data, error } = await to(getBlogposts());
-        if (!error) {
-          this.blogposts = data;
-          this.$store.dispatch('setAllBlogposts', data);
-          console.log('👍Got blogposts from Server');
-        } else {
-          console.log('🚫Error getting Blogpost-Data from Server');
-        }
-      }
-      {
-        const { data, error } = await to(getUsers());
-        if (!error) {
-          this.users = data;
-          console.log('👍Got users from Server');
-        } else {
-          console.log('🚫Error getting user-Data from Server');
-        }
-      }
+      return { blogposts, error };
     },
+
+    // // load  list of blogposts:
+    // async mounted() {
+    //   console.log('/home mounted');
+    //   {
+    //     const { data, error } = await to(getBlogposts());
+    //     if (!error) {
+    //       this.blogposts = data;
+    //       this.$store.dispatch('setAllBlogposts', data);
+    //       console.log('👍Got blogposts from Server');
+    //     } else {
+    //       console.log('🚫Error getting Blogpost-Data from Server');
+    //     }
+    //   }
+    //   {
+    //     const { data, error } = await to(getUsers());
+    //     if (!error) {
+    //       this.users = data;
+    //       console.log('👍Got users from Server');
+    //     } else {
+    //       console.log('🚫Error getting user-Data from Server');
+    //     }
+    //   }
+    // },
 
     computed: {
       allBlogposts() {
