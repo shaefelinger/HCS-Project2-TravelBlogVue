@@ -1,28 +1,27 @@
 <template>
   <dir v-if="error">{{ error }}</dir>
   <div v-if="blogposts.length">
-    <!-- <OverviewCard :blogpost="blogpost" /> -->
-    {{ blogposts }}
+    <!-- {{ blogposts }} -->
+    <div>
+      <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
+    </div>
+    <!-- <Login /> -->
+    <!-- <p v-if="!allBlogposts.length">DATA loading - Server is sleeping 😴</p> -->
+    <div class="flex flex-col items-center  sm:flex-wrap sm:flex-row sm:justify-center">
+      <div class="" v-for="blogpost in blogposts" :key="blogpost._id" @click="selectBlogpost(blogpost)">
+        <OverviewCard :blogpost="blogpost" />
+      </div>
+    </div>
   </div>
   <div v-else>Loading...</div>
-  <div>
-    <!-- <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" /> -->
-  </div>
-  <!-- <Login /> -->
-  <!-- <p v-if="!allBlogposts.length">DATA loading - Server is sleeping 😴</p>
-  <div class="flex flex-col items-center  sm:flex-wrap sm:flex-row sm:justify-center">
-    <div class="" v-for="blogpost in blogposts" :key="blogpost._id" @click="selectBlogpost(blogpost)">
-      <OverviewCard :blogpost="blogpost" />
-    </div>
-  </div> -->
 </template>
 
 <script>
   import getPosts from '@/composables/getPosts.js';
 
   import bannerImage from '@/assets/banner1.jpg';
-  // import Banner from '@/components/Banner.vue';
-  // import OverviewCard from '@/components/OverviewCard.vue';
+  import Banner from '@/components/Banner.vue';
+  import OverviewCard from '@/components/OverviewCard.vue';
   // import Login from '@/components/Login.vue';
 
   // import { getBlogposts, getUsers, to } from '../utils/io.js';
@@ -30,8 +29,8 @@
   export default {
     name: 'Home',
     components: {
-      // Banner,
-      // OverviewCard,
+      Banner,
+      OverviewCard,
       // Login,
     },
 
