@@ -1,29 +1,41 @@
 <template>
-  <Banner :bannerImage="currentBlogpost.image1URL" :bannerText="currentBlogpost.name" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
+  <div v-if="error">{{ error }}</div>
+  <div v-if="post">
+    <!-- <h3>{{ post.title }}</h3>
+    <p class="pre">{{ post.body }}</p> -->
 
-  <div class="flex justify-center">
-    <div class="detailsArticle ">
-      <div>
-        <div class="detailsTopContainer">
-          <img class="detailsImg2" :src="currentBlogpost.image2URL" alt="" />
+    <Banner :bannerImage="post.image1URL" :bannerText="post.name" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
+    <div class="flex justify-center">
+      <div class="detailsArticle ">
+        <div>
+          <div class="detailsTopContainer">
+            <img class="detailsImg2" :src="post.image2URL" alt="" />
+          </div>
         </div>
-      </div>
-      <div>
-        <h2 class="mt-4">{{ currentBlogpost.longName }}</h2>
-        <div class="flex flex-row items-center  py-4">
-          <StarRating :rating="currentBlogpost.rating" />
-          <p class="ml-4 text-gray-500">Visited in {{ currentBlogpost.month }} {{ currentBlogpost.year }}</p>
+        <div>
+          <h2 class="mt-4">{{ post.longName }}</h2>
+          <div class="flex flex-row items-center  py-4">
+            <StarRating :rating="post.rating" />
+            <p class="ml-4 text-gray-500">Visited in {{ post.month }} {{ post.year }}</p>
+          </div>
+          <h3 class="text-2xl">{{ post.title }}</h3>
+          <p class="mt-4">{{ post.description }}</p>
+          <p class="mt-4">{{ post.wiki }}</p>
         </div>
-        <h3 class="text-2xl">{{ currentBlogpost.title }}</h3>
-        <p class="mt-4">{{ currentBlogpost.description }}</p>
-        <p class="mt-4">{{ currentBlogpost.wiki }}</p>
-      </div>
-      <div class="mt-5 flex items-center">
-        <img class="rounded-full w-11" src="@/assets/Steffen_square.png" alt="" />
-        <p class="ml-4 text-gray-500">Steffen Häfelinger</p>
-      </div>
+        <div class="mt-5 flex items-center">
+          <img class="rounded-full w-11" src="@/assets/Steffen_square.png" alt="" />
+          <p class="ml-4 text-gray-500">Steffen Häfelinger</p>
+        </div>
 
-      <!-- <div class="detailsInfoContainer">
+        <div id="overviewMap" ref="mapDiv" class="mt-4"></div>
+
+        <button class="secondaryButton" onclick="eraseEntryFromLocalStorage()">DELETE POST</button>
+        <button class="primaryButton" onclick="gotoOverviewPage()">&lt; BACK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="detailsInfoContainer">
           <div id="weatherContainer"></div>
           <div id="watchContainer">
             <p>Local Time</br>
@@ -31,17 +43,11 @@
             </p>
           </div>
         </div> -->
-
-      <div id="overviewMap" ref="mapDiv" class="mt-4"></div>
-
-      <button class="secondaryButton" onclick="eraseEntryFromLocalStorage()">DELETE POST</button>
-      <button class="primaryButton" onclick="gotoOverviewPage()">&lt; BACK</button>
-    </div>
-  </div>
 </template>
 
 <script>
   /* eslint-disable no-undef */
+  import getPost from '@/composables/getPost';
 
   import { getOneBlogpost, to } from '../utils/io.js';
 
@@ -62,13 +68,14 @@
       Banner,
       StarRating,
     },
+    props: ['id'],
     data() {
       return {
-        id: this.$route.params.id,
+        // id: this.$route.params.id,
         bannerButtonText: 'back',
         bannerButtonLink: 'About',
 
-        currentBlogpost: [],
+        // currentBlogpost: [],
         // blogposts: [],
         // users: [],
       };
@@ -80,29 +87,35 @@
     //   },
     // },
 
-    async mounted() {
-      // load  list of ONE blogpost
-      console.log('/details mounted', this.$route.params.id);
-      {
-        const { data, error } = await to(getOneBlogpost(this.$route.params.id));
-        if (!error) {
-          this.currentBlogpost = data;
-          console.log('👍Got one blogposts from Server');
+    // async mounted() {
+    //   console.log('/details mounted', this.$route.params.id);
+    //   {
+    //     const { data, error } = await to(getOneBlogpost(this.$route.params.id));
+    //     if (!error) {
+    //       this.currentBlogpost = data;
+    //       console.log('👍Got one blogposts from Server');
 
-          const currPos = data.coords;
-          console.log(currPos);
-        } else {
-          console.log('🚫Error getting ONE Blogpost-Data from Server');
-        }
-      }
+    //       const currPos = data.coords;
+    //       console.log(currPos);
+    //     } else {
+    //       console.log('🚫Error getting ONE Blogpost-Data from Server');
+    //     }
+    //   }
+    // },
+
+    setup(props) {
+      const route = useRoute();
+      const currentID = route.params.id;
+      const { post, error, load } = getPost(currentID);
+      load();
+      console.log(post);
+      return { post, error };
     },
 
     // setup() {
-    //   // const router = useRouter();
 
     //   const store = useStore();
     //   const route = useRoute();
-
     //   const allPosts = store.getters.getAllBlogposts;
     //   console.log('all', allPosts);
     //   const currentID = route.params.id;
@@ -127,7 +140,8 @@
     //     });
     //   });
 
-    //   return { mapDiv, allPosts, currentPost };
+    //   return { mapDiv };
+    // // return { mapDiv, allPosts, currentPost };
     // },
   };
 </script>
