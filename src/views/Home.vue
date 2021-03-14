@@ -1,5 +1,5 @@
 <template>
-  <dir v-if="error">{{ error }}</dir>
+  <div v-if="error">{{ error }}</div>
   <div v-if="blogposts.length">
     <!-- {{ blogposts }} -->
     <div>

@@ -3,6 +3,7 @@ import Home from '../views/Home.vue';
 import Map from '../views/Map.vue';
 import Map2 from '../views/Map2.vue';
 import Map3 from '../views/Map3.vue';
+import Map4 from '../views/Map4.vue';
 import Details from '../views/Details.vue';
 import About from '../views/About.vue';
 import NewPost from '../views/NewPost.vue';
@@ -26,9 +27,19 @@ const routes = [
     component: Map,
   },
   {
+    path: '/map2',
+    name: 'Map2',
+    component: Map2,
+  },
+  {
     path: '/map3',
     name: 'Map3',
     component: Map3,
+  },
+  {
+    path: '/map4',
+    name: 'Map4',
+    component: Map4,
   },
   {
     path: '/new',
