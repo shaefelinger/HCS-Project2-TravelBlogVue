@@ -1,8 +1,6 @@
 <template>
-  <div v-if="error"> Falscher Fehler{{ error }}</div>
+  <div v-if="error">😱Error: {{ error }}</div>
   <div v-if="post">
-    <!-- <h3>{{ post.title }}</h3>
-    <p class="pre">{{ post.body }}</p> -->
 
     <Banner :bannerImage="post.image1URL" :bannerText="post.name" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
     <div class="flex justify-center">
@@ -26,9 +24,8 @@
           <img class="rounded-full w-11" src="@/assets/Steffen_square.png" alt="" />
           <p class="ml-4 text-gray-500">Steffen Häfelinger</p>
         </div>
-    {{post.coords}}
         <!-- <div id="overviewMap" ref="mapDiv" class="mt-4"></div> -->
-        <!-- <GoogleMap :markers="post.coords" :center="post.coords"/> -->
+        <div id="overviewMap" class="mt-4"></div>
 
         <button class="secondaryButton" onclick="eraseEntryFromLocalStorage()">DELETE POST</button>
         <button class="primaryButton" onclick="gotoOverviewPage()">&lt; BACK</button>
@@ -52,7 +49,6 @@
 
 <script>
   /* eslint-disable no-undef */
-  // import GoogleMap from '@/components/GoogleMap.vue';
 
   import getPost from '@/composables/getPost';
 
@@ -62,14 +58,14 @@
 
   import Banner from '@/components/Banner.vue';
   import StarRating from '@/components/StarRating.vue';
-  import { useRouter, useRoute } from 'vue-router';
+  // import { useRouter, useRoute } from 'vue-router';
 
-  import { computed, ref, onMounted } from 'vue';
-  import { useStore } from 'vuex';
+  // import { computed, ref, onMounted } from 'vue';
+  // import { useStore } from 'vuex';
 
-  import { Loader } from '@googlemaps/js-api-loader';
-  import router from '../router';
-  const GOOGLE_MAPS_API_KEY = process.env.VUE_APP_GOOGLE_MAPS_API_KEY;
+  // import { Loader } from '@googlemaps/js-api-loader';
+  // import router from '../router';
+  // const GOOGLE_MAPS_API_KEY = process.env.VUE_APP_GOOGLE_MAPS_API_KEY;
 
   export default {
     name: 'Details',
@@ -86,7 +82,7 @@
         bannerButtonText: 'back',
         bannerButtonLink: 'About',
 
-        // currentBlogpost: [],
+        post: [],
         // blogposts: [],
         // users: [],
       };
@@ -98,30 +94,37 @@
     //   },
     // },
 
-    // async mounted() {
-    //   console.log('/details mounted', this.$route.params.id);
-    //   {
-    //     const { data, error } = await to(getOneBlogpost(this.$route.params.id));
-    //     if (!error) {
-    //       this.currentBlogpost = data;
-    //       console.log('👍Got one blogposts from Server');
+    async mounted() {
+      console.log('/details mounted', this.$route.params.id);
+      {
+        const { data, error } = await to(getOneBlogpost(this.$route.params.id));
+        if (!error) {
+          this.post = data;
+          console.log('👍Got one blogposts from Server');
 
-    //       const currPos = data.coords;
-    //       console.log(currPos);
-    //     } else {
-    //       console.log('🚫Error getting ONE Blogpost-Data from Server');
-    //     }
-    //   }
+          const currPos = data.coords;
+          console.log(currPos);
+
+
+
+          
+        } else {
+          console.log('🚫Error getting ONE Blogpost-Data from Server');
+        }
+      }
+    },
+
+    // setup(props) {
+    //   const route = useRoute();
+    //   const currentID = route.params.id;
+    //   const { post, error, load } = getPost(currentID);
+    //   load();
+    //   return { post, error };
     // },
 
-    setup(props) {
-      const route = useRoute();
-      const currentID = route.params.id;
-      const { post, error, load } = getPost(currentID);
-      load();
-      console.log(post);
-      return { post, error };
-    },
+    // mounted() {
+    //   console.log('details mounted', this.post);
+    // }
 
     // setup() {
 

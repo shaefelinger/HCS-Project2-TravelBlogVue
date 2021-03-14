@@ -9,9 +9,4 @@ import './main.css';
 createApp(App)
   .use(store)
   .use(router)
-  .use(VueGoogleMaps, {
-    load: {
-      key: 'AIzaSyC6iru9XKYIvVQaPG6oK1sLFBXyeSJkwWs',
-    },
-  })
   .mount('#app');

@@ -2,7 +2,7 @@
   <div v-if="error">{{ error }}</div>
   <div v-if="blogposts.length">
     <div class="home">
-      <GoogleMap :markers="blogposts" :center="center" />
+      <!-- <GoogleMap :markers="blogposts" :center="center" /> -->
     </div>
   </div>
   <div v-else>
@@ -12,13 +12,13 @@
 </template>
 
 <script>
-  import GoogleMap from '@/components/GoogleMap.vue';
+  // import GoogleMap from '@/components/GoogleMap.vue';
   import getPosts from '@/composables/getPosts.js';
 
   export default {
     name: 'Home',
     components: {
-      GoogleMap,
+      // GoogleMap,
     },
     setup() {
       const { blogposts, error, load } = getPosts();

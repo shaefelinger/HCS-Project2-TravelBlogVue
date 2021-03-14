@@ -17,6 +17,7 @@ const getPosts = () => {
         throw Error('no data available');
       }
       blogposts.value = await data.json();
+      console.log(blogposts.value)
     } catch (err) {
       error.value = err.message;
     }
