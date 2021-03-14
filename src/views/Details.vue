@@ -34,6 +34,10 @@
       </div>
     </div>
   </div>
+  <div v-else>
+    <p>Loading...</p>
+    <Spinner />
+  </div>
 
   <!-- <div class="detailsInfoContainer">
           <div id="weatherContainer"></div>
@@ -47,9 +51,12 @@
 
 <script>
   /* eslint-disable no-undef */
+
   import getPost from '@/composables/getPost';
 
   import { getOneBlogpost, to } from '../utils/io.js';
+
+  import Spinner from '@/components/Spinner.vue';
 
   import Banner from '@/components/Banner.vue';
   import StarRating from '@/components/StarRating.vue';
@@ -67,6 +74,7 @@
     components: {
       Banner,
       StarRating,
+      Spinner,
     },
     props: ['id'],
     data() {

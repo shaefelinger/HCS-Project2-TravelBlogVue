@@ -1,5 +1,4 @@
 <template>
-  <!-- POSTS: {{ allBlogposts }} -->
   <div id="overviewMapContainer">
     <div id="overviewMap" ref="mapDiv"></div>
   </div>
@@ -7,77 +6,68 @@
 
 <script>
   /* eslint-disable no-undef */
-  import { ref, onMounted, computed } from 'vue';
+  import { ref, onMounted } from 'vue';
   import { useStore } from 'vuex';
 
   import { Loader } from '@googlemaps/js-api-loader';
-  // const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
   export default {
-    name: 'App',
-    components: {
-      // OverviewCard,
+    name: 'Map',
+    data() {
+      return {};
     },
-    computed: {
-      allBlogposts() {
-        return this.$store.getters.getAllBlogposts;
-      },
-    },
-
-    setup() {
+    mounted() {
       const GOOGLE_MAPS_API_KEY = process.env.VUE_APP_GOOGLE_MAPS_API_KEY;
 
-      // console.log('test-key:', GOOGLE_MAPS_API_KEY);
+      const currPos = { lat: 53.5510846, lng: 9.9936818 };
 
       const loader = new Loader({ apiKey: GOOGLE_MAPS_API_KEY });
+      // const mapDiv = ref(null);
       const mapDiv = ref(null);
+      const options = {
+        zoom: 6,
+        center: currPos,
+        mapTypeId: 'hybrid',
+        disableDefaultUI: true,
+      };
 
-      const store = useStore();
-
-      const markers = store.getters.getAllBlogposts;
-
-      onMounted(async () => {
+      async () => {
         await loader.load();
-        // console.log('mounted:', process.env.VUE_APP_GOOGLE_MAPS_API_KEY);
-        const options = {
-          maxZoom: 10,
-          minZoom: 2,
-          mapTypeControl: false,
-          streetViewControl: false,
-        };
-        const overviewMap = new google.maps.Map(mapDiv.value, options);
-        let bounds = new google.maps.LatLngBounds();
+        const map = new google.maps.Map(mapDiv.value, options);
+        const marker = new google.maps.Marker({
+          position: currPos,
+          map: map,
+        });
+      };
 
-        function addMarker(location, i) {
-          // console.log(location.coords);
-          const marker = new google.maps.Marker({
-            position: location.coords,
-            map: overviewMap,
-          });
-
-          const infoWindow = new google.maps.InfoWindow({
-            content: `
-      <div class="infoWindow" onclick="gotoDetailsPage(${i})" style="width: 200px;">
-        <h3>${location.name}</h3>
-        <p>${location.title}</p>
-        <div class="infoWindowImage" style="background-image: url(${location.image1URL});"></div>
-        <button class="miniButton">read more</button>
-      </div>
-      `,
-          });
-          marker.addListener('click', function() {
-            infoWindow.open(overviewMap, marker);
-          });
-
-          bounds.extend(location.coords);
-        }
-
-        markers.forEach(addMarker);
-        overviewMap.fitBounds(bounds);
-      });
-
-      return { mapDiv };
+      // return { mapDiv };
     },
+
+    // setup() {
+    //   const GOOGLE_MAPS_API_KEY = process.env.VUE_APP_GOOGLE_MAPS_API_KEY;
+
+    //   const currPos = { lat: 53.5510846, lng: 9.9936818 };
+
+    //   const loader = new Loader({ apiKey: GOOGLE_MAPS_API_KEY });
+    //   const mapDiv = ref(null);
+    //   const options = {
+    //     zoom: 6,
+    //     center: currPos,
+    //     mapTypeId: 'hybrid',
+    //     disableDefaultUI: true,
+    //   };
+
+    //   onMounted(async () => {
+    //     await loader.load();
+    //     const map = new google.maps.Map(mapDiv.value, options);
+    //     const marker = new google.maps.Marker({
+    //       position: currPos,
+    //       map: map,
+    //     });
+    //   });
+
+    //   return { mapDiv };
+    // },
   };
 </script>
 

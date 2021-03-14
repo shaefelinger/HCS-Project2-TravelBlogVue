@@ -13,7 +13,10 @@
       </div>
     </div>
   </div>
-  <div v-else>Loading...</div>
+  <div v-else>
+    <p>Loading...</p>
+    <Spinner />
+  </div>
 </template>
 
 <script>
@@ -22,6 +25,7 @@
   import bannerImage from '@/assets/banner1.jpg';
   import Banner from '@/components/Banner.vue';
   import OverviewCard from '@/components/OverviewCard.vue';
+  import Spinner from '@/components/Spinner.vue';
   // import Login from '@/components/Login.vue';
 
   // import { getBlogposts, getUsers, to } from '../utils/io.js';
@@ -31,6 +35,7 @@
     components: {
       Banner,
       OverviewCard,
+      Spinner,
       // Login,
     },
 
@@ -82,6 +87,9 @@
     //   }
     // },
 
+    // mounted() {
+    //   console.log('mounted', this.blogposts);
+    // },
     // computed: {
     //   allBlogposts() {
     //     return this.$store.getters.getAllBlogposts;
