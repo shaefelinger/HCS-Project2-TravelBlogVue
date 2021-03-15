@@ -15,19 +15,25 @@
       },
     },
     props: ['location'],
-    methods: {},
-
-    mounted() {
-      // const markers = this.currentBlogpostFromStore;
-      //  const markers = this.$store.getters.getCurrentBlogpost;
+    methods: {
+      makeSingleMap: function() {
+          // const markers = this.currentBlogpostFromStore;
+  //  const markers = this.$store.getters.getCurrentBlogpost;
 
       // console.log('im siglemap', markers);
+      
 
       // console.log('single-map prop', this.location);
-      const markers = {
-        coords: { lat: 53.5510846, lng: 9.9936818 },
-      };
+      const markers = [
+        {
+          name: 'hello',
+          coords: {
+            lat: 51.093048,
+            lng: 120.84212,
+          },
+        }
 
+      ];
       const currPos = markers.coords;
       // const currPos = markers[0].coords;
       // const currPos = this.location
@@ -39,7 +45,12 @@
       });
 
       const mapOptions = {
-        zoom: 7,
+        // center: {
+        //   lat: 0,
+        //   lng: 0,
+        // },
+        // zoom: 4,
+        zoom: 6,
         center: currPos,
         mapTypeId: 'hybrid',
         disableDefaultUI: true,
@@ -57,6 +68,12 @@
           });
         }
       });
+      }
+    },
+
+    
+    mounted() {
+      this.makeSingleMap()
     },
   };
 </script>
