@@ -17,6 +17,7 @@
     </div>
     <nav>
       <div class="p-6" id="nav">
+        <CheckUser />
         <router-link class=" text-gray-700" :to="{ name: 'Home' }">Overview</router-link>
         <!-- <router-link class=" text-gray-700" to="/map">Map</router-link> -->
         <!-- <router-link class=" text-gray-700" to="/map4">Map4</router-link> -->
@@ -63,9 +64,14 @@
 <script>
   import { mapGetters } from 'vuex';
   import Modal from '@/components/Modal.vue';
+  import CheckUser from '@/components/CheckUser.vue'; 
 
   export default {
     name: 'Header',
+      components: {
+      Modal,
+      CheckUser
+    },
     methods: {
       // ...mapActions(['login', 'logout']),
       login() {
@@ -97,9 +103,7 @@
         showModal: false,
       };
     },
-    components: {
-      Modal,
-    },
+  
   };
 </script>
 

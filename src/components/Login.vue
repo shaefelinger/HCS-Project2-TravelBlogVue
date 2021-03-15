@@ -8,6 +8,7 @@
     </form>
     <p>s.haefelinger@gmx.de - x</p>
     <p>x@x.com - x</p>
+    <p>test@test.com - test123</p>
   </div>
 </template>
 
@@ -24,9 +25,7 @@
         let password = e.target.elements.password.value;
 
         axios.defaults.withCredentials = true;
-
-        // const tempURL = 'https://aroundtheworld-blog-server.herokuapp.com';
-        const tempURL = '';
+        // const tempURL = '';
 
         let login = () => {
           let data = {
@@ -34,10 +33,10 @@
             password: password,
           };
           axios
-            .post(tempURL + '/auth/login', data)
+            .post('/auth/login', data)
             .then((response) => {
               console.log('Logged in from LOGIN');
-              router.push('/dashboard');
+              router.push('/');
             })
             .catch((errors) => {
               console.log('Cannot log in from LOGIN');
