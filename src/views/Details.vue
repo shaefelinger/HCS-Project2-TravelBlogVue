@@ -25,6 +25,7 @@
         </div>
         <!-- <div id="overviewMap" ref="mapDiv" class="mt-4"></div> -->
         <!-- <div id="overviewMap" class="mt-4"></div> -->
+
         <SingleMap :location="post.coords" />
 
         <button class="secondaryButton" onclick="eraseEntryFromLocalStorage()">DELETE POST</button>
@@ -49,11 +50,12 @@
 
 <script>
   /* eslint-disable no-undef */
+
   import SingleMap from '@/components/SingleMap.vue';
 
-  // import getPost from '@/composables/getPost';
+  import getPost from '@/composables/getPost';
 
-  import { getOneBlogpost, to } from '../utils/io.js';
+  // import { getOneBlogpost, to } from '../utils/io.js';
 
   import Spinner from '@/components/Spinner.vue';
 
@@ -84,7 +86,7 @@
         bannerButtonText: 'back',
         bannerButtonLink: 'About',
 
-        post: [],
+        // post: {},
         // blogposts: [],
         // users: [],
       };
@@ -96,34 +98,32 @@
     //   },
     // },
 
-    async mounted() {
-      console.log('/details mounted', this.$route.params.id);
-      {
-        const { data, error } = await to(getOneBlogpost(this.$route.params.id));
-        if (!error) {
-          this.post = data;
-          this.$store.dispatch({
-            type: 'setCurrentBlogpost', // name of the mutation
-            value: data,
-          });
-
-          console.log('👍Got one blogposts from Server');
-
-          // const currPos = data.coords;
-          // console.log(currPos);
-        } else {
-          console.log('🚫Error getting ONE Blogpost-Data from Server');
-        }
-      }
-    },
-
-    // setup(props) {
-    //   const route = useRoute();
-    //   const currentID = route.params.id;
-    //   const { post, error, load } = getPost(currentID);
-    //   load();
-    //   return { post, error };
+    // async mounted() {
+    //   console.log('/details mounted', this.$route.params.id);
+    //   {
+    //     const { data, error } = await to(getOneBlogpost(this.$route.params.id));
+    //     if (!error) {
+    //       this.post = data;
+    //       // this.$store.dispatch({
+    //       //   type: 'setCurrentBlogpost', // name of the mutation
+    //       //   value: data,
+    //       // });
+    //       console.log('👍Got one blogposts from Server');
+    //     } else {
+    //       console.log('🚫Error getting ONE Blogpost-Data from Server');
+    //     }
+    //   }
     // },
+
+    setup(props) {
+      console.log(' details props',props);
+      // const route = useRoute();
+      // const currentID = route.params.id;
+
+      const { post, error, load } = getPost(props.id);
+      load();
+      return { post, error };
+    },
 
     // mounted() {
     //   console.log('details mounted', this.post);

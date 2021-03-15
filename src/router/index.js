@@ -50,7 +50,7 @@ const routes = [
     path: '/details/:id',
     name: 'Details',
     component: Details,
-    // props: true,
+    props: true,
   },
   {
     path: '/check',
