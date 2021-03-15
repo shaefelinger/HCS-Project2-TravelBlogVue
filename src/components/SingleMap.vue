@@ -5,7 +5,6 @@
 
 <script>
   /* eslint-disable no-undef */
-
   import { Loader } from '@googlemaps/js-api-loader';
 
   export default {
@@ -15,22 +14,14 @@
       },
     },
     props: ['location'],
-    methods: {},
-
     mounted() {
-      // const markers = this.currentBlogpostFromStore;
-      //  const markers = this.$store.getters.getCurrentBlogpost;
-
-      // console.log('im siglemap', markers);
-
-      // console.log('single-map prop', this.location);
+      // need to acces the prop here...
+      console.log('props versuch single', this.location);
       const markers = {
         coords: { lat: 53.5510846, lng: 9.9936818 },
       };
 
       const currPos = markers.coords;
-      // const currPos = markers[0].coords;
-      // const currPos = this.location
 
       const loader = new Loader({
         apiKey: process.env.VUE_APP_GOOGLE_MAPS_API_KEY,
@@ -45,12 +36,11 @@
         disableDefaultUI: true,
       };
 
-      loader.loadCallback((e) => {
-        if (e) {
-          console.log(e);
+      loader.loadCallback((err) => {
+        if (err) {
+          console.log(err);
         } else {
           const map = new google.maps.Map(document.getElementById('singleMapComponent'), mapOptions);
-
           const marker = new google.maps.Marker({
             position: currPos,
             map: map,
