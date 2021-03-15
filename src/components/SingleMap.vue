@@ -17,9 +17,14 @@
     mounted() {
       // need to acces the prop here...
       console.log('props versuch single', this.location);
-      const markers = {
-        coords: { lat: 53.5510846, lng: 9.9936818 },
-      };
+      const markers = { 
+        coords: this.location
+        } 
+        
+
+      // const markers = {
+      //   coords: { lat: 53.5510846, lng: 9.9936818 },
+      // };
 
       const currPos = markers.coords;
 
