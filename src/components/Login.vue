@@ -13,6 +13,7 @@
 </template>
 
 <script>
+  // import router from '../router';
   import router from '../router';
   import axios from 'axios';
   export default {
@@ -36,7 +37,8 @@
             .post('/auth/login', data)
             .then((response) => {
               console.log('Logged in from LOGIN');
-              router.push('/');
+              // router.push('/');
+              // this.$router.push({ name: 'Home' })
             })
             .catch((errors) => {
               console.log('Cannot log in from LOGIN');

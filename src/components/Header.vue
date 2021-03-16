@@ -1,6 +1,4 @@
 <template>
-  <!-- <p>Header</p> -->
-
   <header class="header h-28 w-full  z-30 bg-white py-0 px-20 flex justify-between items-center border-b-2 border-green-800 shadow-md">
     <router-link  :to="{ name: 'Home' }" id="siteLogoName"  class="flex items-center  ">
       <div class=" w-9 lg:w-16 "><img class=" object-fill   " src="@/assets/world.png" alt="logo" /></div>
@@ -15,6 +13,7 @@
         <p>SignIn</p> -->
       </Modal>
     </div>
+    <span>isAuth: {{isAuth}}</span>
     <nav>
       <div class="p-6" id="nav">
         <!-- <CheckUser /> -->
@@ -24,7 +23,7 @@
         <!-- <router-link class=" text-gray-700" to="/map2">Map2</router-link> -->
         <router-link class=" text-gray-700" to="/about">About</router-link>
         <!-- <router-link class=" text-gray-700" to="/details">details</router-link> -->
-        <!-- <router-link class=" text-gray-700" to="/check">Check</router-link> -->
+        <router-link class=" text-gray-700" to="/check">Check</router-link>
         <router-link v-if="isAuth" class=" text-gray-700" to="/new">+new post</router-link>
         <a @click="login" v-if="!isAuth" class=" text-gray-700 bg-green-700 p-3 rounded">Login/register</a>
         <a @click="logout" v-if="isAuth" class=" text-gray-700 bg-green-700 p-3 rounded">Logout</a>
@@ -80,7 +79,12 @@
       },
       logout() {
         this.$store.dispatch('logout');
-        this.showModal = !this.showModal;
+        // this.showModal = !this.showModal;
+        const url = '';
+        // const url = 'https://aroundtheworld-blog-server.herokuapp.com/';
+        let data =  fetch(url + 'auth/logout')
+        .then(res => {console.log(res);});
+        
       },
 
       toggleModal() {
@@ -88,15 +92,15 @@
       },
     },
     computed: {
-      ...mapGetters({
-        isAuth: 'userIsAuthenticated',
-      }),
-      // user() {
-      //   return this.$store.getters.user;
-      // },
-      // isAuth() {
-      //   return this.$store.getters.userIsAuthenticated;
-      // },
+      // ...mapGetters({
+      //   isAuth: 'userIsAuthenticated',
+      // }),
+      user() {
+        return this.$store.getters.user;
+      },
+      isAuth() {
+        return this.$store.getters.userIsAuthenticated;
+      },
     },
     data() {
       return {

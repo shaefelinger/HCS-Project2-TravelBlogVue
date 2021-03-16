@@ -9,7 +9,7 @@ const getPosts = () => {
     try {
       // simulate delay
       // await new Promise((resolve) => {
-      //   setTimeout(resolve, 500);
+      //   setTimeout(resolve, 2000);
       // });
 
       let data = await fetch(url + 'blogposts');
