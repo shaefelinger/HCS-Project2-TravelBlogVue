@@ -10,7 +10,7 @@
   export default {
     props: ['location'],
     mounted() {
-      console.log('props versuch single', this.location);
+      // console.log('props versuch single', this.location);
       const markers = { 
         coords: this.location
         } 

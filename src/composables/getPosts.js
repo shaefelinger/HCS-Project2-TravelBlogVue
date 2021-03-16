@@ -8,16 +8,16 @@ const getPosts = () => {
   const load = async () => {
     try {
       // simulate delay
-      await new Promise((resolve) => {
-        setTimeout(resolve, 500);
-      });
+      // await new Promise((resolve) => {
+      //   setTimeout(resolve, 500);
+      // });
 
       let data = await fetch(url + 'blogposts');
       if (!data.ok) {
         throw Error('no data available');
       }
       blogposts.value = await data.json();
-      console.log(blogposts.value)
+      // console.log(blogposts.value)
     } catch (err) {
       error.value = err.message;
     }

@@ -9,15 +9,18 @@ const getPost = (id) => {
   const load = async () => {
     try {
       // simulate delay
-      await new Promise((resolve) => {
-        setTimeout(resolve, 500);
-      });
+      // await new Promise((resolve) => {
+      //   setTimeout(resolve, 500);
+      // });
 
       let data = await fetch(url + 'blogposts/' + id);
+      console.log('data im composable', data);
       if (!data.ok) {
+        console.log('jetzt gibt es einen fehler...');
         throw Error('🚫that post does not exist');
       }
       post.value = await data.json();
+      console.log('post value', post.value);
     } catch (err) {
       error.value = err.message;
       console.log(error.value);

@@ -75,7 +75,7 @@
         bannerButtonLink: 'About',
       };
     },
-
+  
 
     setup(props) {
       // console.log(' details props', props);
@@ -85,6 +85,10 @@
       // const { post, error, load } = getPost(props.id);
       const { post, error, load } = getPost(currentID);
       load();
+      console.log('error aus details', error);
+      // if (error) {
+      //   alert(JSON.stringify(error))
+      // }
       return { post, error };
     },
 
