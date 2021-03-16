@@ -1,4 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router';
+// import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router'
+
+
+
 import Home from '../views/Home.vue';
 // import Map from '../views/Map.vue';
 // import Map2 from '../views/Map2.vue';
@@ -70,9 +74,14 @@ const routes = [
   },
 ];
 
+// const router = createRouter({
+//   history: createWebHistory(process.env.BASE_URL),
+//   routes,
+// });
+
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes,
-});
+  history: createWebHashHistory(),
+  routes
+})
 
 export default router;

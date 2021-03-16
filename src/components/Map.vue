@@ -73,7 +73,7 @@
                   <p class="my-2">${location.title}</p>
                   <img class="h-16 w-full object-cover" src="${location.image1URL}">
 
-                  <a href="/details/${location._id}"> <button class="miniButton">read more</button></a> 
+                  <a href="/#/details/${location._id}"> <button class="miniButton">read more</button></a> 
                 </div>
                 <MapInfoWindow />
                 `,
