@@ -86,7 +86,6 @@
     methods: {
       getUserData: function() {
         let self = this;
-
         axios
           .get('auth/user')
           .then((response) => {
@@ -128,6 +127,7 @@
   textarea,
   button {
     border-radius: 5px;
+    border: black solid 1px;
   }
 
   input,

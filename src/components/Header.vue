@@ -1,19 +1,24 @@
 <template>
   <header class="header h-28 w-full  z-30 bg-white py-0 px-20 flex justify-between items-center border-b-2 border-green-800 shadow-md">
-    <router-link  :to="{ name: 'Home' }" id="siteLogoName"  class="flex items-center  ">
+    <router-link :to="{ name: 'Home' }" id="siteLogoName" class="flex items-center  ">
       <div class=" w-9 lg:w-16 "><img class=" object-fill   " src="@/assets/world.png" alt="logo" /></div>
       <span class="pl-4 text-2xl lg:text-4xl xl:text-4xl text-gray-900 lg:font-normal font-medium ">Around the World</span>
     </router-link>
 
-    <div v-if="showModal">
-      <Modal theme="" @closeModal="toggleModal">
-        <!-- <template v-slot:links>
+    <!-- <div v-if="showModal">
+      <Modal theme="" @closeModal="toggleModal"> -->
+    <!-- <template v-slot:links>
           <a href="#">sign up now</a>
         </template>
         <p>SignIn</p> -->
-      </Modal>
+    <!-- </Modal>
+    </div> -->
+
+    <div v-if="showModal">
+      <Login />
     </div>
-    <span>isAuth: {{isAuth}}</span>
+
+    <!-- <span>isAuth: {{ isAuth }}</span> -->
     <nav>
       <div class="p-6" id="nav">
         <!-- <CheckUser /> -->
@@ -61,30 +66,35 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
-  import Modal from '@/components/Modal.vue';
-  // import CheckUser from '@/components/CheckUser.vue'; 
+  // import { mapGetters } from 'vuex';
+  // import Modal from '@/components/Modal.vue';
+  import Login from '@/components/Login.vue';
+  // import CheckUser from '@/components/CheckUser.vue';
 
   export default {
     name: 'Header',
-      components: {
-      Modal,
+    components: {
+      // Modal,
+      Login,
+
       // CheckUser
     },
     methods: {
       // ...mapActions(['login', 'logout']),
       login() {
-        this.$store.dispatch('login');
+        // this.$store.dispatch('login');
         this.showModal = !this.showModal;
       },
       logout() {
         this.$store.dispatch('logout');
         // this.showModal = !this.showModal;
-        const url = '';
-        // const url = 'https://aroundtheworld-blog-server.herokuapp.com/';
-        let data =  fetch(url + 'auth/logout')
-        .then(res => {console.log(res);});
-        
+        let data = fetch('auth/logout')
+        .then((res) => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        });
       },
 
       toggleModal() {
@@ -107,7 +117,6 @@
         showModal: false,
       };
     },
-  
   };
 </script>
 

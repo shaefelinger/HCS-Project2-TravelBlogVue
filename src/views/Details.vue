@@ -77,18 +77,12 @@
     },
   
    
-    setup(props) {
-      // console.log(' details props', props);
+    setup() {
       const route = useRoute();
       const currentID = route.params.id;
-      // console.log('details from router', currentID)
-      // const { post, error, load } = getPost(props.id);
       const { post, error, load } = getPost(currentID);
       load();
-      console.log('error aus details', error);
-      // if (error) {
-      //   alert(JSON.stringify(error))
-      // }
+      // console.log('error aus details', error);
       return { post, error };
     },
 
@@ -136,7 +130,5 @@
   #weatherContainer p {
     margin-bottom: -12px;
   } */
-
-
 
 </style>
