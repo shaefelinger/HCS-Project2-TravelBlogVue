@@ -55,7 +55,7 @@
         bannerImage,
         bannerText: 'About this Project',
         bannerButtonText: 'Back',
-        bannerButtonLink: 'Home',
+        bannerButtonLink: 'home',
       };
     },
   };

@@ -72,7 +72,7 @@
     data() {
       return {
         bannerButtonText: 'back',
-        bannerButtonLink: 'About',
+        bannerButtonLink: 'home',
       };
     },
   

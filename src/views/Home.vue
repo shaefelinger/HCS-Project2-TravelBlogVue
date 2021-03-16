@@ -47,7 +47,7 @@
         bannerImage,
         bannerText: 'The Travel Blog',
         bannerButtonText: 'About',
-        bannerButtonLink: 'About',
+        bannerButtonLink: 'about',
 
       };
     },
