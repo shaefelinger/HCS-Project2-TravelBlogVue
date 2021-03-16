@@ -34,7 +34,7 @@
     </div>
   </div>
   <div v-else>
-    <p>Loading...</p>
+    <p class="txt-xl text-center">Loading...</p>
     <Spinner />
   </div>
 
@@ -116,7 +116,7 @@
     // },
 
     setup(props) {
-      console.log(' details props',props);
+      console.log(' details props', props);
       // const route = useRoute();
       // const currentID = route.params.id;
 
