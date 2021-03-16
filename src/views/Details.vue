@@ -76,7 +76,7 @@
       };
     },
   
-
+   
     setup(props) {
       // console.log(' details props', props);
       const route = useRoute();
