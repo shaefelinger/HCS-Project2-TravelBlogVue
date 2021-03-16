@@ -15,7 +15,6 @@
     },
     props: ['location'],
     mounted() {
-      // need to acces the prop here...
       console.log('props versuch single', this.location);
       const markers = { 
         coords: this.location
