@@ -1,5 +1,5 @@
 <template>
-  <div v-if="error">😱Error: {{ error }}</div>
+  <div v-if="error">😱Error getting the details: {{ error }}</div>
   <div v-if="post">
     <Banner :bannerImage="post.image1URL" :bannerText="post.name" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
     <div class="flex justify-center">
@@ -53,6 +53,7 @@
 
   import getPost from '@/composables/getPost';
 
+  import { useRoute } from 'vue-router';
 
   import Spinner from '@/components/Spinner.vue';
 
@@ -72,17 +73,17 @@
       return {
         bannerButtonText: 'back',
         bannerButtonLink: 'About',
-
       };
     },
 
 
     setup(props) {
-      console.log(' details props', props);
-      // const route = useRoute();
-      // const currentID = route.params.id;
-
-      const { post, error, load } = getPost(props.id);
+      // console.log(' details props', props);
+      const route = useRoute();
+      const currentID = route.params.id;
+      // console.log('details from router', currentID)
+      // const { post, error, load } = getPost(props.id);
+      const { post, error, load } = getPost(currentID);
       load();
       return { post, error };
     },

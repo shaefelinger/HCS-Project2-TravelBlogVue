@@ -1,6 +1,5 @@
 <template>
   <div id="mapComponent" class="mt-8 mb-12 mx-0 sm:mx-8 flex flex-col justify-evenly items-center flex-shrink-0"></div>
-  <p @click="test">test</p>
 </template>
 
 <script>
@@ -14,12 +13,6 @@
         return this.$store.getters.getAllBlogposts;
       },
     },
-    methods: {
-      test() {
-        alert('hallo')
-      }
-    },
-
     mounted() {
       // const markers = this.blogpostsFromStore;
       const markers = this.locations;
@@ -101,7 +94,6 @@
 
 <style>
   #mapComponent {
-    /* width: 100vw; */
     height: 400px;
   }
 

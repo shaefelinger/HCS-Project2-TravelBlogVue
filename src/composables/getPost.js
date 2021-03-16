@@ -4,6 +4,7 @@ const getPost = (id) => {
   const post = ref(null);
   const error = ref(null);
   const url = 'https://aroundtheworld-blog-server.herokuapp.com/';
+  // const url = 'http://localhost:3000/';
 
   const load = async () => {
     try {
