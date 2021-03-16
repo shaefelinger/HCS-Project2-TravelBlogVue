@@ -13,27 +13,35 @@
         <p>x@x.com - x</p>
         <p>test@test.com - test123</p>
       </div>
+      <p v-if="success">hurra</p>
     </div>
   </div>
 </template>
 
 <script>
-  // import router from '../router';
+  import router from '@/router';
   import axios from 'axios';
   export default {
     name: 'Login',
+    data() {
+      return {
+        success: false
+      }
+    },
     methods: {
       closeModal() {
         this.$emit('closeModal');
       },
+      redirect() {
+        this.$router.push({ name: 'Home' })
+      },
       login: (e) => {
-        // e.preventDefault();
-
+        e.preventDefault();
+        
         let email = e.target.elements.email.value;
         let password = e.target.elements.password.value;
 
         // axios.defaults.withCredentials = true;
-        // const tempURL = '';
         let login = () => {
           let data = {
             email: email,
@@ -42,12 +50,12 @@
           axios
             .post('/auth/login', data)
             .then((response) => {
-              console.log('Logged in from LOGIN');
+              console.log('Logged in from LOGIN', response);
+              alert(response.data)
               // router.push('/');
-              // this.$router.push({ name: 'Home' })
             })
             .catch((errors) => {
-              console.log('Cannot log in from LOGIN');
+              console.log('Cannot log in from LOGIN', errors);
             });
         };
         login();  

@@ -58,6 +58,8 @@
 </template>
 
 <script>
+  /* eslint-disable no-undef */
+
   import Banner from '@/components/Banner.vue';
   import bannerImage from '@/assets/banner2.jpg';
 
@@ -102,6 +104,32 @@
     },
     mounted() {
       this.getUserData(); // check, if user is logged in
+
+      // let currentPlace = 'noValidPlace';
+
+      // function initialize() {
+      //   var options = {
+      //     types: ['(regions)'],
+      //     fields: ['geometry', 'photos', 'formatted_address', 'utc_offset_minutes', 'name', 'place_id'],
+      //   };
+      //   const input = document.getElementById('searchTextField');
+      //   const autocomplete = new google.maps.places.Autocomplete(input, options);
+      //   autocomplete.addListener('place_changed', () => {
+      //     let place = autocomplete.getPlace();
+
+      //     if (place.place_id) {
+      //       // => this is a valid location, if photos exist
+      //       console.log('complete Location');
+      //       currentPlace = place;
+      //       // getWiki(place.name);
+      //       locationIsValid();
+      //     } else {
+      //       // -> inclomplete location
+      //       alert('Please select a Location from the list');
+      //     }
+      //   });
+      // }
+      // google.maps.event.addDomListener(window, 'load', initialize);
     },
   };
 </script>
