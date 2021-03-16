@@ -107,9 +107,6 @@
     justify-content: center;
   } */
 
- 
-
-
   /* .infoWindow {
     padding: 0 10px;
   }
