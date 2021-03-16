@@ -1,5 +1,5 @@
 <template>
-  Prop: {{ location }}
+  <!-- Prop: {{ location }} -->
   <div id="singleMapComponent" class="mt-8 mb-12 mx-0 sm:mx-8 flex flex-col justify-evenly items-center flex-shrink-0"></div>
 </template>
 
@@ -8,11 +8,6 @@
   import { Loader } from '@googlemaps/js-api-loader';
 
   export default {
-    // computed: {
-    //   currentBlogpostFromStore() {
-    //     return this.$store.getters.getCurrentBlogpost;
-    //   },
-    // },
     props: ['location'],
     mounted() {
       console.log('props versuch single', this.location);
@@ -52,7 +47,6 @@
 
 <style>
   #singleMapComponent {
-    /* width: 100vw; */
     height: 400px;
   }
 </style>

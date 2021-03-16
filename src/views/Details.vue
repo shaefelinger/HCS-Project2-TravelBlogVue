@@ -23,8 +23,6 @@
           <img class="rounded-full w-11" src="@/assets/Steffen_square.png" alt="" />
           <p class="ml-4 text-gray-500">Steffen Häfelinger</p>
         </div>
-        <!-- <div id="overviewMap" ref="mapDiv" class="mt-4"></div> -->
-        <!-- <div id="overviewMap" class="mt-4"></div> -->
 
         <SingleMap :location="post.coords" />
 
@@ -55,20 +53,11 @@
 
   import getPost from '@/composables/getPost';
 
-  // import { getOneBlogpost, to } from '../utils/io.js';
 
   import Spinner from '@/components/Spinner.vue';
 
   import Banner from '@/components/Banner.vue';
   import StarRating from '@/components/StarRating.vue';
-  // import { useRouter, useRoute } from 'vue-router';
-
-  // import { computed, ref, onMounted } from 'vue';
-  // import { useStore } from 'vuex';
-
-  // import { Loader } from '@googlemaps/js-api-loader';
-  // import router from '../router';
-  // const GOOGLE_MAPS_API_KEY = process.env.VUE_APP_GOOGLE_MAPS_API_KEY;
 
   export default {
     name: 'Details',
@@ -77,43 +66,16 @@
       StarRating,
       Spinner,
       SingleMap,
-      // GoogleMap,
     },
     props: ['id'],
     data() {
       return {
-        // id: this.$route.params.id,
         bannerButtonText: 'back',
         bannerButtonLink: 'About',
 
-        // post: {},
-        // blogposts: [],
-        // users: [],
       };
     },
 
-    // computed: {
-    //   allBlogposts() {
-    //     return this.$store.getters.getAllBlogposts;
-    //   },
-    // },
-
-    // async mounted() {
-    //   console.log('/details mounted', this.$route.params.id);
-    //   {
-    //     const { data, error } = await to(getOneBlogpost(this.$route.params.id));
-    //     if (!error) {
-    //       this.post = data;
-    //       // this.$store.dispatch({
-    //       //   type: 'setCurrentBlogpost', // name of the mutation
-    //       //   value: data,
-    //       // });
-    //       console.log('👍Got one blogposts from Server');
-    //     } else {
-    //       console.log('🚫Error getting ONE Blogpost-Data from Server');
-    //     }
-    //   }
-    // },
 
     setup(props) {
       console.log(' details props', props);
@@ -125,50 +87,10 @@
       return { post, error };
     },
 
-    // mounted() {
-    //   console.log('details mounted', this.post);
-    // }
-
-    // setup() {
-
-    //   const store = useStore();
-    //   const route = useRoute();
-    //   const allPosts = store.getters.getAllBlogposts;
-    //   console.log('all', allPosts);
-    //   const currentID = route.params.id;
-    //   const currentPost = allPosts.find((el) => el._id === currentID);
-
-    //   const currPos = currentPost.coords;
-
-    //   const loader = new Loader({ apiKey: GOOGLE_MAPS_API_KEY });
-    //   const mapDiv = ref(null);
-    //   const options = {
-    //     zoom: 6,
-    //     center: currPos,
-    //     mapTypeId: 'hybrid',
-    //     disableDefaultUI: true,
-    //   };
-    //   onMounted(async () => {
-    //     await loader.load();
-    //     const map = new google.maps.Map(mapDiv.value, options);
-    //     const marker = new google.maps.Marker({
-    //       position: currPos,
-    //       map: map,
-    //     });
-    //   });
-
-    //   return { mapDiv };
-    // // return { mapDiv, allPosts, currentPost };
-    // },
   };
 </script>
 
 <style>
-  /* ========================================================================== */
-  /* PAGE: DETAILS-PAGE  */
-  /* ========================================================================== */
-
-
   .detailsImgContainer {
     height: 440px;
   }
@@ -183,10 +105,8 @@
   } */
 
 
-
   /* watch & weather  */
-
-  .detailsInfoContainer {
+  /* .detailsInfoContainer {
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -210,7 +130,7 @@
 
   #weatherContainer p {
     margin-bottom: -12px;
-  }
+  } */
 
 
 
