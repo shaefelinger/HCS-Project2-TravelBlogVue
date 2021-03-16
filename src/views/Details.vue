@@ -173,7 +173,6 @@
     height: 440px;
   }
 
-  
 
   /* .detailsImg2 {
     width: 100%;
@@ -183,26 +182,7 @@
     box-shadow: 0 2px 20px 2px rgba(0, 0, 0, 0.3);
   } */
 
-  /* .detailsArticle {
-    width: 90%;
-    color: #333;
-    position: relative;
-  } */
 
-  /* .detailsArticle p {
-    color: #666;
-    margin-bottom: 4px;
-    margin-top: 30px;
-  } */
-
-  /* .detailsArticle h2 {
-    font-size: 2.4rem;
-    color: #333;
-  } */
-
-  /* .detailsArticle h3 {
-    color: #444;
-  } */
 
   /* watch & weather  */
 
@@ -232,25 +212,6 @@
     margin-bottom: -12px;
   }
 
-  /* map (on Details-page) */
-  /* #map {
-    height: 420px;
-    width: 100%;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  } */
 
-  /* DETAILS-PAGE RESPONSIVE */
-  /* ========================================================================== */
-  /* @media (min-width: 640px) {
-    .detailsArticle {
-      width: 60%;
-    }
-  } */
 
-  /* @media (min-width: 800px) {
-    .detailsImg2 {
-      margin-top: 2rem;
-    }
-  } */
 </style>
