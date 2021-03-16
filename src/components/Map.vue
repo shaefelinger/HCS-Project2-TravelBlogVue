@@ -15,7 +15,8 @@
     },
 
     mounted() {
-      const markers = this.blogpostsFromStore;
+      // const markers = this.blogpostsFromStore;
+      const markers = this.locations;
       //   const markers = [
       //     {
       //       id: 'hello',
@@ -39,7 +40,7 @@
       //       },
       //     },
       //   ];
-      // const markers = this.locations
+      // console.log(this.locations); 
 
       const loader = new Loader({
         apiKey: process.env.VUE_APP_GOOGLE_MAPS_API_KEY,

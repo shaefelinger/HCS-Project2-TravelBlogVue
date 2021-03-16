@@ -8,22 +8,17 @@
   import { Loader } from '@googlemaps/js-api-loader';
 
   export default {
-    computed: {
-      currentBlogpostFromStore() {
-        return this.$store.getters.getCurrentBlogpost;
-      },
-    },
+    // computed: {
+    //   currentBlogpostFromStore() {
+    //     return this.$store.getters.getCurrentBlogpost;
+    //   },
+    // },
     props: ['location'],
     mounted() {
       console.log('props versuch single', this.location);
       const markers = { 
         coords: this.location
         } 
-        
-
-      // const markers = {
-      //   coords: { lat: 53.5510846, lng: 9.9936818 },
-      // };
 
       const currPos = markers.coords;
 
