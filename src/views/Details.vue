@@ -3,19 +3,19 @@
   <div v-if="post">
     <Banner :bannerImage="post.image1URL" :bannerText="post.name" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
     <div class="flex justify-center">
-      <div class="detailsArticle ">
+      <div class="detailsArticle relative text-gray-500 w-11/12 sm:w-3/5">
         <div>
-          <div class="detailsTopContainer">
-            <img class="detailsImg2" :src="post.image2URL" alt="" />
+          <div class="detailsImgContainer shadow-lg flex ">
+            <img class="detailsImg2 md:mt-8 w-full object-cover rounded-md " :src="post.image2URL" alt="" />
           </div>
         </div>
         <div>
-          <h2 class="mt-4">{{ post.longName }}</h2>
+          <h2 class="mt-8 text-gray-600 text-4xl">{{ post.longName }}</h2>
           <div class="flex flex-row items-center  py-4">
             <StarRating :rating="post.rating" />
             <p class="ml-4 text-gray-500">Visited in {{ post.month }} {{ post.year }}</p>
           </div>
-          <h3 class="text-2xl">{{ post.title }}</h3>
+          <h3 class="text-2xl text-gray-700">{{ post.title }}</h3>
           <p class="mt-4">{{ post.description }}</p>
           <p class="mt-4">{{ post.wiki }}</p>
         </div>
@@ -168,18 +168,43 @@
   /* PAGE: DETAILS-PAGE  */
   /* ========================================================================== */
 
-  #detailsContainer {
-    display: flex;
-    justify-content: center;
-    max-width: 600px;
-    background-color: #222;
-  }
 
-  .detailsTopContainer {
-    display: flex;
-    justify-content: space-between;
+  .detailsImgContainer {
     height: 440px;
   }
+
+  
+
+  /* .detailsImg2 {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; */
+    box-shadow: 0 2px 20px 2px rgba(0, 0, 0, 0.3);
+  } */
+
+  /* .detailsArticle {
+    width: 90%;
+    color: #333;
+    position: relative;
+  } */
+
+  /* .detailsArticle p {
+    color: #666;
+    margin-bottom: 4px;
+    margin-top: 30px;
+  } */
+
+  /* .detailsArticle h2 {
+    font-size: 2.4rem;
+    color: #333;
+  } */
+
+  /* .detailsArticle h3 {
+    color: #444;
+  } */
+
+  /* watch & weather  */
 
   .detailsInfoContainer {
     display: flex;
@@ -188,37 +213,6 @@
     justify-content: space-around;
   }
 
-  .detailsImg2 {
-    border-radius: 5px;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 2px 20px 2px rgba(0, 0, 0, 0.3);
-  }
-
-  .detailsArticle {
-    width: 90%;
-    color: #333;
-    position: relative;
-  }
-
-  /* .detailsArticle p {
-    color: #666;
-    margin-bottom: 4px;
-    margin-top: 30px;
-  } */
-
-  .detailsArticle h2 {
-    font-size: 2.4rem;
-    color: #333;
-  }
-
-  .detailsArticle h3 {
-    color: #444;
-  }
-
-  /* watch & weather  */
   #watchContainer {
     font-size: 0.7rem;
     height: 100px;
@@ -239,24 +233,24 @@
   }
 
   /* map (on Details-page) */
-  #map {
+  /* #map {
     height: 420px;
     width: 100%;
     margin-top: 2rem;
     margin-bottom: 1rem;
-  }
+  } */
 
   /* DETAILS-PAGE RESPONSIVE */
   /* ========================================================================== */
-  @media (min-width: 640px) {
+  /* @media (min-width: 640px) {
     .detailsArticle {
       width: 60%;
     }
-  }
+  } */
 
-  @media (min-width: 800px) {
+  /* @media (min-width: 800px) {
     .detailsImg2 {
       margin-top: 2rem;
     }
-  }
+  } */
 </style>
