@@ -15,7 +15,7 @@
     </div>
   </div>
   <div v-else>
-    <p>Loading...</p>
+    <p class="txt-xl text-center">Loading...</p>
     <Spinner />
   </div>
 </template>
@@ -30,8 +30,7 @@
   import Spinner from '@/components/Spinner.vue';
   // import Login from '@/components/Login.vue';
 
-  import { getBlogposts, getUsers, to } from '../utils/io.js';
-  import { createHydrationRenderer } from '@vue/runtime-core';
+  // import { getBlogposts, getUsers, to } from '../utils/io.js';
 
   export default {
     name: 'Home',
@@ -50,8 +49,6 @@
         bannerButtonText: 'About',
         bannerButtonLink: 'About',
 
-        // blogposts: [],
-        users: [],
       };
     },
 

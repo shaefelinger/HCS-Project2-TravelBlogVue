@@ -1,5 +1,6 @@
 <template>
   <div id="mapComponent" class="mt-8 mb-12 mx-0 sm:mx-8 flex flex-col justify-evenly items-center flex-shrink-0"></div>
+  <p @click="test">test</p>
 </template>
 
 <script>
@@ -12,6 +13,11 @@
       blogpostsFromStore() {
         return this.$store.getters.getAllBlogposts;
       },
+    },
+    methods: {
+      test() {
+        alert('hallo')
+      }
     },
 
     mounted() {
@@ -40,7 +46,6 @@
       //       },
       //     },
       //   ];
-      // console.log(this.locations); 
 
       const loader = new Loader({
         apiKey: process.env.VUE_APP_GOOGLE_MAPS_API_KEY,
@@ -70,10 +75,10 @@
 
             const infoWindow = new google.maps.InfoWindow({
               content: `
-                <div class="infoWindow" style="width: 200px;">
+                <div class="infoWindow"  style="width: 200px;" >
                   <h3 class="text-xl">${location.name}</h3>
                   <p class="my-2">${location.title}</p>
-                  <img class="h-32 w-full object-cover" src="${location.image1URL}">
+                  <img class="h-16 w-full object-cover" src="${location.image1URL}">
 
                   <a href="/details/${location._id}"> <button class="miniButton">read more</button></a> 
                 </div>
@@ -100,28 +105,26 @@
     height: 400px;
   }
 
-  #overviewMap {
+  /* #overviewMap {
     height: 700px;
     width: 100%;
-  }
+  } */
 
-  #overviewMapContainer {
+  /* #overviewMapContainer {
     display: flex;
     justify-content: center;
-  }
+  } */
 
  
 
 
-  .infoWindow {
-    /* height: 220px; */
+  /* .infoWindow {
     padding: 0 10px;
   }
 
   .miniButton {
     font-size: 0.6rem;
     height: 2rem;
-    /* padding: 10px; */
     color: #555;
   }
 
@@ -134,5 +137,5 @@
     background-position: center;
     background-size: 100%;
     box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.5);
-  }
+  } */
 </style>

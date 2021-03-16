@@ -8,9 +8,9 @@ const getPosts = () => {
   const load = async () => {
     try {
       // simulate delay
-      // await new Promise((resolve) => {
-      //   setTimeout(resolve, 2000);
-      // });
+      await new Promise((resolve) => {
+        setTimeout(resolve, 500);
+      });
 
       let data = await fetch(url + 'blogposts');
       if (!data.ok) {
