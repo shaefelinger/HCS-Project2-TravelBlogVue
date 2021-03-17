@@ -6,7 +6,7 @@
     </router-link>
     <div class="text-gray-300 text-xs">
       <p>{{currentUser.name}}</p>
-      <p>{{currentUser.email}}</p>
+      <p>{{currentUser.index}}</p>
     </div>
 
  
@@ -59,7 +59,7 @@
     },
     methods: {
       setUserLogOut() {
-        this.$store.commit('setCurrentUser', {name: 'LoggedOut', email: '-', password:'', _id:'', profilePic:''})
+        this.$store.commit('setCurrentUser', {name: 'LoggedOut', email: '-', password:'', index:'', profilePic:''})
         this.$store.commit('setLoggedIn', false)
       },
       logout() {
