@@ -44,7 +44,7 @@
 
             const infoWindow = new google.maps.InfoWindow({
               content: `
-                <div class=" w-44"   >
+                <div class=" w-44">
                   <h3 class="text-xl">${location.name}</h3>
                   <p class="my-2">${location.title}</p>
                   <p class="my-2 text-xs text-gray-500">Visited in ${location.month} ${location.year}</p>
