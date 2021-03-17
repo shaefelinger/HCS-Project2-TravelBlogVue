@@ -1,24 +1,23 @@
 <template>
   <div class="backdrop">
-    <div  class=" modal  w-96 p-8 m-10 rounded-xl shadow-2xl absolute z-50 bg-white right-16 border-2 border-gray-200  ">
-      <h2>Login </h2>
-      <form v-on:submit="login">
-        <input type="text" name="email" /><br />
-        <input type="password" name="password" /><br />
-        <button class="primaryButton">Login</button>
-        <!-- <input type="submit" value="Login" /> -->
+    <div class=" modal  w-96 p-8 m-10 rounded-xl shadow-2xl absolute z-50 bg-white right-16 border-2 border-gray-200  ">
+      <h2>Login</h2>
+      <form v-on:submit="submitLogin">
+        <input class="w-full" type="text" name="email" /><br />
+        <input class="w-full" type="password" name="password" /><br />
+        <p v-if="invalidLogin" class="text-red-600 text-sm ">Wrong Password or username - try again!</p>
+        <button class="primaryButton">Log In</button>
+        <div class="text-gray-600 text-xs text-center m-4">
+          <!-- <p>s.haefelinger@gmx.de - x</p>
+          <p>x@x.com - x</p> -->
+          <!-- <p>test@test.com - test123</p>  -->
+        </div>
       </form>
-      <p>or</p>
+      <!-- <p class="text-center m-6">or</p> -->
 
-         <button @click="signIn" class="secondaryButton">Sign In</button>
-
-      <button @click="closeModal" >cancel</button>
-      <div class="text-gray-600 text-xs">
-        <p>s.haefelinger@gmx.de - x</p>
-        <p>x@x.com - x</p>
-        <p>test@test.com - test123</p>
-      </div>
-      <p v-if="success">hurra</p>
+      <button @click="signIn" class="secondaryButton">Sign In</button>
+      <hr />
+      <button @click="closeModal" class="mt-10">cancel</button>
     </div>
   </div>
 </template>
@@ -30,24 +29,25 @@
     name: 'Login',
     data() {
       return {
-        success: false
-      }
+        success: false,
+        invalidLogin: false
+      };
     },
     methods: {
       closeModal() {
         this.$emit('closeModal');
       },
-      redirect() {
-        this.$router.push({ name: 'Home' })
+      goHome() {
+        this.$router.push({ name: 'Home' });
       },
       signIn() {
-        this.closeModal()
-        this.$router.push({ name: 'SignIn' })
+        this.closeModal();
+        this.$router.push({ name: 'SignIn' });
       },
-      login(event)  {
+      submitLogin(event) {
         event.preventDefault();
+        this.invalidLogin = false
 
-        
         const email = event.target.elements.email.value;
         const password = event.target.elements.password.value;
 
@@ -62,15 +62,17 @@
             .then((response) => {
               console.log('Logged in from LOGIN', response);
               // alert(response.data)
-              this.$emit('closeModal');
+              // this.$emit('closeModal');
+              this.closeModal()
+              this.goHome()
               // router.push('/');
             })
             .catch((errors) => {
               console.log('Cannot log in from LOGIN', errors);
+              this.invalidLogin = true
             });
         };
-        login();  
-
+        login();
       },
     },
   };
