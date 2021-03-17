@@ -5,7 +5,23 @@
       <h3 class="text-xl mt-6">Until then, use:</h3>
       <p>Login: testuser@test.com</p>
       <p>Password: test123</p>
+      <!-- <p>Current User: {{currentUser}} </p> -->
   </div>
 </template>
 
 
+<script>
+ export default {
+    name: 'SignIn',
+    //  methods: {
+    //     getCurrentUser() {
+    //     return this.$store.getters.getCurrentUser;
+    //   },
+    //  },
+    //  computed: {
+    //  currentUser() {
+    //      return this.$store.getters.getCurrentUser;
+    //   }
+    //  }
+ }
+</script>

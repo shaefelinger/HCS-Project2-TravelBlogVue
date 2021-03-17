@@ -96,23 +96,7 @@
     },
 
     methods: {
-      // getUserData() {
-      //   const check = this.userIsLoggedIn();
-      //   alert(check);
-      //   // let self = this;
-      //   // axios
-      //   //   .get('auth/user')
-      //   //   .then((response) => {
-      //   //     this.user = response.data.user;
-      //   //     this.status = 'drin';
-      //   //     self.$set(this, 'user', response.data.user);
-      //   //   })
-      //   //   .catch((errors) => {
-      //   //     console.log(errors);
-      //   //     this.status = 'nööö';
-      //   //     router.push('/');
-      //   //   });
-      // },
+
       userIsLoggedIn() {
         return this.$store.getters.userIsLoggedIn;
       },
@@ -120,65 +104,15 @@
         return this.$store.getters.getCurrentUser;
       },
     },
-    // computed: {
-    //   // userIsLoggedIn() {
-    //   //   return this.$store.getters.userIsLoggedIn;
-    //   // },
-    //   // currentUser() {
-    //   //   return this.$store.getters.getCurrentUser;
-    //   // },
-    // },
+   
     mounted() {
-      // this.getUserData(); // check, if user is logged in
 
       const check = this.userIsLoggedIn();
       if (!check) {
         this.$router.push('/home')
       }
       this.user = this.getCurrentUser()
-      // alert(currentUser);
-      // ==========================================================================
-
-      // const input = this.$refs.searchTextField;
-
-      // function initialize() {
-      //   var options = {
-      //     types: ['(regions)'],
-      //   };
-      //   var input = document.getElementById('searchTextField');
-      //   var autocomplete = new google.maps.places.Autocomplete(input, options);
-      // }
-      // google.maps.event.addDomListener(window, 'load', initialize);
-
-      // const loader = new Loader({
-      //   apiKey: process.env.VUE_APP_GOOGLE_MAPS_API_KEY,
-      //   version: 'weekly',
-      //   libraries: ['places'],
-      // });
-
-      // function initialize() {
-      //   var options = {
-      //     types: ['(regions)'],
-      //   };
-      //   var input = document.getElementById('searchTextField');
-      //   var autocomplete = new google.maps.places.Autocomplete(input, options);
-      // }
-      // google.maps.event.addDomListener(window, 'load', initialize);
-
-      // loader.loadCallback((err) => {
-      //   if (err) {
-      //     console.log(err);
-      //   } else {
-      //     google.maps.event.addDomListener(window, 'load', () => {
-      //       var options = {
-      //         types: ['(regions)'],
-      //       };
-      //       var input = document.getElementById('searchTextField');
-      //       console.log(input);
-      //       var autocomplete = new google.maps.places.Autocomplete(input, options);
-      //     });
-      //   }
-      // });
+     
     },
   };
 </script>
