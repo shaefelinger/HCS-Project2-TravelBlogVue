@@ -5,10 +5,10 @@
       <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
     </div>
 
-    <div>
+    <!-- <div>
       <p>LoggedIn: {{userIsLoggedIn}}</p>
       <p>{{currentUser}}</p>
-    </div>
+    </div> -->
 
     <Map :locations="blogposts" />
 

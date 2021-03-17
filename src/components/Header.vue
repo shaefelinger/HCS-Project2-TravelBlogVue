@@ -14,6 +14,8 @@
     <!-- </Modal>
     </div> -->
 
+    <span>{{currentUser}}</span>
+
     <div v-if="showModal">
       <Login @closeModal="closeModal"/>
     </div>
@@ -24,10 +26,10 @@
         <!-- <CheckUser /> -->
         <!-- <router-link class=" text-gray-700" :to="{ name: 'Home' }">Overview</router-link> -->
         <router-link class=" text-gray-700" to="/about">About</router-link>
-        <router-link class=" text-gray-700" to="/check">Check</router-link>
-        <router-link v-if="isLoggedIn" class=" text-gray-700" to="/new">+new post</router-link>
-        <a @click="toggleModal" v-if="!isLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">Login/register</a>
-        <a @click="logout" v-if="isLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">Logout</a>
+        <!-- <router-link class=" text-gray-700" to="/check">Check</router-link> -->
+        <router-link v-if="userIsLoggedIn" class=" text-gray-700" to="/new">+new post</router-link>
+        <a @click="toggleModal" v-if="!userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">Login/register</a>
+        <a @click="logout" v-if="userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">Logout</a>
         <!-- <router-link v-if="!user" class=" text-gray-700" to="/login">Login/register</router-link>
         <router-link v-else class=" text-gray-700" to="/login">Logout</router-link> -->
         <!-- <button @click="login" v-if="!isLoggedIn">Login</button> -->
@@ -105,12 +107,13 @@
       }
     },
     computed: {
-      // user() {
-      //   return this.$store.getters.user;
-      // },
-      isLoggedIn() {
+    
+      userIsLoggedIn() {
         return this.$store.getters.userIsLoggedIn;
       },
+       currentUser() {
+         return this.$store.getters.getCurrentUser;
+      }
     },
     data() {
       return {
