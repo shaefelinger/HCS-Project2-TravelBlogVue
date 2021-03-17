@@ -5,16 +5,12 @@
       <span class="pl-4 text-2xl lg:text-4xl xl:text-4xl text-gray-900 lg:font-normal font-medium ">Around the World</span>
     </router-link>
     <div class="text-gray-300 text-xs">
-      <p>{{currentUser.name}}</p>
-      <p>{{currentUser._id}}</p>
+      <p>{{ currentUser.name }}</p>
+      <p>{{ currentUser._id }}</p>
     </div>
 
- 
- 
-    
-
     <div v-if="showModal">
-      <Login @closeModal="closeModal"/>
+      <Login @closeModal="closeModal" />
     </div>
 
     <nav>
@@ -23,9 +19,18 @@
         <router-link class=" text-gray-700" to="/about">About</router-link>
         <!-- <router-link class=" text-gray-700" to="/check">Check</router-link> -->
         <router-link v-if="userIsLoggedIn" class=" text-gray-700" to="/new">+new post</router-link>
-        <a @click="toggleModal" v-if="!userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">Login/register</a>
-        <a @click="logout" v-if="userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">Logout</a>
-      
+        <a @click="toggleModal" v-if="!userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">
+          <div class="flex items-end text-white">
+            <span class="material-icons">login</span>
+            <span class="ml-3 ">Login/register</span>
+          </div>
+        </a>
+        <a @click="logout" v-if="userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">
+          <div class="flex items-end text-white">
+            <span class="material-icons">logout</span>
+            <span class="ml-3 ">Logout</span>
+          </div>
+        </a>
       </div>
     </nav>
 
@@ -59,37 +64,36 @@
     },
     methods: {
       setUserLogOut() {
-        this.$store.commit('setCurrentUser', {name: 'LoggedOut', email: '-', password:'', index:'', profilePic:''})
-        this.$store.commit('setLoggedIn', false)
+        this.$store.commit('setCurrentUser', { name: 'LoggedOut', email: '-', password: '', index: '', profilePic: '' });
+        this.$store.commit('setLoggedIn', false);
       },
       logout() {
         let data = fetch('auth/logout')
-        .then((res) => {
-          this.setUserLogOut()
-          console.log(res);
-          this.closeModal()
-          this.$router.push('/home')
-        })
-        .catch(err => {
-          console.log(err);
-        });
+          .then((res) => {
+            this.setUserLogOut();
+            console.log(res);
+            this.closeModal();
+            this.$router.push('/home');
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       },
 
       toggleModal() {
         this.showModal = !this.showModal;
       },
       closeModal() {
-         this.showModal = false
-      }
+        this.showModal = false;
+      },
     },
     computed: {
-    
       userIsLoggedIn() {
         return this.$store.getters.userIsLoggedIn;
       },
-       currentUser() {
-         return this.$store.getters.getCurrentUser;
-      }
+      currentUser() {
+        return this.$store.getters.getCurrentUser;
+      },
     },
     data() {
       return {
