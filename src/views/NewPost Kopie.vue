@@ -3,7 +3,6 @@
   New Post
   {{ status }}
   <p>Name: {{ user.name }}</p>
-<!-- <Test /> -->
   <!-- <div>
         <form action="">
             <input required id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on">
@@ -67,9 +66,6 @@
 
 <script>
   /* eslint-disable no-undef */
-  // import { Loader } from '@googlemaps/js-api-loader';
-
-  // import Test from '@/components/Test.vue'
 
   import Banner from '@/components/Banner.vue';
   import bannerImage from '@/assets/banner2.jpg';
@@ -81,7 +77,6 @@
     name: 'NewPost',
     components: {
       Banner,
-      // Test
     },
     data() {
       return {
@@ -105,7 +100,7 @@
           .then((response) => {
             this.user = response.data.user;
             this.status = 'drin';
-            self.$set(this, 'user', response.data.user);
+            // self.$set(this, 'user', response.data.user);
           })
           .catch((errors) => {
             console.log(errors);
@@ -113,59 +108,19 @@
             router.push('/');
           });
       },
-      
     },
     mounted() {
       // this.getUserData(); // check, if user is logged in
       // ==========================================================================
-
-      // const input = this.$refs.searchTextField;
-
-      // function initialize() {
-      //   var options = {
-      //     types: ['(regions)'],
-      //   };
-      //   var input = document.getElementById('searchTextField');
-      //   var autocomplete = new google.maps.places.Autocomplete(input, options);
-      // }
-      // google.maps.event.addDomListener(window, 'load', initialize);
-
-      // const loader = new Loader({
-      //   apiKey: process.env.VUE_APP_GOOGLE_MAPS_API_KEY,
-      //   version: 'weekly',
-      //   libraries: ['places'],
-      // });
-
-   
-
-
-      // function initialize() {
-      //   var options = {
-      //     types: ['(regions)'],
-      //   };
-      //   var input = document.getElementById('searchTextField');
-      //   var autocomplete = new google.maps.places.Autocomplete(input, options);
-      // }
-      // google.maps.event.addDomListener(window, 'load', initialize);
-
-
-
-
-
-      // loader.loadCallback((err) => {
-      //   if (err) {
-      //     console.log(err);
-      //   } else {
-      //     google.maps.event.addDomListener(window, 'load', () => {
-      //       var options = {
-      //         types: ['(regions)'],
-      //       };
-      //       var input = document.getElementById('searchTextField');
-      //       console.log(input);
-      //       var autocomplete = new google.maps.places.Autocomplete(input, options);
-      //     });
-      //   }
-      // });
+      const input = this.$refs.searchTextField;
+      function initialize() {
+        var options = {
+          types: ['(regions)'],
+        };
+        var input = document.getElementById('searchTextField');
+        var autocomplete = new google.maps.places.Autocomplete(input, options);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
     },
   };
 </script>

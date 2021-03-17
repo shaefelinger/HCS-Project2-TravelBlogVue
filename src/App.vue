@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col justify-between h-screen">
     <Header class="flex-shrink-0" />
-    <router-view  />
+    <router-view />
 
     <Footer class="flex-shrink-0" />
   </div>

@@ -5,7 +5,7 @@
       <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
     </div>
     <!-- <Login /> -->
-      <Map :locations="blogposts" />
+    <Map :locations="blogposts" />
     <div class="flex ">
       <div class="flex flex-col items-center  sm:flex-wrap sm:flex-row sm:justify-center">
         <div class="" v-for="blogpost in blogposts" :key="blogpost._id" @click="selectBlogpost(blogpost)">
