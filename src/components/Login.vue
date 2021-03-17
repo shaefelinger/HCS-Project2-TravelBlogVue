@@ -63,9 +63,9 @@
           axios
             .post('/auth/login', data)
             .then((response) => {
-              console.log('Logged in from LOGIN', response.config);
+              console.log('Logged in from LOGIN', response.data);
               this.closeModal()
-              this.setUser(response.config.data)
+              this.setUser(response.data)
               this.goHome()
             })
             .catch((errors) => {

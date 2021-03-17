@@ -4,43 +4,29 @@
       <div class=" w-9 lg:w-16 "><img class=" object-fill   " src="@/assets/world.png" alt="logo" /></div>
       <span class="pl-4 text-2xl lg:text-4xl xl:text-4xl text-gray-900 lg:font-normal font-medium ">Around the World</span>
     </router-link>
+    <div class="text-gray-300 text-xs">
+      <p>{{currentUser.name}}</p>
+      <p>{{currentUser.email}}</p>
+    </div>
 
-    <!-- <div v-if="showModal">
-      <Modal theme="" @closeModal="toggleModal"> -->
-    <!-- <template v-slot:links>
-          <a href="#">sign up now</a>
-        </template>
-        <p>SignIn</p> -->
-    <!-- </Modal>
-    </div> -->
-
-    <span>{{currentUser}}</span>
+ 
+ 
+    
 
     <div v-if="showModal">
       <Login @closeModal="closeModal"/>
     </div>
 
-    <!-- <span>isAuth: {{ isAuth }}</span> -->
     <nav>
       <div class="p-6" id="nav">
-        <!-- <CheckUser /> -->
         <!-- <router-link class=" text-gray-700" :to="{ name: 'Home' }">Overview</router-link> -->
         <router-link class=" text-gray-700" to="/about">About</router-link>
         <!-- <router-link class=" text-gray-700" to="/check">Check</router-link> -->
         <router-link v-if="userIsLoggedIn" class=" text-gray-700" to="/new">+new post</router-link>
         <a @click="toggleModal" v-if="!userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">Login/register</a>
         <a @click="logout" v-if="userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">Logout</a>
-        <!-- <router-link v-if="!user" class=" text-gray-700" to="/login">Login/register</router-link>
-        <router-link v-else class=" text-gray-700" to="/login">Logout</router-link> -->
-        <!-- <button @click="login" v-if="!isLoggedIn">Login</button> -->
-        <!-- <button @click="logout" v-if="isLoggedIn">Logout</button> -->
+      
       </div>
-
-      <!-- <a id="gotoOverviewLink" onclick="gotoOverviewPage()" class="active">overview</a>
-      <a id="gotoMapLink" onclick="gotoMapPage()">map</a>
-      <a id="gotoNewPostLink" onclick="gotoAddPostPage()">+ add post</a>
-      <a id="gotoResetAllLink" onclick="resetLocalStorage()">reset all</a>
-      <a id="gotoAboutPageLink" onclick="gotoAboutPage()">about</a> -->
     </nav>
 
     <a id="burger" class="burger" href="#">
@@ -64,10 +50,7 @@
 </template>
 
 <script>
-  // import { mapGetters } from 'vuex';
-  // import Modal from '@/components/Modal.vue';
   import Login from '@/components/Login.vue';
-  // import CheckUser from '@/components/CheckUser.vue';
 
   export default {
     name: 'Header',
@@ -75,17 +58,11 @@
       Login,
     },
     methods: {
-      // login() {
-      //   // this.$store.dispatch('login');
-      //   this.showModal = !this.showModal;
-      // },
-
       setUserLogOut() {
         this.$store.commit('setCurrentUser', {name: 'LoggedOut'})
         this.$store.commit('setLoggedIn', false)
       },
       logout() {
-        // this.$store.dispatch('logout');
         this.setUserLogOut()
         let data = fetch('auth/logout')
         .then((res) => {
@@ -102,7 +79,6 @@
         this.showModal = !this.showModal;
       },
       closeModal() {
-        // alert('cancel')
          this.showModal = false
       }
     },
