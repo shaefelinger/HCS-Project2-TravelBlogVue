@@ -7,7 +7,7 @@
         <input type="password" name="password" /><br />
         <input type="submit" value="Login" />
       </form>
-      <button @click="cancel" >cancel</button>
+      <button @click="closeModal" >cancel</button>
       <div class="text-gray-600 text-xs">
         <p>s.haefelinger@gmx.de - x</p>
         <p>x@x.com - x</p>
@@ -30,7 +30,7 @@
     },
     methods: {
       closeModal() {
-        this.$emit('closeModal');
+        this.$emit('cancel');
       },
       redirect() {
         this.$router.push({ name: 'Home' })

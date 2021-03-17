@@ -15,7 +15,7 @@
     </div> -->
 
     <div v-if="showModal">
-      <Login />
+      <Login @cancel="cancel"/>
     </div>
 
     <!-- <span>isAuth: {{ isAuth }}</span> -->
@@ -96,6 +96,10 @@
       toggleModal() {
         this.showModal = !this.showModal;
       },
+      cancel() {
+        // alert('cancel')
+         this.showModal = false
+      }
     },
     computed: {
       // ...mapGetters({
