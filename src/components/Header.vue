@@ -59,13 +59,13 @@
     },
     methods: {
       setUserLogOut() {
-        this.$store.commit('setCurrentUser', {name: 'LoggedOut'})
+        this.$store.commit('setCurrentUser', {name: 'LoggedOut', email: '-', password:'', _id:'', profilePic:''})
         this.$store.commit('setLoggedIn', false)
       },
       logout() {
-        this.setUserLogOut()
         let data = fetch('auth/logout')
         .then((res) => {
+          this.setUserLogOut()
           console.log(res);
           this.closeModal()
           this.$router.push('/home')
