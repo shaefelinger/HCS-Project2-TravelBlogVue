@@ -28,6 +28,7 @@ export default createStore({
    
   },
   actions: {
+    
    // login(context) {
         //   context.commit('setAuth', { isAuth: true });
         //   console.log('login');
