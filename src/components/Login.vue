@@ -30,7 +30,7 @@
     },
     methods: {
       closeModal() {
-        this.$emit('cancel');
+        this.$emit('closeModal');
       },
       redirect() {
         this.$router.push({ name: 'Home' })
@@ -51,7 +51,8 @@
             .post('/auth/login', data)
             .then((response) => {
               console.log('Logged in from LOGIN', response);
-              alert(response.data)
+              // alert(response.data)
+              this.$emit('closeModal');
               // router.push('/');
             })
             .catch((errors) => {

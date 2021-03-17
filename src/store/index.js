@@ -1,10 +1,9 @@
 import { createStore } from 'vuex';
 
-import authModule from './auth/index.js'
 
 export default createStore({
   modules: {
-    auth: authModule,
+    // auth: authModule,
   },
   state: {
     user: 1,
@@ -20,22 +19,22 @@ export default createStore({
   },
 
   mutations: {
-    // user: (state, data) => {
-    //   state.user = data;
-    // },
-    setAuth(state, payload) {
-      state.isLoggedIn = payload.isAuth;
-    },
+      // user: (state, data) => {
+        //   state.user = data;
+        // },
+        setAuth(state, payload) {
+          state.isLoggedIn = payload.isAuth;
+      },
    
   },
   actions: {
-    // login(context) {
-    //   context.commit('setAuth', { isAuth: true });
-    //   console.log('login');
-    // },
-    // logout(context) {
-    //   context.commit('setAuth', { isAuth: false });
-    //   console.log('logout');
-    // },
+   // login(context) {
+        //   context.commit('setAuth', { isAuth: true });
+        //   console.log('login');
+        // },
+        // logout(context) {
+        //   context.commit('setAuth', { isAuth: false });
+        //   console.log('logout');
+        // },
   },
 });

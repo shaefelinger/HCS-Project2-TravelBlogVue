@@ -15,7 +15,7 @@
     </div> -->
 
     <div v-if="showModal">
-      <Login @cancel="cancel"/>
+      <Login @closeModal="closeModal"/>
     </div>
 
     <!-- <span>isAuth: {{ isAuth }}</span> -->
@@ -96,7 +96,7 @@
       toggleModal() {
         this.showModal = !this.showModal;
       },
-      cancel() {
+      closeModal() {
         // alert('cancel')
          this.showModal = false
       }
