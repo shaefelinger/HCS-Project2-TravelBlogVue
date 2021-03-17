@@ -14,17 +14,16 @@
     </div>
 
     <nav>
-      <div class="p-6" id="nav">
+      <div class="p-6 flex items-center justify-between" id="nav">
         <!-- <router-link class=" text-gray-700" :to="{ name: 'Home' }">Overview</router-link> -->
         <router-link class=" text-gray-700" to="/about">
-        <div class="flex items-end">
+          <div class="flex items-end">
             <span class="material-icons"></span>
             <span class="ml-2 ">About</span>
           </div>
         </router-link>
 
-        <!-- <router-link class=" text-gray-700" to="/check">Check</router-link> -->
-        <router-link v-if="userIsLoggedIn" to="/new" class=" text-gray-700 rounded p-3  border-green-700" >
+        <router-link v-if="userIsLoggedIn" to="/new" class=" text-gray-700 rounded p-3  border-green-700">
           <div class="flex items-end">
             <span class="material-icons">library_add</span>
             <span class="ml-2 ">new post</span>
@@ -42,6 +41,9 @@
             <span class="ml-3 ">Logout</span>
           </div>
         </a>
+        <router-link v-if="userIsLoggedIn" to="/signin">
+          <img class=" rounded-full w-12 h-12" :src="currentUser.profilePic" alt="" />
+        </router-link>
       </div>
     </nav>
 
