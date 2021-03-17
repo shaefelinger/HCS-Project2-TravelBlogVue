@@ -34,7 +34,7 @@
     <div class=" pt-4 px-8 pb-8 ">
       <div>
         <div class="mt-5 flex items-center">
-          <img class="rounded-full w-12 h-12" :src="blogpost.authorPic" alt="" />
+          <img class="rounded-full w-12 h-12 " :src="blogpost.authorPic" alt="" />
           <p class="ml-4 text-gray-500">{{ blogpost.author }}</p>
         </div>
       </div>

@@ -20,7 +20,7 @@
           <p class="mt-4">{{ post.wiki }}</p>
         </div>
         <div class="mt-5 flex items-center">
-          <img class="rounded-full w-11 h-11" :src="post.authorPic" alt="" />
+          <img class="rounded-full w-16 h-16" :src="post.authorPic" alt="" />
           <p class="ml-4 text-gray-500">{{ post.author }}</p>
         </div>
 
