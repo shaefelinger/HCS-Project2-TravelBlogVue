@@ -6,7 +6,6 @@
   >
     <p class="bannerText text-3xl sm:text-5xl lg:text-6xl font-extralight text-white  " id="bannerTitle">{{ bannerText }}</p>
       <router-link :to="`/${bannerButtonLink}`">
-
         <button class=" uppercase "  id="bannerButton">{{ bannerButtonText }}</button>
       </router-link>
   </div>

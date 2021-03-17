@@ -20,14 +20,17 @@
           <p class="mt-4">{{ post.wiki }}</p>
         </div>
         <div class="mt-5 flex items-center">
-          <img class="rounded-full w-11" src="@/assets/Steffen_square.png" alt="" />
+          <img class="rounded-full w-11 h-11" :src="post.authorPic" alt="" />
           <p class="ml-4 text-gray-500">{{ post.author }}</p>
         </div>
 
         <SingleMap :location="post.coords" />
 
         <button class="secondaryButton" onclick="eraseEntryFromLocalStorage()">DELETE POST</button>
-        <button class="primaryButton" onclick="gotoOverviewPage()">&lt; BACK</button>
+        <router-link to="/home">
+
+        <button class="primaryButton" >&lt; BACK</button>
+        </router-link>
       </div>
     </div>
   </div>

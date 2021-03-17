@@ -50,7 +50,7 @@
                   <p class="my-2 text-xs text-gray-500">Visited in ${location.month} ${location.year}</p>
 
                    <div class="my-3 flex items-center justify-evenly ">
-                      <img class="rounded-full w-12 h-12" src="${location.image1URL}" alt="" />
+                      <img class="rounded-full w-8 h-8" src="${location.authorPic}" alt="" />
                       <p class=" text-xs text-gray-500">${location.author}</p>
                   </div>
 
