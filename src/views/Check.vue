@@ -23,7 +23,7 @@
         let self = this;
         // const tempURL = 'https://aroundtheworld-blog-server.herokuapp.com';
         const tempURL = '';
-        axios.defaults.withCredentials = true;
+        // axios.defaults.withCredentials = true;
         axios
           .get(tempURL + '/auth/user')
           .then((response) => {

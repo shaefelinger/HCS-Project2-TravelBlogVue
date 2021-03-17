@@ -44,15 +44,16 @@
         this.closeModal()
         this.$router.push({ name: 'SignIn' })
       },
-      login: (event) => {
+      login(event)  {
         event.preventDefault();
+
         
-        let email = event.target.elements.email.value;
-        let password = event.target.elements.password.value;
+        const email = event.target.elements.email.value;
+        const password = event.target.elements.password.value;
 
         // axios.defaults.withCredentials = true;
-        let login = () => {
-          let data = {
+        const login = () => {
+          const data = {
             email: email,
             password: password,
           };
