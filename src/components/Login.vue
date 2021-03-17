@@ -1,6 +1,6 @@
 <template>
   <div class="backdrop">
-    <div @click="closeModal" class=" modal  w-96 p-8 m-10 rounded-xl shadow-2xl absolute z-50 bg-white right-16 border-2 border-gray-200  ">
+    <div  class=" modal  w-96 p-8 m-10 rounded-xl shadow-2xl absolute z-50 bg-white right-16 border-2 border-gray-200  ">
       <h2>Login </h2>
       <form v-on:submit="login">
         <input type="text" name="email" /><br />

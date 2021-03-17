@@ -56,11 +56,11 @@
       <textarea id="wikiField" name="wikiField" rows="6" cols="80" placeholder=""></textarea>
       <p class="miniText">* = required</p>
 
-      <!-- <div class="buttonContainer">
+      <div class="buttonContainer">
         <button class="primaryButton" id="submitButton" type="button">SUBMIT</button>
         <button class="secondaryButton" onclick="gotoOverviewPage()" type="button">CANCEL</button>
         <button class="resetButton" onclick="resetInputForm()" type="button">reset form</button>
-      </div> -->
+      </div>
     </form>
   </div>
 </template>
