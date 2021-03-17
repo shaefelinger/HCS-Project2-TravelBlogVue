@@ -13,6 +13,7 @@ import About from '../views/About.vue';
 import NewPost from '../views/NewPost.vue';
 import Check from '../views/Check.vue';
 import NotFound from '../views/NotFound.vue';
+import SignIn from '../views/SignIn.vue';
 
 const routes = [
   {
@@ -65,6 +66,11 @@ const routes = [
     path: '/about',
     name: 'About',
     component: About,
+  },
+  {
+    path: '/signin',
+    name: 'SignIn',
+    component: SignIn,
   },
   // catchall 404
   {

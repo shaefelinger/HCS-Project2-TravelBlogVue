@@ -5,8 +5,13 @@
       <form v-on:submit="login">
         <input type="text" name="email" /><br />
         <input type="password" name="password" /><br />
-        <input type="submit" value="Login" />
+        <button class="primaryButton">Login</button>
+        <!-- <input type="submit" value="Login" /> -->
       </form>
+      <p>or</p>
+
+         <button @click="signIn" class="secondaryButton">Sign In</button>
+
       <button @click="closeModal" >cancel</button>
       <div class="text-gray-600 text-xs">
         <p>s.haefelinger@gmx.de - x</p>
@@ -35,11 +40,15 @@
       redirect() {
         this.$router.push({ name: 'Home' })
       },
-      login: (e) => {
-        e.preventDefault();
+      signIn() {
+        this.closeModal()
+        this.$router.push({ name: 'SignIn' })
+      },
+      login: (event) => {
+        event.preventDefault();
         
-        let email = e.target.elements.email.value;
-        let password = e.target.elements.password.value;
+        let email = event.target.elements.email.value;
+        let password = event.target.elements.password.value;
 
         // axios.defaults.withCredentials = true;
         let login = () => {
