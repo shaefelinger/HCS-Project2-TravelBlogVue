@@ -16,13 +16,24 @@
     <nav>
       <div class="p-6" id="nav">
         <!-- <router-link class=" text-gray-700" :to="{ name: 'Home' }">Overview</router-link> -->
-        <router-link class=" text-gray-700" to="/about">About</router-link>
+        <router-link class=" text-gray-700" to="/about">
+        <div class="flex items-end">
+            <span class="material-icons"></span>
+            <span class="ml-2 ">About</span>
+          </div>
+        </router-link>
+
         <!-- <router-link class=" text-gray-700" to="/check">Check</router-link> -->
-        <router-link v-if="userIsLoggedIn" class=" text-gray-700" to="/new">+new post</router-link>
+        <router-link v-if="userIsLoggedIn" to="/new" class=" text-gray-700 rounded p-3  border-green-700" >
+          <div class="flex items-end">
+            <span class="material-icons">library_add</span>
+            <span class="ml-2 ">new post</span>
+          </div>
+        </router-link>
         <a @click="toggleModal" v-if="!userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">
           <div class="flex items-end text-white">
             <span class="material-icons">login</span>
-            <span class="ml-3 ">Login/register</span>
+            <span class="ml-3 ">Login</span>
           </div>
         </a>
         <a @click="logout" v-if="userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">

@@ -81,7 +81,6 @@
     name: 'NewPost',
     components: {
       Banner,
-      // Test
     },
     data() {
       return {
