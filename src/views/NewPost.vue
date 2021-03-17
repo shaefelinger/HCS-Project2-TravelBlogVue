@@ -1,29 +1,27 @@
 <template>
   <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
-  New Post
-  {{ status }}
-  <p>Name: {{ user }}</p>
-  <!-- <Test /> -->
-  <!-- <div>
-        <form action="">
-            <input required id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on">
-        </form>
-    </div> -->
+
+  <!-- <p>Name: {{ user }}</p> -->
+
   <div class="formContainer">
-    <form action="" id="addPostForm">
+    <form id="addPostForm">
       <label for="locationField" id="locationLabel">Enter a Location*</label>
       <!-- <input ref="searchTextField" id="searchTextField" name="locationField" type="text" size="50"  autocomplete="on" /> -->
-      <input ref="searchTextField" id="searchTextField" type="text" />
-      <p ref="test"></p>
+      <input v-model="name" id="searchTextField" type="text" />
 
-      <hr id="searchTextUnderline" class="hidden" />
+      <hr id="searchTextUnderline" class="" />
+
+      <label  for="titleField">lat</label>
+      <input v-model="lat" class="w-28" type="number"  />
+      <label for="titleField">lng</label>
+      <input v-model="lng" type="number" class="w-28"  />
 
       <label for="titleField">Enter a Title for the post*</label>
-      <input required type="text" placeholder="" name="titleField" id="titleField" />
+      <input required type="text" v-model="title" name="titleField" id="titleField" />
 
       <label for="monthInput">Enter the date of your trip</label>
       <div class="dateContainer">
-        <select required name="monthInput" id="monthField">
+        <select required v-model="month" name="monthInput" id="monthField">
           <option value="January">January</option>
           <option value="February">February</option>
           <option value="March">March</option>
@@ -37,11 +35,11 @@
           <option value="November">November</option>
           <option value="December">December</option>
         </select>
-        <input required class="yearInput" type="number" placeholder="Enter the year" value="2020" min="1900" max="2100" id="yearField" />
+        <input required v-model="year" class="yearInput" type="number" placeholder="Enter the year" min="1900" max="2100" id="yearField" />
       </div>
 
       <label for="rating">Rate your trip </label>
-      <select name="rating" id="ratingField">
+      <select v-model="rating" name="rating" id="ratingField">
         <option value="0" disabled="disabled" selected="selected">Enter Rating</option>
         <option class="star" value="1">★</option>
         <option value="2">★★</option>
@@ -49,33 +47,36 @@
         <option value="4">★★★★</option>
         <option value="5">★★★★★</option>
       </select>
+
       <label for="descriptionField">Enter a description</label>
-      <textarea id="descriptionField" name="descriptionField" rows="6" cols="80" placeholder=""></textarea>
+      <textarea v-model="description" id="descriptionField" name="descriptionField" rows="6" cols="80" placeholder=""></textarea>
 
       <label for="wikiField">Edit Wikipedia Information</label>
-      <textarea id="wikiField" name="wikiField" rows="6" cols="80" placeholder=""></textarea>
+      <textarea id="wikiField" name="wikiField" rows="6" cols="80" v-model="wiki"></textarea>
       <p class="miniText">* = required</p>
 
       <div class="buttonContainer">
-        <button class="primaryButton" id="submitButton" type="button">SUBMIT</button>
-        <button class="secondaryButton" onclick="gotoOverviewPage()" type="button">CANCEL</button>
+        <button class="primaryButton" id="submitButton" @click.prevent="handleSubmit">SUBMIT</button>
+        <router-link to="/home">
+          <button class="secondaryButton">CANCEL</button>
+        </router-link>
         <button class="resetButton" onclick="resetInputForm()" type="button">reset form</button>
       </div>
+    <div>
+      <p>{{user}}</p>
+    </div>
     </form>
   </div>
 </template>
 
 <script>
   /* eslint-disable no-undef */
-  // import { Loader } from '@googlemaps/js-api-loader';
-
-  // import Test from '@/components/Test.vue'
 
   import Banner from '@/components/Banner.vue';
   import bannerImage from '@/assets/banner2.jpg';
 
-  import axios from 'axios';
-  import router from '../router';
+  // import axios from 'axios';
+  // import router from '../router';
 
   export default {
     name: 'NewPost',
@@ -89,29 +90,38 @@
         bannerButtonText: 'Back',
         bannerButtonLink: 'Home',
 
-        user: {
-        },
+        user: {},
+
+        name: 'Name',
+        lat: 54,
+        lng: 33,
+        title: "Title",
+        description: 'blabla',
+        rating: "4",
+        month: 'May',
+        year: '2018',
+        wiki: 'wikifiki'
       };
     },
 
     methods: {
-
       userIsLoggedIn() {
         return this.$store.getters.userIsLoggedIn;
       },
       getCurrentUser() {
         return this.$store.getters.getCurrentUser;
       },
+      handleSubmit() {
+        alert('submit');
+      },
     },
-   
-    mounted() {
 
+    mounted() {
       const check = this.userIsLoggedIn();
       if (!check) {
-        this.$router.push('/home')
+        this.$router.push('/home');
       }
-      this.user = this.getCurrentUser()
-     
+      this.user = this.getCurrentUser();
     },
   };
 </script>

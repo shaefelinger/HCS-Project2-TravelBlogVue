@@ -18,7 +18,7 @@
         <!-- <router-link class=" text-gray-700" :to="{ name: 'Home' }">Overview</router-link> -->
         <router-link class=" text-gray-700" to="/about">
           <div class="flex items-end">
-            <span class="material-icons"></span>
+            <span class="material-icons"></span>  
             <span class="ml-2 ">About</span>
           </div>
         </router-link>
@@ -42,7 +42,7 @@
           </div>
         </a>
         <router-link v-if="userIsLoggedIn" to="/signin">
-          <img class=" rounded-full w-12 h-12" :src="currentUser.profilePic" alt="" />
+          <img class=" rounded-full w-12 h-12 " :src="currentUser.profilePic" alt="" />
         </router-link>
       </div>
     </nav>
