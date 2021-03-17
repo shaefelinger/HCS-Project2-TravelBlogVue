@@ -7,7 +7,7 @@
     <form id="addPostForm">
       <label for="locationField" id="locationLabel">Enter a Location*</label>
       <!-- <input ref="searchTextField" id="searchTextField" name="locationField" type="text" size="50"  autocomplete="on" /> -->
-      <input v-model="name" id="searchTextField" type="text" />
+      <input  id="searchTextField" type="text" />
 
       <hr id="searchTextUnderline" class="" />
 
@@ -114,6 +114,15 @@
       handleSubmit() {
         alert('submit');
       },
+
+      initialize() {
+        const options = {
+          types: ['(regions)'],
+        };
+        const input = document.getElementById('searchTextField');
+        const autocomplete = new google.maps.places.Autocomplete(input, options);
+      }
+
     },
 
     mounted() {
@@ -122,7 +131,12 @@
         this.$router.push('/home');
       }
       this.user = this.getCurrentUser();
+      
+      this.initialize()
+      google.maps.event.addDomListener(window, 'load', this.initialize);
     },
+
+
   };
 </script>
 
