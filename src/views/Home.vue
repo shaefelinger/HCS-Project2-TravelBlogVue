@@ -4,8 +4,15 @@
     <div>
       <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
     </div>
-    <!-- <Login /> -->
+
+    <div>
+      <p>LoggedIn: {{userIsLoggedIn}}</p>
+      <p>{{currentUser}}</p>
+    </div>
+
     <Map :locations="blogposts" />
+
+
     <div class="flex ">
       <div class="flex flex-col items-center  sm:flex-wrap sm:flex-row sm:justify-center">
         <div class="" v-for="blogpost in blogposts" :key="blogpost._id" @click="selectBlogpost(blogpost)">
@@ -28,7 +35,6 @@
   import OverviewCard from '@/components/OverviewCard.vue';
   import Map from '@/components/Map.vue';
   import Spinner from '@/components/Spinner.vue';
-  // import Login from '@/components/Login.vue';
 
   // import { getBlogposts, getUsers, to } from '../utils/io.js';
 
@@ -39,7 +45,6 @@
       OverviewCard,
       Spinner,
       Map,
-      // Login,
     },
 
     data() {
@@ -48,7 +53,6 @@
         bannerText: 'The Travel Blog',
         bannerButtonText: 'About',
         bannerButtonLink: 'about',
-
       };
     },
 
@@ -58,6 +62,16 @@
         this.$router.push(link);
       },
     },
+
+    computed: {
+      userIsLoggedIn() {
+        return this.$store.getters.userIsLoggedIn;
+      },
+      currentUser() {
+         return this.$store.getters.getCurrentUser;
+      }
+    },
+    // get all blogposts
     setup() {
       const { blogposts, error, load } = getPosts();
       load();
@@ -90,7 +104,7 @@
     //   }
     // },
 
-   
+
   };
 </script>
 

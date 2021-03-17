@@ -2,8 +2,8 @@
   <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
   New Post
   {{ status }}
-  <p>Name: {{ user.name }}</p>
-<!-- <Test /> -->
+  <p>Name: {{ user }}</p>
+  <!-- <Test /> -->
   <!-- <div>
         <form action="">
             <input required id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on">
@@ -90,33 +90,53 @@
         bannerButtonText: 'Back',
         bannerButtonLink: 'Home',
 
-        status: 'unklar',
         user: {
-          name: 'no user',
         },
       };
     },
 
     methods: {
-      getUserData: function() {
-        let self = this;
-        axios
-          .get('auth/user')
-          .then((response) => {
-            this.user = response.data.user;
-            this.status = 'drin';
-            self.$set(this, 'user', response.data.user);
-          })
-          .catch((errors) => {
-            console.log(errors);
-            this.status = 'nööö';
-            router.push('/');
-          });
+      // getUserData() {
+      //   const check = this.userIsLoggedIn();
+      //   alert(check);
+      //   // let self = this;
+      //   // axios
+      //   //   .get('auth/user')
+      //   //   .then((response) => {
+      //   //     this.user = response.data.user;
+      //   //     this.status = 'drin';
+      //   //     self.$set(this, 'user', response.data.user);
+      //   //   })
+      //   //   .catch((errors) => {
+      //   //     console.log(errors);
+      //   //     this.status = 'nööö';
+      //   //     router.push('/');
+      //   //   });
+      // },
+      userIsLoggedIn() {
+        return this.$store.getters.userIsLoggedIn;
       },
-      
+      getCurrentUser() {
+        return this.$store.getters.getCurrentUser;
+      },
     },
+    // computed: {
+    //   // userIsLoggedIn() {
+    //   //   return this.$store.getters.userIsLoggedIn;
+    //   // },
+    //   // currentUser() {
+    //   //   return this.$store.getters.getCurrentUser;
+    //   // },
+    // },
     mounted() {
       // this.getUserData(); // check, if user is logged in
+
+      const check = this.userIsLoggedIn();
+      if (!check) {
+        this.$router.push('/home')
+      }
+      this.user = this.getCurrentUser()
+      // alert(currentUser);
       // ==========================================================================
 
       // const input = this.$refs.searchTextField;
@@ -136,9 +156,6 @@
       //   libraries: ['places'],
       // });
 
-   
-
-
       // function initialize() {
       //   var options = {
       //     types: ['(regions)'],
@@ -147,10 +164,6 @@
       //   var autocomplete = new google.maps.places.Autocomplete(input, options);
       // }
       // google.maps.event.addDomListener(window, 'load', initialize);
-
-
-
-
 
       // loader.loadCallback((err) => {
       //   if (err) {

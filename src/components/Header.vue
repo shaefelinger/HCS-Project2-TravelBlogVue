@@ -25,13 +25,13 @@
         <!-- <router-link class=" text-gray-700" :to="{ name: 'Home' }">Overview</router-link> -->
         <router-link class=" text-gray-700" to="/about">About</router-link>
         <router-link class=" text-gray-700" to="/check">Check</router-link>
-        <router-link v-if="isAuth" class=" text-gray-700" to="/new">+new post</router-link>
-        <a @click="toggleModal"  class=" text-gray-700 bg-green-700 p-3 rounded">Login/register</a>
-        <a @click="logout" v-if="isAuth" class=" text-gray-700 bg-green-700 p-3 rounded">Logout</a>
+        <router-link v-if="isLoggedIn" class=" text-gray-700" to="/new">+new post</router-link>
+        <a @click="toggleModal" v-if="!isLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">Login/register</a>
+        <a @click="logout" v-if="isLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">Logout</a>
         <!-- <router-link v-if="!user" class=" text-gray-700" to="/login">Login/register</router-link>
         <router-link v-else class=" text-gray-700" to="/login">Logout</router-link> -->
-        <!-- <button @click="login" v-if="!isAuth">Login</button> -->
-        <!-- <button @click="logout" v-if="isAuth">Logout</button> -->
+        <!-- <button @click="login" v-if="!isLoggedIn">Login</button> -->
+        <!-- <button @click="logout" v-if="isLoggedIn">Logout</button> -->
       </div>
 
       <!-- <a id="gotoOverviewLink" onclick="gotoOverviewPage()" class="active">overview</a>
@@ -70,20 +70,21 @@
   export default {
     name: 'Header',
     components: {
-      // Modal,
       Login,
-
-      // CheckUser
     },
     methods: {
-      // ...mapActions(['login', 'logout']),
-      login() {
-        // this.$store.dispatch('login');
-        this.showModal = !this.showModal;
+      // login() {
+      //   // this.$store.dispatch('login');
+      //   this.showModal = !this.showModal;
+      // },
+
+      setUserLogOut() {
+        this.$store.commit('setCurrentUser', {name: 'LoggedOut'})
+        this.$store.commit('setLoggedIn', false)
       },
       logout() {
-        this.$store.dispatch('logout');
-        // this.showModal = !this.showModal;
+        // this.$store.dispatch('logout');
+        this.setUserLogOut()
         let data = fetch('auth/logout')
         .then((res) => {
           console.log(res);
@@ -104,14 +105,11 @@
       }
     },
     computed: {
-      // ...mapGetters({
-      //   isAuth: 'userIsAuthenticated',
-      // }),
-      user() {
-        return this.$store.getters.user;
-      },
-      isAuth() {
-        return this.$store.getters.userIsAuthenticated;
+      // user() {
+      //   return this.$store.getters.user;
+      // },
+      isLoggedIn() {
+        return this.$store.getters.userIsLoggedIn;
       },
     },
     data() {

@@ -29,7 +29,6 @@
     name: 'Login',
     data() {
       return {
-        success: false,
         invalidLogin: false
       };
     },
@@ -43,6 +42,10 @@
       signIn() {
         this.closeModal();
         this.$router.push({ name: 'SignIn' });
+      },
+      setUser(data) {
+        this.$store.commit('setCurrentUser', data)
+        this.$store.commit('setLoggedIn', true)
       },
       submitLogin(event) {
         event.preventDefault();
@@ -60,12 +63,10 @@
           axios
             .post('/auth/login', data)
             .then((response) => {
-              console.log('Logged in from LOGIN', response);
-              // alert(response.data)
-              // this.$emit('closeModal');
+              console.log('Logged in from LOGIN', response.config);
               this.closeModal()
+              this.setUser(response.config.data)
               this.goHome()
-              // router.push('/');
             })
             .catch((errors) => {
               console.log('Cannot log in from LOGIN', errors);

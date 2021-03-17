@@ -3,32 +3,29 @@ import { createStore } from 'vuex';
 
 export default createStore({
   modules: {
-    // auth: authModule,
   },
   state: {
-    user: 1,
-    currentUser: {},
-    isLoggedIn: true,
+    // user: 1,
+    currentUser: {
+      name: 'Logged Out'
+    },
+    isLoggedIn: false,
   },
 
   getters: {
-    userIsAuthenticated(state) {
-      return state.isLoggedIn;
-    },
-    user: (state) => state.user,
+    userIsLoggedIn: (state) => state.isLoggedIn,
+    getCurrentUser: (state) => state.currentUser,
   },
 
   mutations: {
-      // user: (state, data) => {
-        //   state.user = data;
-        // },
-        setAuth(state, payload) {
-          state.isLoggedIn = payload.isAuth;
+    setCurrentUser: (state, data) => {
+      state.currentUser = data;
       },
-   
+    setLoggedIn(state, payload) {
+      state.isLoggedIn = payload;
+    },
   },
   actions: {
-    
    // login(context) {
         //   context.commit('setAuth', { isAuth: true });
         //   console.log('login');

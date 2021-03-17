@@ -20,17 +20,17 @@
     },
     methods: {
       getUserData: function() {
-        let self = this;
+        // let self = this;
         // const tempURL = 'https://aroundtheworld-blog-server.herokuapp.com';
         const tempURL = '';
         // axios.defaults.withCredentials = true;
         axios
-          .get(tempURL + '/auth/user')
+          .get('/auth/user')
           .then((response) => {
-            console.log(this.user);
-            console.log(response.data.user);
+            // console.log(this.user);
+            // console.log(response.data.user);
             this.user = response.data.user;
-            console.log('success 😎');
+            // console.log('success 😎');
             // self.$set(this, 'user', response.data.user);
           })
           .catch((errors) => {
