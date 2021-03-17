@@ -6,7 +6,7 @@
     </router-link>
     <div class="text-gray-300 text-xs">
       <p>{{currentUser.name}}</p>
-      <p>{{currentUser.index}}</p>
+      <p>{{currentUser._id}}</p>
     </div>
 
  

@@ -7,6 +7,11 @@
       <p>Password: test123</p>
       <!-- <p>Current User: {{currentUser}} </p> -->
   </div>
+  <div>
+    <form>
+        
+    </form>
+  </div>
 </template>
 
 
