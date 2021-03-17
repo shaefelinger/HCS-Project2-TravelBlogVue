@@ -1,6 +1,6 @@
 <template>
   <div
-    class=" blogPost overflow-hidden m-2 rounded-lg w-11/12 max-w-screen-sm bg-white shadow-md transition duration-500 ease-in-out transform hover:bg-white hover:scale-102 hover:shadow-2xl cursor-pointer"
+    class="  overflow-hidden m-2 rounded-lg w-11/12 max-w-screen-sm bg-white shadow-md transition duration-500 ease-in-out transform hover:bg-white hover:scale-102 hover:shadow-2xl cursor-pointer"
   >
     <!-- <div class="blogImage" style="background-image: url(${element.postImage1URL});"></div> -->
     <!-- <div class="blogImage" style="background-image: url('https://images.unsplash.com/photo-1473615695634-d284ec918736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2900&q=80');"></div> -->
@@ -15,21 +15,13 @@
       </div>
     </div> -->
 
-    <img class="h-52 w-full object-cover  " v-bind:src="blogpost.image1URL" alt="character" />
     <!-- <div class="blogImage" :style="{ backgroundImage: `url(${blogpost.image1URL})` }"></div> -->
-    <div class="blogTextWrapper h-60 overflow-hidden px-8 pb-10">
+
+    <img class="h-52 w-full object-cover  " v-bind:src="blogpost.image1URL" alt="character" />
+    <div class=" h-60 overflow-hidden px-8 pb-10">
       <div class="mt-4 flex items-center">
         <StarRating :rating="blogpost.rating" />
-        <!-- <svg
-          v-for="i in 5"
-          :key="i"
-          :class="i <= blogpost.rating ? 'text-yellow-500' : 'text-gray-300'"
-          class="h-4 w-4 fill-current  "
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-        >
-          <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-        </svg> -->
+        
         <p class="text-gray-400 text-sm ml-2">Visited in {{ blogpost.month }} {{ blogpost.year }}</p>
       </div>
 
@@ -39,11 +31,11 @@
       <!-- <p class="font-light text-gray-600 text-base ">{{ blogpost.description || blogpost.wiki }}</p> -->
       <p class="font-light text-gray-600 text-base ">{{ snippet }}</p>
     </div>
-    <div class="cardBottom">
+    <div class=" pt-4 px-8 pb-8 ">
       <div>
         <div class="mt-5 flex items-center">
           <img class="rounded-full w-11" src="@/assets/Steffen_square.png" alt="" />
-          <p class="ml-4 text-gray-500">Steffen Häfelinger</p>
+          <p class="ml-4 text-gray-500">{{ blogpost.author }}</p>
         </div>
       </div>
     </div>
@@ -75,12 +67,12 @@
 </script>
 
 <style>
-  .ratingContainer {
+  /* .ratingContainer {
     height: 1rem;
     width: 85px;
-  }
+  } */
 
-  .cardBottom {
+  /* .cardBottom {
     padding: 1rem 2rem 2rem;
-  }
+  } */
 </style>

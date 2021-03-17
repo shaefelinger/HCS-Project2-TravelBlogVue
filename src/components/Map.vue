@@ -14,31 +14,7 @@
       },
     },
     mounted() {
-      // const markers = this.blogpostsFromStore;
       const markers = this.locations;
-      //   const markers = [
-      //     {
-      //       id: 'hello',
-      //       coords: {
-      //         lat: 51.093048,
-      //         lng: 120.84212,
-      //       },
-      //     },
-      //     {
-      //       id: 'test',
-      //       coords: {
-      //         lat: 53.551086,
-      //         lng: 9.993682,
-      //       },
-      //     },
-      //     {
-      //       id: 'test',
-      //       coords: {
-      //         lat: 43.551086,
-      //         lng: 0.993682,
-      //       },
-      //     },
-      //   ];
 
       const loader = new Loader({
         apiKey: process.env.VUE_APP_GOOGLE_MAPS_API_KEY,
@@ -68,12 +44,17 @@
 
             const infoWindow = new google.maps.InfoWindow({
               content: `
-                <div class="infoWindow"  style="width: 200px;" >
+                <div class=" w-44"   >
                   <h3 class="text-xl">${location.name}</h3>
                   <p class="my-2">${location.title}</p>
-                  <img class="h-16 w-full object-cover" src="${location.image1URL}">
+                  <p class="my-2 text-xs text-gray-500">Visited in ${location.month} ${location.year}</p>
 
-                  <a href="/#/details/${location._id}"> <button class="miniButton">read more</button></a> 
+                   <div class="my-3 flex items-center justify-evenly ">
+                      <img class="rounded-full w-12 h-12" src="${location.image1URL}" alt="" />
+                      <p class=" text-xs text-gray-500">${location.author}</p>
+                  </div>
+
+                  <a href="/#/details/${location._id}"> <button class=" text-gray-500 h-6">read more</button></a> 
                 </div>
                 <MapInfoWindow />
                 `,
@@ -107,9 +88,7 @@
     justify-content: center;
   } */
 
-  /* .infoWindow {
-    padding: 0 10px;
-  }
+  /* 
 
   .miniButton {
     font-size: 0.6rem;
@@ -117,14 +96,5 @@
     color: #555;
   }
 
-  .infoWindowImage {
-    width: 100%;
-    height: 110px;
-    margin: 15px auto 0;
-    border-radius: 5px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100%;
-    box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.5);
-  } */
+ */
 </style>
