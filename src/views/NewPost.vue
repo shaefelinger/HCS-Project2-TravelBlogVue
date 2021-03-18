@@ -10,7 +10,7 @@
         <!-- <input ref="searchTextField" id="searchTextField" name="locationField" type="text" size="50"  autocomplete="on" /> -->
         <!-- class="disabled:opacity-20" -->
         <input id="searchTextField" ref="searchTextField" type="search" name="locationField" class="text-2xl" :disabled="disableInput" />
-        <button v-if="disableInput" class="resetButton w-20" onclick="resetInputForm()" type="button">X reset</button>
+        <button v-if="disableInput" class="resetButton w-20" @click="resetInputForm()" type="button">X reset</button>
 
         <!-- <button>Submit Location</button> -->
       </form>
@@ -20,7 +20,7 @@
       <!-- <p>{{ coords }}</p> -->
       <!-- <p>{{ image2URL }}</p> -->
       <hr />
-      <form :class="{ disableStyle: !disableInput }">
+      <form :class="{ disableStyle: !disableInput }" @submit.prevent="handleSubmit">
         <p class="text-gray-900 mt-6">Step 2: Enter the details</p>
 
         <label for="titleField">Enter a Title for the post*</label>
@@ -63,15 +63,15 @@
         <p class="miniText">* = required</p>
 
         <div class="buttonContainer">
-          <button class="primaryButton" id="submitButton" @click.prevent="handleSubmit">SUBMIT</button>
+          <button class="primaryButton" id="submitButton" >SUBMIT</button>
+        </div>
+        <!-- <div>
+          <p>{{ user }}</p>
+        </div> -->
+      </form>
           <router-link to="/home">
             <button class="secondaryButton">CANCEL</button>
           </router-link>
-        </div>
-        <div>
-          <p>{{ user }}</p>
-        </div>
-      </form>
     </div>
   </div>
 </template>
@@ -127,7 +127,10 @@
         return this.$store.getters.getCurrentUser;
       },
       handleSubmit() {
-        //  alert('submit');
+        if(!this.currentPlace.name) {
+          return
+        }
+        //  alert(JSON.stringify(this.currentPlace));
         const completeNewPost = {
           name: this.name,
           longName: this.longName,
@@ -160,6 +163,9 @@
       //    // console.log(this.$refs.searchTextField.value);
       //    // this.name = this.$refs.searchTextField.value;
       //  },
+      resetInputForm() {
+        alert('reset')
+      },
 
       locationIsValid() {
         console.log('valid');

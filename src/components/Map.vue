@@ -27,6 +27,7 @@
         minZoom: 1,
         mapTypeControl: false,
         streetViewControl: false,
+        backgroundColor: '#FFFFFF',
       };
 
       loader.loadCallback((err) => {
