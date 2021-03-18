@@ -81,7 +81,7 @@
 
   import Banner from '@/components/Banner.vue';
   import bannerImage from '@/assets/banner2.jpg';
-  import getWiki from '@/utils/getWiki.js';
+  // import getWiki from '@/utils/getWiki.js';
 
   // import axios from 'axios';
   // import router from '../router';
@@ -127,13 +127,39 @@
         return this.$store.getters.getCurrentUser;
       },
       handleSubmit() {
-        alert('submit');
+        //  alert('submit');
+        const completeNewPost = {
+          name: this.name,
+          longName: this.longName,
+          coords: this.coords,
+          title: this.title,
+          description: this.description,
+          rating: this.rating,
+          month: this.month,
+          year: this.year,
+          image1URL: this.image1URL,
+          image2URL: this.image2URL,
+          wiki: this.wiki,
+          utcOffset: this.utcOffset,
+          authorID: this.user._id,
+          author: this.user.name,
+          authorPic: this.user.profilePic,
+        };
+        //  alert(JSON.stringify(completeNewPost))
+        fetch('https://aroundtheworld-blog-server.herokuapp.com/blogposts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(completeNewPost),
+        }).then((res) => {
+          console.log(res);
+          this.$router.push({ name: 'Home' });
+        });
       },
-      handleLocationSubmit(event) {
-        // alert('location');
-        console.log(this.$refs.searchTextField.value);
-        // this.name = this.$refs.searchTextField.value;
-      },
+      //  handleLocationSubmit(event) {
+      //    // alert('location');
+      //    // console.log(this.$refs.searchTextField.value);
+      //    // this.name = this.$refs.searchTextField.value;
+      //  },
 
       locationIsValid() {
         console.log('valid');
@@ -160,8 +186,7 @@
         this.bannerImage = this.image1URL;
         this.coords = newPlace.geometry.location.toJSON();
         this.disableInput = true;
-        // console.log(getWiki(newPlace.name));
-        const name = newPlace.name
+        const name = newPlace.name;
         // let wiki = '';
         fetch(`https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=1&exsentences=3&explaintext&origin=*&titles=${name}`)
           .then((response) => response.json())
@@ -182,7 +207,7 @@
             }
             wiki = wiki.replaceAll(' (listen)', '');
             console.log('wikipost', wiki);
-            this.wiki = wiki
+            this.wiki = wiki;
           });
       },
 

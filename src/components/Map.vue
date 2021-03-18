@@ -24,7 +24,7 @@
 
       const mapOptions = {
         maxZoom: 10,
-        minZoom: 2,
+        minZoom: 1,
         mapTypeControl: false,
         streetViewControl: false,
       };
