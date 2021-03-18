@@ -46,6 +46,7 @@
     <div class="formContainer flex justify-center flex-row items-center">
       <div class="max-w-screen-sm px-8">
         <h1 class="text-3xl">{{ post.longName }}</h1>
+        <hr>
         <form @submit.prevent="handleEditSubmit">
           <p class="text-gray-900 mt-6">Edit the details</p>
 
