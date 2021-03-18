@@ -41,65 +41,64 @@
     </div>
   </div>
 
+  <div v-if="editMode">
+    <Banner :bannerImage="post.image1URL" :bannerText="post.name" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
+    <div class="formContainer flex justify-center flex-row items-center">
+      <div class="max-w-screen-sm px-8">
+        <h1 class="text-3xl">{{ post.longName }}</h1>
+        <form @submit.prevent="handleSubmit">
+          <p class="text-gray-900 mt-6">Edit the details</p>
 
+          <label for="titleField">Enter a Title for the post*</label>
+          <input required type="text" v-model="title" name="titleField" class="text-2xl  " />
 
-  <div v-if="editMode" class="formContainer flex justify-center flex-row items-center">
+          <label for="monthInput">Enter the date of your trip</label>
+          <div class="dateContainer">
+            <select required v-model="month" name="monthInput" id="monthField">
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="Oktober">Oktober</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+            </select>
+            <input required v-model="year" class="yearInput" type="number" placeholder="Enter the year" min="1900" max="2100" id="yearField" />
+          </div>
 
-
-    <div class="max-w-screen-sm px-8">
-    <h1 class="text-3xl">{{ post.longName }}</h1>
-      <form @submit.prevent="handleSubmit">
-        <p class="text-gray-900 mt-6">Edit the details</p>
-
-        <label for="titleField">Enter a Title for the post*</label>
-        <input required type="text" v-model="title" name="titleField" class="text-2xl  " />
-
-        <label for="monthInput">Enter the date of your trip</label>
-        <div class="dateContainer">
-          <select required v-model="month" name="monthInput" id="monthField">
-            <option value="January">January</option>
-            <option value="February">February</option>
-            <option value="March">March</option>
-            <option value="April">April</option>
-            <option value="May">May</option>
-            <option value="June">June</option>
-            <option value="July">July</option>
-            <option value="August">August</option>
-            <option value="September">September</option>
-            <option value="Oktober">Oktober</option>
-            <option value="November">November</option>
-            <option value="December">December</option>
+          <label for="rating">Rate your trip </label>
+          <select v-model="rating" name="rating" id="ratingField">
+            <option value="0" disabled="disabled" selected="selected">Enter Rating</option>
+            <option class="star" value="1">★</option>
+            <option value="2">★★</option>
+            <option value="3">★★★</option>
+            <option value="4">★★★★</option>
+            <option value="5">★★★★★</option>
           </select>
-          <input required v-model="year" class="yearInput" type="number" placeholder="Enter the year" min="1900" max="2100" id="yearField" />
-        </div>
 
-        <label for="rating">Rate your trip </label>
-        <select v-model="rating" name="rating" id="ratingField">
-          <option value="0" disabled="disabled" selected="selected">Enter Rating</option>
-          <option class="star" value="1">★</option>
-          <option value="2">★★</option>
-          <option value="3">★★★</option>
-          <option value="4">★★★★</option>
-          <option value="5">★★★★★</option>
-        </select>
+          <label for="descriptionField">Enter a description</label>
+          <textarea v-model="description" id="descriptionField" name="descriptionField" rows="6" cols="80" placeholder=""></textarea>
 
-        <label for="descriptionField">Enter a description</label>
-        <textarea v-model="description" id="descriptionField" name="descriptionField" rows="6" cols="80" placeholder=""></textarea>
+          <label for="wikiField">Edit Wikipedia Information</label>
+          <textarea id="wikiField" name="wikiField" rows="6" cols="80" v-model="wiki"></textarea>
+          <p class="miniText">* = required</p>
 
-        <label for="wikiField">Edit Wikipedia Information</label>
-        <textarea id="wikiField" name="wikiField" rows="6" cols="80" v-model="wiki"></textarea>
-        <p class="miniText">* = required</p>
-
-        <div class="buttonContainer">
-          <button class="primaryButton" id="submitButton">SUBMIT</button>
-        </div>
-        <!-- <div>
+          <div class="buttonContainer">
+            <button class="primaryButton" id="submitButton">SUBMIT</button>
+          </div>
+          <!-- <div>
           <p>{{ user }}</p>
         </div> -->
-      </form>
-      <router-link to="/home">
-        <button class="secondaryButton">CANCEL</button>
-      </router-link>
+        </form>
+        <router-link to="/home">
+          <button class="secondaryButton">CANCEL</button>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
