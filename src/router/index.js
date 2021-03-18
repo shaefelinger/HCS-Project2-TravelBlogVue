@@ -11,7 +11,7 @@ import Home from '../views/Home.vue';
 import Details from '../views/Details.vue';
 import About from '../views/About.vue';
 import NewPost from '../views/NewPost.vue';
-import EditPost from '../views/EditPost.vue';
+// import EditPost from '../views/EditPost.vue';
 import Check from '../views/Check.vue';
 import NotFound from '../views/NotFound.vue';
 import SignIn from '../views/SignIn.vue';
@@ -58,12 +58,12 @@ const routes = [
     component: Details,
     props: true,
   },
-  {
-    path: '/edit/:id',
-    name: 'Edit',
-    component: EditPost,
-    props: true,
-  },
+  // {
+  //   path: '/edit/:id',
+  //   name: 'Edit',
+  //   component: EditPost,
+  //   props: true,
+  // },
   {
     path: '/check',
     name: 'Check',
