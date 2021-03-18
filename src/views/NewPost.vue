@@ -6,21 +6,25 @@
   <div class="formContainer ">
     <div class="max-w-screen-sm px-8">
       <form @submit.prevent="handleLocationSubmit">
-        <label for="locationField" id="locationLabel">Step 1: Enter a Location*</label>
+        <p for="locationField" class="text-gray-900" :class="{ disableStyle: disableInput }">Step 1: Enter a Location from the List*</p>
         <!-- <input ref="searchTextField" id="searchTextField" name="locationField" type="text" size="50"  autocomplete="on" /> -->
-        <input id="searchTextField" ref="searchTextField" type="search" name="locationField" />
-        <button>Submit Location</button>
+        <!-- class="disabled:opacity-20" -->
+        <input id="searchTextField" ref="searchTextField" type="search" name="locationField" class="text-2xl" :disabled="disableInput" />
+        <button v-if="disableInput" class="resetButton w-20" onclick="resetInputForm()" type="button">X reset</button>
+
+        <!-- <button>Submit Location</button> -->
       </form>
-        <p>{{name}}</p>
+      <!-- <p>{{ name }}</p>
+      <p>{{ longName }}</p> -->
+      <!-- <p>{{ lat }} {{ lng }}</p> -->
+      <!-- <p>{{ coords }}</p> -->
+      <!-- <p>{{ image2URL }}</p> -->
       <hr />
-      <form >
-        <label for="titleField">lat</label>
-        <input disabled v-model="lat" class="w-28" type="number" />
-        <label for="titleField">lng</label>
-        <input v-model="lng" type="number" class="w-28" />
+      <form :class="{ disableStyle: !disableInput }">
+        <p class="text-gray-900 mt-6">Step 2: Enter the details</p>
 
         <label for="titleField">Enter a Title for the post*</label>
-        <input required type="text" v-model="title" name="titleField" id="titleField" />
+        <input required type="text" v-model="title" name="titleField" class="text-2xl  " :disabled="!disableInput" />
 
         <label for="monthInput">Enter the date of your trip</label>
         <div class="dateContainer">
@@ -63,7 +67,6 @@
           <router-link to="/home">
             <button class="secondaryButton">CANCEL</button>
           </router-link>
-          <button class="resetButton" onclick="resetInputForm()" type="button">reset form</button>
         </div>
         <div>
           <p>{{ user }}</p>
@@ -96,15 +99,22 @@
 
         user: {},
 
-        name: 'Name',
+        currentPlace: {},
+        disableInput: false,
+
+        name: '',
+        longName: '',
+        coords: {},
         lat: 54,
         lng: 33,
-        title: 'Title',
+        title: '',
         description: 'blabla',
         rating: '4',
-        month: 'May',
-        year: '2018',
+        month: 'January',
+        year: '2021',
         wiki: 'wikifiki',
+        image1URL: 'img1',
+        image2URL: '',
       };
     },
 
@@ -121,15 +131,55 @@
       handleLocationSubmit(event) {
         // alert('location');
         console.log(this.$refs.searchTextField.value);
-        this.name = this.$refs.searchTextField.value
+        // this.name = this.$refs.searchTextField.value;
+      },
+      locationIsValid() {
+        console.log('valid');
+        // console.log('current:', this.currentPlace);
+        const newPlace = this.currentPlace;
+        console.log(newPlace);
+        this.name = newPlace.name;
+        this.longName = newPlace.formatted_address;
+        this.bannerText = this.longName;
+        // FALLBACK IMAGES
+        this.image1URL =
+          'https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1866&q=80';
+        this.image2URL =
+          'https://images.unsplash.com/photo-1517842264405-72bb906a1936?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2250&q=80';
+
+        if (newPlace.photos) {
+          if (newPlace.photos[0]) {
+            this.image1URL = newPlace.photos[0].getUrl();
+          }
+          if (newPlace.photos[1]) {
+            this.image2URL = newPlace.photos[1].getUrl();
+          }
+        }
+        this.bannerImage = this.image1URL;
+        this.coords = newPlace.geometry.location.toJSON();
+        this.disableInput = true;
       },
 
       initialize() {
         const options = {
           types: ['(regions)'],
+          fields: ['geometry', 'photos', 'formatted_address', 'utc_offset_minutes', 'name', 'place_id'],
         };
         const input = document.getElementById('searchTextField');
         const autocomplete = new google.maps.places.Autocomplete(input, options);
+        autocomplete.addListener('place_changed', () => {
+          let place = autocomplete.getPlace();
+          if (place.place_id) {
+            // => this is a valid location, if place_id exist
+            // console.log('complete Location');
+            this.currentPlace = place;
+            // getWiki(place.name);
+            this.locationIsValid();
+          } else {
+            // -> inclomplete location
+            alert('Please select a Location from the list');
+          }
+        });
       },
     },
 
@@ -147,10 +197,14 @@
 </script>
 
 <style>
+  .disableStyle {
+    opacity: 0.3;
+    /* color: red; */
+  }
   #addPostForm {
     /* max-width: 600px; */
-    color: #333;
-    padding: 0 2rem;
+    /* color: #333; */
+    /* padding: 0 2rem; */
   }
 
   input:focus,
@@ -221,20 +275,20 @@
     margin-top: 0;
   }
 
-  #searchTextField {
+  /* #searchTextField {
     font-size: 1.4rem;
     margin-top: 0;
-  }
+  } */
 
   #searchTextField:disabled {
     border: 0;
     padding-left: 0;
     font-size: 1.9rem;
     color: #111;
-    font-weight: 800;
+    font-weight: 700;
   }
 
-  #titleField {
+  /* #titleField {
     font-size: 1.4rem;
-  }
+  } */
 </style>

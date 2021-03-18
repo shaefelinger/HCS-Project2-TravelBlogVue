@@ -9,6 +9,7 @@
         <button class=" uppercase "  id="bannerButton">{{ bannerButtonText }}</button>
       </router-link>
   </div>
+  <!-- {{bannerImage}} -->
 </template>
 
 <script>
