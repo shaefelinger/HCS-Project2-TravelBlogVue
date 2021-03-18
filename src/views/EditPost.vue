@@ -1,9 +1,9 @@
 <template>
   <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
 
-  <!-- <p>Name: {{ user }}</p> -->
+  <p>post: {{ propPost }}</p>
 
-  <div class="formContainer flex justify-center flex-row items-center">
+  <div class="formContainer ">
     <div class="max-w-screen-sm px-8">
       <form @submit.prevent="handleLocationSubmit">
         <p for="locationField" class="text-gray-900" :class="{ disableStyle: disableInput }">Step 1: Enter a Location from the List*</p>
@@ -81,20 +81,23 @@
 
   import Banner from '@/components/Banner.vue';
   import bannerImage from '@/assets/banner2.jpg';
-  // import getWiki from '@/utils/getWiki.js';
 
-  // import axios from 'axios';
-  // import router from '../router';
+  import getPost from '@/composables/getPost';
+
+  import { useRoute } from 'vue-router';
+
+  import Spinner from '@/components/Spinner.vue';
 
   export default {
-    name: 'NewPost',
+    name: 'EditPost',
     components: {
       Banner,
     },
+    props: ['propPost'],
     data() {
       return {
         bannerImage,
-        bannerText: 'Add new Post...',
+        bannerText: 'Edit Post...',
         bannerButtonText: 'Back',
         bannerButtonLink: 'Home',
 
@@ -217,38 +220,50 @@
           });
       },
 
-      initialize() {
-        const options = {
-          types: ['(regions)'],
-          fields: ['geometry', 'photos', 'formatted_address', 'utc_offset_minutes', 'name', 'place_id'],
-        };
-        const input = document.getElementById('searchTextField');
-        const autocomplete = new google.maps.places.Autocomplete(input, options);
-        autocomplete.addListener('place_changed', () => {
-          let place = autocomplete.getPlace();
-          if (place.place_id) {
-            // => this is a valid location, if place_id exist
-            // console.log('complete Location');
-            this.currentPlace = place;
-            // getWiki(place.name);
-            this.locationIsValid();
-          } else {
-            // -> inclomplete location
-            alert('Please select a Location from the list');
-          }
-        });
-      },
+      // initialize() {
+      //   const options = {
+      //     types: ['(regions)'],
+      //     fields: ['geometry', 'photos', 'formatted_address', 'utc_offset_minutes', 'name', 'place_id'],
+      //   };
+      //   const input = document.getElementById('searchTextField');
+      //   const autocomplete = new google.maps.places.Autocomplete(input, options);
+      //   autocomplete.addListener('place_changed', () => {
+      //     let place = autocomplete.getPlace();
+      //     if (place.place_id) {
+      //       // => this is a valid location, if place_id exist
+      //       // console.log('complete Location');
+      //       this.currentPlace = place;
+      //       // getWiki(place.name);
+      //       this.locationIsValid();
+      //     } else {
+      //       // -> inclomplete location
+      //       alert('Please select a Location from the list');
+      //     }
+      //   });
+      // },
     },
 
     mounted() {
-      const check = this.userIsLoggedIn();
-      if (!check) {
-        this.$router.push('/home');
-      }
-      this.user = this.getCurrentUser();
+      // const check = this.userIsLoggedIn();
+      // if (!check) {
+      //   this.$router.push('/home');
+      // }
+      // this.user = this.getCurrentUser();
+      // ==========================================================================
 
-      this.initialize();
-      google.maps.event.addDomListener(window, 'load', this.initialize);
+      // this.name = post.name
+      // this.longName = post.longName
+      console.log("post-mounted", this.post);
+      // this.initialize();
+      // google.maps.event.addDomListener(window, 'load', this.initialize);
+    },
+
+  setup() {
+      const route = useRoute();
+      const currentID = route.params.id;
+      const { post, error, load } = getPost(currentID);
+      load();
+      return { post, error };
     },
   };
 </script>
@@ -295,10 +310,10 @@
   }
 
   .formContainer {
-    /* display: flex; */
-    /* justify-content: center; */
-    /* flex-direction: row; */
-    /* align-items: center; */
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
   }
 
   .formContainer input,
