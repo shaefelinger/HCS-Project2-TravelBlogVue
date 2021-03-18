@@ -46,7 +46,7 @@
     <div class="formContainer flex justify-center flex-row items-center">
       <div class="max-w-screen-sm px-8">
         <h1 class="text-3xl">{{ post.longName }}</h1>
-        <form @submit.prevent="handleSubmit">
+        <form @submit.prevent="handleEditSubmit">
           <p class="text-gray-900 mt-6">Edit the details</p>
 
           <label for="titleField">Enter a Title for the post*</label>
@@ -89,14 +89,17 @@
           <p class="miniText">* = required</p>
 
           <div class="buttonContainer">
-            <button class="primaryButton" id="submitButton">SUBMIT</button>
+            <button class="primaryButton" id="submitButton" >SUBMIT</button>
           </div>
           <!-- <div>
           <p>{{ user }}</p>
         </div> -->
         </form>
+          <button @click="cancelEdit" class="secondaryButton">CANCEL</button>
+        <!-- <router-link :to="'/details/' + post._id">
+        </router-link> -->
         <router-link to="/home">
-          <button class="secondaryButton">CANCEL</button>
+          <button class="secondaryButton">DELETE POST</button>
         </router-link>
       </div>
     </div>
@@ -141,6 +144,44 @@
         //   const link = '/edit/' + post._id;
         // this.$router.push(link);
       },
+      cancelEdit() {
+        this.editMode =false
+      },
+      handleEditSubmit() {
+        // alert('submit')
+        const completeNewPost = {
+          name: this.post.name,
+          longName: this.post.longName,
+          coords: this.post.coords,
+          title: this.title,
+          description: this.description,
+          rating: this.rating,
+          month: this.month,
+          year: this.year,
+          wiki: this.wiki,
+          image1URL: this.post.image1URL,
+          image2URL: this.post.image2URL,
+          utcOffset: this.post.utcOffset,
+          authorID: this.post.authorID,
+          author: this.post.author,
+          authorPic: this.post.authorPic,
+        };
+        //  alert(JSON.stringify(completeNewPost))
+         const url ='https://aroundtheworld-blog-server.herokuapp.com/blogposts/'+this.post._id
+        //  alert(url)
+        fetch(url, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(completeNewPost),
+        }).then((res) => {
+          console.log(res);
+          this.editMode = false
+          this.$router.push({ name: 'Home'});
+          //  this.$router.go(0)
+          // location.reload();
+          // this.$router.push({ name: 'Details', params: { id: this.post._id} });
+        });
+      }
     },
     setup() {
       const route = useRoute();
