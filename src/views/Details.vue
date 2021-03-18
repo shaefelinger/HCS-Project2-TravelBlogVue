@@ -99,9 +99,9 @@
           <button @click="cancelEdit" class="secondaryButton">CANCEL</button>
         <!-- <router-link :to="'/details/' + post._id">
         </router-link> -->
-        <router-link to="/home">
-          <button class="secondaryButton">DELETE POST</button>
-        </router-link>
+          <button @click="deletePost" class="secondaryButton text-red-500">DELETE POST</button>
+        <!-- <router-link to="/home">
+        </router-link> -->
       </div>
     </div>
   </div>
@@ -147,6 +147,22 @@
       },
       cancelEdit() {
         this.editMode =false
+      },
+      deletePost() {
+        // alert('delete')
+        const url ='https://aroundtheworld-blog-server.herokuapp.com/blogposts/'+this.post._id
+         fetch(url, {
+          method: 'DELETE',
+          // headers: { 'Content-Type': 'application/json' },
+          // body: JSON.stringify(completeNewPost),
+        }).then((res) => {
+          console.log(res);
+          // this.editMode = false  
+          this.$router.push({ name: 'Home'});
+          //  this.$router.go(0)
+          // location.reload();
+          // this.$router.push({ name: 'Details', params: { id: this.post._id} });
+        });
       },
       handleEditSubmit() {
         // alert('submit')
