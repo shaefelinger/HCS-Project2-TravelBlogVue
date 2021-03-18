@@ -28,7 +28,7 @@
 
         <label for="monthInput">Enter the date of your trip</label>
         <div class="dateContainer">
-          <select required v-model="month" name="monthInput" id="monthField">
+          <select required v-model="month" name="monthInput" id="monthField" :disabled="!disableInput">
             <option value="January">January</option>
             <option value="February">February</option>
             <option value="March">March</option>
@@ -42,11 +42,11 @@
             <option value="November">November</option>
             <option value="December">December</option>
           </select>
-          <input required v-model="year" class="yearInput" type="number" placeholder="Enter the year" min="1900" max="2100" id="yearField" />
+          <input required v-model="year" class="yearInput" type="number" placeholder="Enter the year" min="1900" max="2100" id="yearField" :disabled="!disableInput" />
         </div>
 
         <label for="rating">Rate your trip </label>
-        <select v-model="rating" name="rating" id="ratingField">
+        <select v-model="rating" name="rating" id="ratingField" :disabled="!disableInput">
           <option value="0" disabled="disabled" selected="selected">Enter Rating</option>
           <option class="star" value="1">★</option>
           <option value="2">★★</option>
@@ -56,10 +56,10 @@
         </select>
 
         <label for="descriptionField">Enter a description</label>
-        <textarea v-model="description" id="descriptionField" name="descriptionField" rows="6" cols="80" placeholder=""></textarea>
+        <textarea v-model="description" id="descriptionField" name="descriptionField" :disabled="!disableInput" rows="6" cols="80" placeholder=""></textarea>
 
         <label for="wikiField">Edit Wikipedia Information</label>
-        <textarea id="wikiField" name="wikiField" rows="6" cols="80" v-model="wiki"></textarea>
+        <textarea id="wikiField" name="wikiField" rows="6" cols="80" v-model="wiki" :disabled="!disableInput"></textarea>
         <p class="miniText">* = required</p>
 
         <div class="buttonContainer">
@@ -81,6 +81,7 @@
 
   import Banner from '@/components/Banner.vue';
   import bannerImage from '@/assets/banner2.jpg';
+  import getWiki from '@/utils/getWiki.js';
 
   // import axios from 'axios';
   // import router from '../router';
@@ -133,6 +134,7 @@
         console.log(this.$refs.searchTextField.value);
         // this.name = this.$refs.searchTextField.value;
       },
+
       locationIsValid() {
         console.log('valid');
         // console.log('current:', this.currentPlace);
@@ -158,6 +160,30 @@
         this.bannerImage = this.image1URL;
         this.coords = newPlace.geometry.location.toJSON();
         this.disableInput = true;
+        // console.log(getWiki(newPlace.name));
+        const name = newPlace.name
+        // let wiki = '';
+        fetch(`https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=1&exsentences=3&explaintext&origin=*&titles=${name}`)
+          .then((response) => response.json())
+          .then((data) => {
+            const pageID = Object.keys(data.query.pages);
+            let wiki = data.query.pages[pageID].extract;
+
+            // check if wiki is correct
+            if (pageID[0] == '-1') {
+              wiki = '';
+              console.error('wiki is empty');
+            } else {
+              wiki = data.query.pages[pageID].extract;
+              if (wiki.length < 100) {
+                wiki = '';
+                console.error('no wiki answer');
+              }
+            }
+            wiki = wiki.replaceAll(' (listen)', '');
+            console.log('wikipost', wiki);
+            this.wiki = wiki
+          });
       },
 
       initialize() {
