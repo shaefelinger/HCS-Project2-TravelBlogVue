@@ -11,24 +11,24 @@
   <!-- <img class="w-96 m-auto mt-10" src="@/assets/underconstruction.jpg" alt="" /> -->
   <div class=" flex justify-center flex-row items-center ">
     <!-- <input type="file" @change="onFileChange" /> -->
-    <!-- <div id="preview">
+    <div id="preview">
     <img v-if="url" :src="url" />
-  </div> -->
-    <form class="w-96" @submit.prevent="handleUserSignIn">
-      <div class="flex items-end">
-        <img class="w-20 h-20  mt-10 rounded-full object-contain" v-if="newUserProfilePic" :src="newUserProfilePic" alt="picPreview" />
-        <!-- <div class="ml-4">
+  </div>
+    <form class="w-96" @submit.prevent="handleProfileEditSubmit">
+      <div class="flex items-end ">
+        <img class="w-20 h-20  mt-10 rounded-full object-contain"  :src="newUserProfilePic" alt="picPreview" />
+        <div class="ml-4">
           <label>Upload Profile Image</label>
           <input @change="onFileChange" class="border-0 " type="file" />
-        </div> -->
+        </div>
       </div>
       <label>Name</label>
       <input required v-model="newUserName" class="w-full" type="text" />
-      <label>Email</label>
-      <input required v-model="newUserEmail" class="w-full" type="email" />
+      <!-- <label>Email</label> -->
+      <!-- <input required v-model="newUserEmail" class="w-full" type="email" />
       <label>Password</label>
-      <input required v-model="newUserPassword" class="w-full " type="password" />
-      <button class="primaryButton">Sign In</button>
+      <input required v-model="newUserPassword" class="w-full " type="password" /> -->
+      <button class="primaryButton">Submit</button>
     </form>
   </div>
 </template>
@@ -44,7 +44,7 @@
     data() {
       return {
         bannerImage,
-        bannerText: 'Sign In...',
+        bannerText: 'Edit profile...',
         bannerButtonText: 'Back',
         bannerButtonLink: 'Home',
 
@@ -53,21 +53,23 @@
         newUserName: '',
         newUserEmail: '',
         newUserPassword: '',
-        newUserProfilePic: 'https://aroundtheworld-blog-server.herokuapp.com/images/dummy.jpg',
+        newUserProfilePic: '',
       };
     },
     methods: {
-      handleUserSignIn() {
+      handleProfileEditSubmit() {
         const newUser = {
           name: this.newUserName,
-          email: this.newUserEmail,
-          password: this.newUserPassword,
-          profilePic: 'https://aroundtheworld-blog-server.herokuapp.com/images/dummy.jpg'
-
+          // email: this.newUserEmail,
+          // password: this.newUserPassword,
+          // profilePic: this.newUserProfilePic
         }
         console.log(newUser);
-        fetch('https://aroundtheworld-blog-server.herokuapp.com/users', {
-          method: 'POST',
+        const url='https://aroundtheworld-blog-server.herokuapp.com/users/'+this.currentUser._id
+        alert(url)
+
+        fetch(url, {
+          method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(newUser),
         }).then((res) => {
@@ -83,6 +85,19 @@
     },
     mounted() {
       console.log('/signin mounted');
+      console.log(this.currentUser.ProfilePic);
+      this.newUserName = this.currentUser.name
+      this.newUserEmail = this.currentUser.email
+      this.newUserPassword = this.currentUser.password
+      this.newUserProfilePic = this.currentUser.profilePic
+    },
+     computed: {
+      userIsLoggedIn() {
+        return this.$store.getters.userIsLoggedIn;
+      },
+      currentUser() {
+         return this.$store.getters.getCurrentUser;
+      }
     },
   };
 </script>

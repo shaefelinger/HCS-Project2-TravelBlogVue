@@ -4,10 +4,6 @@
       <div class=" w-9 lg:w-16 "><img class=" object-fill   " src="@/assets/world.png" alt="logo" /></div>
       <span class="pl-4 text-2xl lg:text-4xl xl:text-4xl text-gray-900 lg:font-normal font-medium ">Around the World</span>
     </router-link>
-    <div class="text-gray-300 text-xs">
-      <p>{{ currentUser.name }}</p>
-      <p>{{ currentUser._id }}</p>
-    </div>
 
     <div v-if="showModal">
       <Login @closeModal="closeModal" />
@@ -18,7 +14,7 @@
         <!-- <router-link class=" text-gray-700" :to="{ name: 'Home' }">Overview</router-link> -->
         <router-link class=" text-gray-700" to="/about">
           <div class="flex items-end">
-            <span class="material-icons"></span>  
+            <span class="material-icons"></span>
             <span class="ml-2 ">About</span>
           </div>
         </router-link>
@@ -29,21 +25,30 @@
             <span class="ml-2 ">new post</span>
           </div>
         </router-link>
-        <a @click="toggleModal" v-if="!userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">
+       
+       
+        <router-link v-if="userIsLoggedIn" to="/editprofile">
+          <img class=" rounded-full w-12 h-12 " :src="currentUser.profilePic" alt="" />
+        </router-link>
+
+        <div v-if="userIsLoggedIn" class="text-gray-600 text-xs">
+          <span >Welcome </span>
+          <p>{{ currentUser.name }}</p>
+        </div>
+
+         <a @click="toggleModal" v-if="!userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">
           <div class="flex items-end text-white">
             <span class="material-icons">login</span>
             <span class="ml-3 ">Login</span>
           </div>
         </a>
-        <a @click="logout" v-if="userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">
+
+         <a @click="logout" v-if="userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">
           <div class="flex items-end text-white">
             <span class="material-icons">logout</span>
             <span class="ml-3 ">Logout</span>
           </div>
         </a>
-        <router-link v-if="userIsLoggedIn" to="/signin">
-          <img class=" rounded-full w-12 h-12 " :src="currentUser.profilePic" alt="" />
-        </router-link>
       </div>
     </nav>
 

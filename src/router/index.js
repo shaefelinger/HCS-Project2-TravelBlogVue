@@ -15,6 +15,7 @@ import NewPost from '../views/NewPost.vue';
 import Check from '../views/Check.vue';
 import NotFound from '../views/NotFound.vue';
 import SignIn from '../views/SignIn.vue';
+import EditProfile from '../views/EditProfile.vue';
 
 const routes = [
   {
@@ -78,6 +79,11 @@ const routes = [
     path: '/signin',
     name: 'SignIn',
     component: SignIn,
+  },
+  {
+    path: '/editprofile',
+    name: 'EditProfile',
+    component: EditProfile,
   },
   // catchall 404
   {
