@@ -141,31 +141,20 @@
         this.month = post.month;
         this.year = post.year;
         this.wiki = post.wiki;
-        //  console.log('calledit',post);
-        //   const link = '/edit/' + post._id;
-        // this.$router.push(link);
       },
       cancelEdit() {
         this.editMode =false
       },
       deletePost() {
-        // alert('delete')
         const url ='https://aroundtheworld-blog-server.herokuapp.com/blogposts/'+this.post._id
          fetch(url, {
           method: 'DELETE',
-          // headers: { 'Content-Type': 'application/json' },
-          // body: JSON.stringify(completeNewPost),
         }).then((res) => {
           console.log(res);
-          // this.editMode = false  
           this.$router.push({ name: 'Home'});
-          //  this.$router.go(0)
-          // location.reload();
-          // this.$router.push({ name: 'Details', params: { id: this.post._id} });
         });
       },
       handleEditSubmit() {
-        // alert('submit')
         const completeNewPost = {
           name: this.post.name,
           longName: this.post.longName,
@@ -183,9 +172,7 @@
           author: this.post.author,
           authorPic: this.post.authorPic,
         };
-        //  alert(JSON.stringify(completeNewPost))
          const url ='https://aroundtheworld-blog-server.herokuapp.com/blogposts/'+this.post._id
-        //  alert(url)
         fetch(url, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
@@ -194,9 +181,6 @@
           console.log(res);
           this.editMode = false
           this.$router.push({ name: 'Home'});
-          //  this.$router.go(0)
-          // location.reload();
-          // this.$router.push({ name: 'Details', params: { id: this.post._id} });
         });
       }
     },

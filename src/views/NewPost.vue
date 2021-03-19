@@ -1,25 +1,18 @@
 <template>
   <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
 
-  <!-- <p>Name: {{ user }}</p> -->
 
   <div class="formContainer flex justify-center flex-row items-center">
     <div class="max-w-screen-sm px-8">
+
       <form @submit.prevent="handleLocationSubmit">
         <p for="locationField" class="text-gray-900" :class="{ disableStyle: disableInput }">Step 1: Enter a Location from the List*</p>
-        <!-- <input ref="searchTextField" id="searchTextField" name="locationField" type="text" size="50"  autocomplete="on" /> -->
-        <!-- class="disabled:opacity-20" -->
         <input id="searchTextField" ref="searchTextField" type="search" name="locationField" class="text-2xl" :disabled="disableInput" />
         <button v-if="disableInput" class="resetButton w-20" @click="resetInputForm()" type="button">X reset</button>
-
-        <!-- <button>Submit Location</button> -->
       </form>
-      <!-- <p>{{ name }}</p>
-      <p>{{ longName }}</p> -->
-      <!-- <p>{{ lat }} {{ lng }}</p> -->
-      <!-- <p>{{ coords }}</p> -->
-      <!-- <p>{{ image2URL }}</p> -->
+   
       <hr />
+
       <form :class="{ disableStyle: !disableInput }" @submit.prevent="handleSubmit">
         <p class="text-gray-900 mt-6">Step 2: Enter the details</p>
 
@@ -253,13 +246,8 @@
 <style>
   .disableStyle {
     opacity: 0.3;
-    /* color: red; */
   }
-  #addPostForm {
-    /* max-width: 600px; */
-    /* color: #333; */
-    /* padding: 0 2rem; */
-  }
+ 
 
   input:focus,
   select:focus,
@@ -291,12 +279,6 @@
     display: inline;
   }
 
-  .formContainer {
-    /* display: flex; */
-    /* justify-content: center; */
-    /* flex-direction: row; */
-    /* align-items: center; */
-  }
 
   .formContainer input,
   .formContainer textarea {

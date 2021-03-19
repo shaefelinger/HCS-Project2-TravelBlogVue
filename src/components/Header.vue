@@ -100,10 +100,6 @@
           </div>
         </a>
 
-        <!-- <a id="gotoMapSideMenu" onclick="gotoMapPage()">map</a>
-          <a id="gotoNewPostSideMenu" onclick="gotoAddPostPage()">+ add post</a>
-          <a id="gotoResetAllSideMenu" onclick="resetLocalStorage()">reset all</a>
-          <a id="gotoAboutPageSideMenu" onclick="gotoAboutPage()">about</a> -->
       </div>
     </div>
   </header>
@@ -167,9 +163,6 @@
   /* HEADER   */
   /* ========================================================================== */
 
-  .header {
-  }
-
   #siteLogoName {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
@@ -226,6 +219,7 @@
 
   #sideMenu a {
     display: block;
+    width: 100%;
     padding: 0.4rem 0.4rem 0.4rem 3rem;
     text-decoration: none;
     color: #155e39;
