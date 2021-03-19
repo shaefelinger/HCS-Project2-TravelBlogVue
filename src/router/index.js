@@ -6,7 +6,6 @@ import About from '../views/About.vue';
 import NewPost from '../views/NewPost.vue';
 import NotFound from '../views/NotFound.vue';
 import SignIn from '../views/SignIn.vue';
-// import EditProfile from '../views/EditProfile.vue';
 
 const routes = [
   {
@@ -39,11 +38,6 @@ const routes = [
     name: 'SignIn',
     component: SignIn,
   },
-  // {
-  //   path: '/editprofile',
-  //   name: 'EditProfile',
-  //   component: EditProfile,
-  // },
   // catchall 404
   {
     path: '/:catchAll(.*)',
