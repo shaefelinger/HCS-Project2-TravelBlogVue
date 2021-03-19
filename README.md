@@ -12,7 +12,7 @@ https://aroundtheworld-blog-server.herokuapp.com/
 
 ##### Github-links
 
-[View this project and the documentation on Github](https://github.com/shaefelinger/HCS-Project2-TravelBlogVue)
+[View this project and this documentation on Github](https://github.com/shaefelinger/HCS-Project2-TravelBlogVue)
 
 [View the backend-code on Github](https://github.com/shaefelinger/HCS-Project2-Backend)
 
@@ -47,7 +47,7 @@ https://aroundtheworld-blog-server.herokuapp.com/
 
 - the name and the profile-image is displayed
 
-- you can add new posts, and edit and delete existing posts
+- you can add new posts,  edit and delete existing posts
 - the Login-button becomes a Logout-button
 
 ------
@@ -59,9 +59,8 @@ Shows an overview of the all blog posts and a Google Map.
 ##### Map-View
 
 - Shows all locations on a map. 
-- The zoom is automatically adapted to fit all locations. 
+- The zoom is automatically adopted to fit all locations. 
 - Clicking on a marker opens an InfoWindow for that location. Clicking on the 'read more'-link opens the corresponding Details-Page.  `/details/:id`
-- The InfoWindow can be closed by clicking on the "x"
 
 ##### Blog Post Previews
 
