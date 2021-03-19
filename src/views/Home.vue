@@ -8,9 +8,9 @@
     
     <Map :locations="blogposts" />
 
-    <div class="flex ">
-      <div class="flex flex-col items-center  sm:flex-wrap sm:flex-row sm:justify-center">
-        <div class="" v-for="blogpost in blogposts" :key="blogpost._id" @click="selectBlogpost(blogpost)">
+    <div class="flex  justify-center ">
+      <div class="flex flex-col items-center  sm:flex-wrap sm:flex-row sm:justify-center ">
+        <div class="justify-content " v-for="blogpost in blogposts" :key="blogpost._id" @click="selectBlogpost(blogpost)">
           <OverviewCard :blogpost="blogpost" />
         </div>
       </div>
