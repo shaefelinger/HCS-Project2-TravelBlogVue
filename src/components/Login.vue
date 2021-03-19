@@ -10,12 +10,8 @@
         <p v-if="invalidLogin" class="text-red-600 text-sm ">Wrong Password or username - try again!</p>
         <button class="primaryButton">Log In</button>
         <div class="text-gray-600 text-xs text-center m-4">
-          <!-- <p>s.haefelinger@gmx.de - x</p>
-          <p>x@x.com - x</p> -->
-          <!-- <p>test@test.com - test123</p>  -->
         </div>
       </form>
-      <!-- <p class="text-center m-6">or</p> -->
 
       <button @click="signIn" class="secondaryButton">Sign In</button>
       <hr />
@@ -25,7 +21,7 @@
 </template>
 
 <script>
-  import router from '@/router';
+  // import router from '@/router';
   import axios from 'axios';
   export default {
     name: 'Login',
@@ -80,20 +76,3 @@
     },
   };
 </script>
-
-<style scoped>
-  /* .modal {
-    width: 400px;
-    padding: 20px;
-    margin: 100px auto;
-    background: white;
-    border-radius: 10px;
-  } */
-  /* .backdrop {
-    top: 0;
-    position: fixed;
-    background: rgba(0, 0, 0, 0.5);
-    width: 100%;
-    height: 100%;
-  } */
-</style>
