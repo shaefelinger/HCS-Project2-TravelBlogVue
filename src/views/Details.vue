@@ -48,7 +48,7 @@
         <h1 class="text-3xl">{{ post.longName }}</h1>
         <hr>
         <form @submit.prevent="handleEditSubmit">
-          <p class="text-gray-900 mt-6">Edit the details</p>
+          <!-- <p class="text-gray-900 mt-6">Edit the details</p> -->
 
           <label for="titleField">Enter a Title for the post*</label>
           <input required type="text" v-model="title" name="titleField" class="text-2xl  " />
@@ -92,16 +92,9 @@
           <div class="buttonContainer">
             <button class="primaryButton" id="submitButton" >SUBMIT</button>
           </div>
-          <!-- <div>
-          <p>{{ user }}</p>
-        </div> -->
         </form>
           <button @click="cancelEdit" class="secondaryButton">CANCEL</button>
-        <!-- <router-link :to="'/details/' + post._id">
-        </router-link> -->
-          <button @click="deletePost" class="secondaryButton text-red-500">DELETE POST</button>
-        <!-- <router-link to="/home">
-        </router-link> -->
+          <button @click="deletePost" class="border-gray-400 text-red-500">DELETE POST</button>
       </div>
     </div>
   </div>

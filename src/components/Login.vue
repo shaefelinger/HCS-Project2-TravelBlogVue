@@ -1,11 +1,11 @@
 <template>
-  <div class="backdrop">
-    <div class=" modal  w-96 p-8 m-10 rounded-xl shadow-2xl absolute z-50 bg-white right-16 border-2 border-gray-200  ">
-      <h2>Login</h2>
+  <div >
+    <div class="   w-96 p-8 mt-10 rounded-xl shadow-2xl absolute z-50 bg-white sm:text-gray-800 right-4 sm:right-16 border-2 border-gray-200  ">
+      <!-- <h2>Login</h2> -->
       <form v-on:submit="submitLogin">
         <label>Email</label>
         <input class="w-full" type="text" name="email" /><br />
-        <label>Password</label>
+        <label class="mt-00">Password</label>
         <input class="w-full" type="password" name="password" /><br />
         <p v-if="invalidLogin" class="text-red-600 text-sm ">Wrong Password or username - try again!</p>
         <button class="primaryButton">Log In</button>
@@ -14,14 +14,13 @@
       </form>
 
       <button @click="signIn" class="secondaryButton">Sign In</button>
-      <hr />
-      <button @click="closeModal" class="mt-10">cancel</button>
+      <hr class="border-1 mt-2 border-gray-500"/>
+      <button @click="closeModal" class="mt-4 text-gray-600 border-gray-400" >cancel</button>
     </div>
   </div>
 </template>
 
 <script>
-  // import router from '@/router';
   import axios from 'axios';
   export default {
     name: 'Login',
@@ -52,7 +51,6 @@
         const email = event.target.elements.email.value;
         const password = event.target.elements.password.value;
 
-        // axios.defaults.withCredentials = true;
         const login = () => {
           const data = {
             email: email,

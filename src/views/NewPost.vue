@@ -1,23 +1,21 @@
 <template>
   <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
 
-
   <div class="formContainer flex justify-center flex-row items-center">
     <div class="max-w-screen-sm px-8">
 
       <form @submit.prevent="handleLocationSubmit">
-        <p for="locationField" class="text-gray-900" :class="{ disableStyle: disableInput }">Step 1: Enter a Location from the List*</p>
-        <input id="searchTextField" ref="searchTextField" type="search" name="locationField" class="text-2xl" :disabled="disableInput" />
-        <button v-if="disableInput" class="resetButton w-20" @click="resetInputForm()" type="button">X reset</button>
+        <p v-if="!disableInput" for="locationField" class="text-gray-600 text-xl" :class="{ disableStyle: disableInput }">Step 1: Enter a Location from the List*</p>
+        <input id="searchTextField" ref="searchTextField" type="search" name="locationField" class="text-2xl pl-2" :disabled="disableInput" />
       </form>
-   
+
       <hr />
 
       <form :class="{ disableStyle: !disableInput }" @submit.prevent="handleSubmit">
-        <p class="text-gray-900 mt-6">Step 2: Enter the details</p>
+        <p class="text-gray-900 mt-6 text-gray-600 text-xl">Step 2: Enter the details</p>
 
         <label for="titleField">Enter a Title for the post*</label>
-        <input required type="text" v-model="title" name="titleField" class="text-2xl  " :disabled="!disableInput" />
+        <input required type="text" v-model="title" name="titleField" class="text-2xl  pl-2" :disabled="!disableInput" />
 
         <label for="monthInput">Enter the date of your trip</label>
         <div class="dateContainer">
@@ -35,7 +33,7 @@
             <option value="November">November</option>
             <option value="December">December</option>
           </select>
-          <input required v-model="year" class="yearInput" type="number" placeholder="Enter the year" min="1900" max="2100" id="yearField" :disabled="!disableInput" />
+          <input required v-model="year" class="yearInput ml-2" type="number" placeholder="Enter the year" min="1900" max="2100" id="yearField" :disabled="!disableInput" />
         </div>
 
         <label for="rating">Rate your trip </label>
@@ -56,15 +54,14 @@
         <p class="miniText">* = required</p>
 
         <div class="buttonContainer">
-          <button class="primaryButton" id="submitButton" >SUBMIT</button>
+          <button class="primaryButton" id="submitButton">SUBMIT</button>
         </div>
-        <!-- <div>
-          <p>{{ user }}</p>
-        </div> -->
       </form>
-          <router-link to="/home">
-            <button class="secondaryButton">CANCEL</button>
-          </router-link>
+      <router-link to="/home">
+        <button class="secondaryButton">CANCEL</button>
+      </router-link>
+      <button v-if="disableInput" class="resetButton " @click="resetInputForm()" type="button">reset location</button>
+
     </div>
   </div>
 </template>
@@ -74,10 +71,6 @@
 
   import Banner from '@/components/Banner.vue';
   import bannerImage from '@/assets/banner2.jpg';
-  // import getWiki from '@/utils/getWiki.js';
-
-  // import axios from 'axios';
-  // import router from '../router';
 
   export default {
     name: 'NewPost',
@@ -120,8 +113,8 @@
         return this.$store.getters.getCurrentUser;
       },
       handleSubmit() {
-        if(!this.currentPlace.name) {
-          return
+        if (!this.currentPlace.name) {
+          return;
         }
         //  alert(JSON.stringify(this.currentPlace));
         const completeNewPost = {
@@ -151,11 +144,11 @@
           this.$router.push({ name: 'Home' });
         });
       },
-    
-      resetInputForm() {
-        this.disableInput= false
-        this.$refs.searchTextField.value=""
 
+      resetInputForm() {
+        this.disableInput = false;
+        this.$refs.searchTextField.value = '';
+        window.scrollTo(0, 0);
       },
 
       locationIsValid() {
@@ -247,70 +240,32 @@
   .disableStyle {
     opacity: 0.3;
   }
- 
 
-  input:focus,
-  select:focus,
-  textarea:focus,
-  button:focus,
-  a:focus {
-    outline: none;
-    box-shadow: 0 0 0px 1px #777;
-  }
-
-  input,
-  select,
-  textarea,
-  button {
-    border-radius: 5px;
-    border: black solid 1px;
-  }
-
-  input,
-  select {
-    height: 50px;
-  }
-
-  input {
-    display: block;
-  }
-
-  .dateContainer * {
+  
+ .dateContainer * {
     display: inline;
   }
-
 
   .formContainer input,
   .formContainer textarea {
     width: 100%;
   }
 
+
   #ratingField {
     color: #777;
-  }
-
-  label {
-    color: #777;
-    margin: 0;
-    display: block;
-    margin-top: 1rem;
-    font-size: 0.8rem;
   }
 
   .miniText {
     font-size: 0.6rem;
   }
 
-  textarea {
-    resize: none;
-  }
-
+ 
   #monthField,
   #yearField {
     width: 7rem;
     margin-top: 0;
   }
-
 
   #searchTextField:disabled {
     border: 0;
@@ -319,6 +274,4 @@
     color: #111;
     font-weight: 700;
   }
-
-
 </style>
