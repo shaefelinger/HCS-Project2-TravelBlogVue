@@ -85,11 +85,6 @@
       load();
       return { blogposts, error };
     },
-   
-    
   };
 </script>
 
-<style>
-
-</style>
