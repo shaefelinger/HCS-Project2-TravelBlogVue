@@ -4,14 +4,10 @@
     <div>
       <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
     </div>
-
-    <!-- <div>
-      <p>LoggedIn: {{userIsLoggedIn}}</p>
-      <p>{{currentUser}}</p>
-    </div> -->
+  <div v-show="false">{{ sortedBlogposts }}</div>
+    
 
     <Map :locations="blogposts" />
-
 
     <div class="flex ">
       <div class="flex flex-col items-center  sm:flex-wrap sm:flex-row sm:justify-center">
@@ -68,8 +64,21 @@
         return this.$store.getters.userIsLoggedIn;
       },
       currentUser() {
-         return this.$store.getters.getCurrentUser;
-      }
+        return this.$store.getters.getCurrentUser;
+      },
+      sortedBlogposts() {
+        const arr = this.blogposts;
+        arr.sort(function(a, b) {
+          var keyA = a.year,
+            keyB = b.year;
+          // Compare the 2 dates
+          if (keyA < keyB) return -1;
+          if (keyA > keyB) return 1;
+          return 0;
+        });
+        return arr;
+        // sorted by year only... dirty quick hack with v-show=false
+      },
     },
     // get all blogposts
     setup() {
@@ -77,34 +86,8 @@
       load();
       return { blogposts, error };
     },
-
-    // load list of blogposts:
-    // async mounted() {
-    //   console.log('/home mounted');
-    //   {
-    //     const { data, error } = await to(getBlogposts());
-    //     if (!error) {
-    //       console.log('data:', data);
-    //       this.blogposts = data;
-    //       let array = data;
-    //       this.$store.dispatch('setAllBlogposts', data);
-    //       console.log('👍Got blogposts from Server');
-    //     } else {
-    //       console.log('🚫Error getting Blogpost-Data from Server');
-    //     }
-    //   }
-    //   {
-    //     const { data, error } = await to(getUsers());
-    //     if (!error) {
-    //       this.users = data;
-    //       console.log('👍Got users from Server');
-    //     } else {
-    //       console.log('🚫Error getting user-Data from Server');
-    //     }
-    //   }
-    // },
-
-
+   
+    
   };
 </script>
 
