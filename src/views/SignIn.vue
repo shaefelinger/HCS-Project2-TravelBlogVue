@@ -62,19 +62,27 @@
           name: this.newUserName,
           email: this.newUserEmail,
           password: this.newUserPassword,
-          profilePic: 'https://aroundtheworld-blog-server.herokuapp.com/images/dummy.jpg'
-
-        }
+          profilePic: 'https://aroundtheworld-blog-server.herokuapp.com/images/dummy.jpg',
+        };
         console.log(newUser);
         fetch('https://aroundtheworld-blog-server.herokuapp.com/users', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(newUser),
-        }).then((res) => {
-          console.log(res);
-          this.$router.push({ name: 'Home' });
-        });
-
+        })
+          .then((res) => {
+            console.log(res);
+            if (res.ok) {
+              alert('Successfully created new user - now please log in');
+              this.$router.push({ name: 'Home' });
+            } else {
+              alert('There was an error creating the new user');
+            }
+          })
+          .catch((err) => {
+            alert('There was an error creating the new user', err);
+          });
+          // catch not working???
       },
       onFileChange(e) {
         const file = e.target.files[0];

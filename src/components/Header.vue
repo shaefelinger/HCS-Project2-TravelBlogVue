@@ -26,10 +26,12 @@
           </div>
         </router-link>
        
-       
-        <router-link v-if="userIsLoggedIn" to="/editprofile">
+       <div v-if="userIsLoggedIn">
           <img class=" rounded-full w-12 h-12 " :src="currentUser.profilePic" alt="" />
-        </router-link>
+       </div>
+        <!-- <router-link v-if="userIsLoggedIn" to="/editprofile">
+          <img class=" rounded-full w-12 h-12 " :src="currentUser.profilePic" alt="" />
+        </router-link> -->
 
         <div v-if="userIsLoggedIn" class="text-gray-600 text-xs">
           <span >Welcome </span>
