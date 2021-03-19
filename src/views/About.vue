@@ -2,7 +2,7 @@
   <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
 
   <div class="flex justify-center w-full sm:flex-row flex-wrap">
-    <div class="aboutArticle sm:w-3/5  w-11/12 text-gray-600 ">
+    <div class=" sm:w-3/5  w-11/12 text-gray-600 ">
       <h2 class="text-gray-800 text-2xl mb-8 ">Project 2 - Travel Blog v2</h2>
 
       <h3>
@@ -19,13 +19,13 @@
       </div>
 
       <div class="mt-4">
-        <a href="https://github.com/shaefelinger/HCS-project1-travelBlog" target="_blank">
+        <a href="https://github.com/shaefelinger/HCS-Project2-TravelBlogVue" target="_blank">
           <i class="fab fa-github"> </i>
           <span class="underline">View this project and the documentation on Github</span>
         </a>
       </div>
       <div class="mt-4 ">
-        <a href="https://github.com/shaefelinger/HCS-project1-travelBlog" target="_blank">
+        <a href="https://github.com/shaefelinger/HCS-Project2-Backend" target="_blank">
           <i class="fab fa-github"> </i>
           <span class="underline">View the backend-code on Github</span>
         </a>
@@ -38,7 +38,7 @@
       <img class="rounded-full h-28 float-left mt-1 mr-4 mb-0 ml-0 bottom-0" src="@/assets/Steffen_square.png" />
     </div>
     <div class=" flex">
-      <p class="author mt-2 text-gray-700 text-xl ">Steffen Häfelinger</p>
+      <p class=" mt-2 text-gray-700 text-xl ">Steffen Häfelinger</p>
     </div>
   </div>
   <p class="aboutAuthorText text-sm text-gray-500 mt-4 text-center px-12">
@@ -80,11 +80,5 @@
       padding-left: 30%;
       padding-right: 30%;
     }
-
-    /* .aboutAuthorInfo {
-      flex-direction: row;
-    } */
-
-   
   }
 </style>

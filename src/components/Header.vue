@@ -1,5 +1,5 @@
 <template>
-  <header class="header h-28 w-full  z-30 bg-white py-0 px-20 flex justify-between items-center border-b-2 border-green-800 shadow-md">
+  <header class="header h-28 w-full  z-30 bg-white py-0 px-16 flex justify-between items-center border-b-2 border-green-800 shadow-md">
     <router-link :to="{ name: 'Home' }" id="siteLogoName" class="flex items-center  ">
       <div class=" w-9 lg:w-16 "><img class=" object-fill   " src="@/assets/world.png" alt="logo" /></div>
       <span class="pl-4 text-2xl lg:text-4xl xl:text-4xl text-gray-900 lg:font-normal font-medium ">Around the World</span>
@@ -11,10 +11,10 @@
 
     <nav>
       <div class="p-6 flex items-center justify-between" id="nav">
-        <router-link class=" text-gray-700" to="/about">
+        <router-link class=" text-gray-700 p-2" to="/about">
           <div class="flex items-end">
             <span class="material-icons"></span>
-            <span class="ml-2 ">About</span>
+            <span class="mx-2 ">About</span>
           </div>
         </router-link>
 
@@ -26,27 +26,27 @@
         </router-link>
 
         <div v-if="userIsLoggedIn">
-          <img class=" rounded-full w-12 h-12 " :src="currentUser.profilePic" alt="" />
+          <img class=" rounded-full w-12 h-12 flex-shrink-0" :src="currentUser.profilePic" alt="" />
         </div>
         <!-- <router-link v-if="userIsLoggedIn" to="/editprofile">
           <img class=" rounded-full w-12 h-12 " :src="currentUser.profilePic" alt="" />
         </router-link> -->
 
-        <div v-if="userIsLoggedIn" class="text-gray-600 text-xs">
-          <span>Welcome </span>
+        <div v-if="userIsLoggedIn" class="text-gray-600 text-xs ml-1">
+          <span >Welcome </span>
           <p>{{ currentUser.name }}</p>
         </div>
 
         <a @click="toggleModal" v-if="!userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">
           <div class="flex items-end text-white">
             <span class="material-icons">login</span>
-            <span class="ml-3 ">Login</span>
+            <span class="mx-3 ">Login</span>
           </div>
         </a>
 
         <a @click="logout" v-if="userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">
           <div class="flex items-end text-white">
-            <span class="ml-3 ">Logout</span>
+            <span class="mx-3 ">Logout</span>
             <span class="material-icons">logout</span>
           </div>
         </a>
@@ -63,39 +63,38 @@
     <div id="sideMenu" class="sideMenu-hiding" v-if="showBurgerMenu" @click="toggleBurgerMenu">
       <div class="flex flex-col items-end">
         <div v-if="userIsLoggedIn">
-          <img class=" rounded-full w-12 h-12 " :src="currentUser.profilePic" alt="" />
+          <img class=" rounded-full w-10 h-10 " :src="currentUser.profilePic" alt="" />
         </div>
         <!-- <router-link v-if="userIsLoggedIn" to="/editprofile">
           <img class=" rounded-full w-12 h-12 " :src="currentUser.profilePic" alt="" />
         </router-link> -->
         <div v-if="userIsLoggedIn" class="text-gray-600 text-xs">
-          <span>Welcome </span>
+          <!-- <span>Welcome </span> -->
           <p>{{ currentUser.name }}</p>
         </div>
-        <router-link class=" text-gray-700" to="/about">
-          <div class="flex items-end">
-            <span class="ml-2 ">About</span>
-            <span class="material-icons"></span>
+        <router-link class=" text-gray-700 mt-2" to="/about">
+          <div class="flex justify-end">
+            <span class="text-right">About</span>
           </div>
         </router-link>
 
         <router-link v-if="userIsLoggedIn" to="/new" class=" text-gray-700 rounded p-3  border-green-700">
-          <div class="flex items-end">
+          <div class="flex justify-end">
             <span class="material-icons">library_add</span>
-            <span class="ml-2 ">new post</span>
+            <span class="ml-3 ">new post</span>
           </div>
         </router-link>
 
-        <a @click="toggleModal" v-if="!userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">
-          <div class="flex items-end text-white">
+        <a @click="toggleModal" v-if="!userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded hover:text-gray-700">
+          <div class=" flex justify-end text-white hover:text-gray-700  ">
             <span class="material-icons">login</span>
-            <span class="ml-3 ">Login</span>
+            <span class="ml-3 mr-1">Login</span>
           </div>
         </a>
 
         <a @click="logout" v-if="userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">
           <div class="flex items-end text-white">
-            <span class="ml-3 ">Logout</span>
+            <span class="mx-3 ">Logout</span>
             <span class="material-icons">logout</span>
           </div>
         </a>
@@ -203,7 +202,7 @@
 
   /* SIDE-MENU  */
   #sideMenu {
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 1rem;
     text-align: right;
     text-transform: uppercase;
@@ -226,8 +225,9 @@
     transition: all 300ms ease-in-out;
   }
 
+
   #sideMenu a:hover {
-    background-color: #eee;
+    background-color: #ccc;
     color: #111;
   }
 
@@ -240,7 +240,7 @@
   /* ========================================================================== */
 
   /* small 820px */
-  @media (min-width: 820px) {
+  @media (min-width: 1100px) {
     .header nav a {
       display: inline-block;
       margin: 0 1rem;
@@ -279,6 +279,5 @@
       font-size: 1rem;
     }
   }
-
  
 </style>
