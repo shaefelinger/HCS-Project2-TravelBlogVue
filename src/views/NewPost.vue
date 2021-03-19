@@ -106,10 +106,10 @@
         name: '',
         longName: '',
         coords: {},
-        lat: 54,
-        lng: 33,
+        // lat: 54,
+        // lng: 33,
         title: '',
-        description: 'blabla',
+        description: '',
         rating: '4',
         month: 'January',
         year: '2021',
@@ -158,18 +158,15 @@
           this.$router.push({ name: 'Home' });
         });
       },
-      //  handleLocationSubmit(event) {
-      //    // alert('location');
-      //    // console.log(this.$refs.searchTextField.value);
-      //    // this.name = this.$refs.searchTextField.value;
-      //  },
+    
       resetInputForm() {
-        alert('reset')
+        this.disableInput= false
+        this.$refs.searchTextField.value=""
+
       },
 
       locationIsValid() {
         console.log('valid');
-        // console.log('current:', this.currentPlace);
         const newPlace = this.currentPlace;
         console.log(newPlace);
         this.name = newPlace.name;

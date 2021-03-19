@@ -115,27 +115,21 @@
   /* MAIN-PAGE LAYOUT */
   /* ========================================================================== */
 
-  .container {
+  /* .container {
     display: grid;
     grid-template-areas:
       'hd '
       'main'
       'ft ';
-  }
-
-  /* .header {
-    grid-area: hd;
   } */
 
+/* 
   .main {
     grid-area: main;
     min-height: 800px;
     margin-top: 7rem;
     background-color: #fff;
-  }
-
-  /* .footer {
-    grid-area: ft; 
-     min-height: 200px;
   } */
+
+
 </style>
