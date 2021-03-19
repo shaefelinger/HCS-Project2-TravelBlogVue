@@ -4,10 +4,10 @@
       <!-- <h2>Login</h2> -->
       <form v-on:submit="submitLogin">
         <label>Email</label>
-        <input class="w-full" type="text" name="email" /><br />
-        <label class="mt-00">Password</label>
-        <input class="w-full" type="password" name="password" /><br />
-        <p v-if="invalidLogin" class="text-red-600 text-sm ">Wrong Password or username - try again!</p>
+        <input class="w-full pl-2" type="text" name="email" /><br />
+        <label class="mt-0">Password</label>
+        <input class="w-full pl-2" type="password" name="password" /><br />
+        <p v-if="invalidLogin" class="text-red-600 text-sm pl-2">Wrong Password or username - try again!</p>
         <button class="primaryButton">Log In</button>
         <div class="text-gray-600 text-xs text-center m-4">
         </div>

@@ -94,7 +94,7 @@
         <a @click="logout" v-if="userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded mt-6">
           <div class="flex items-end text-white">
             <span class="mx-3 ">Logout</span>
-            <span class="material-icons">logout</span>
+            <span class="material-icons mr-6">logout</span>
           </div>
         </a>
 

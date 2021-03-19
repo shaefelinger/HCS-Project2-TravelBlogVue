@@ -1,14 +1,6 @@
 <template>
   <Banner :bannerImage="bannerImage" :bannerText="bannerText" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
-  <!-- <p>Current User: {{currentUser}} </p> -->
 
-  <!-- <h1 class="mt-2 text-5xl text-center text-gray-500">coming soon...</h1>
-  <div class="text-center text-gray-600">
-    <h3 class="text-xl mt-6">Until then, use:</h3>
-    <p>Login: testuser@test.com</p>
-    <p>Password: test123</p>
-  </div> -->
-  <!-- <img class="w-96 m-auto mt-10" src="@/assets/underconstruction.jpg" alt="" /> -->
   <div class=" flex justify-center flex-row items-center ">
     <!-- <input type="file" @change="onFileChange" /> -->
     <!-- <div id="preview">
@@ -23,11 +15,11 @@
         </div> -->
       </div>
       <label>Name</label>
-      <input required v-model="newUserName" class="w-full" type="text" />
+      <input required v-model="newUserName" class="w-full pl-2" type="text" />
       <label>Email</label>
-      <input required v-model="newUserEmail" class="w-full" type="email" />
+      <input required v-model="newUserEmail" class="w-full pl-2" type="email" />
       <label>Password</label>
-      <input required v-model="newUserPassword" class="w-full " type="password" />
+      <input required v-model="newUserPassword" class="w-full pl-2" type="password" />
       <button class="primaryButton">Sign In</button>
     </form>
   </div>

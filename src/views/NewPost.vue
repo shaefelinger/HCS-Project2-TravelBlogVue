@@ -12,7 +12,7 @@
       <hr />
 
       <form :class="{ disableStyle: !disableInput }" @submit.prevent="handleSubmit">
-        <p class="text-gray-900 mt-6 text-gray-600 text-xl">Step 2: Enter the details</p>
+        <p class="mt-6 text-gray-600 text-xl">Step 2: Enter the details</p>
 
         <label for="titleField">Enter a Title for the post*</label>
         <input required type="text" v-model="title" name="titleField" class="text-2xl  pl-2" :disabled="!disableInput" />
