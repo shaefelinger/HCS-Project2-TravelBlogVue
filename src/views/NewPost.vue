@@ -332,10 +332,6 @@
     margin-top: 0;
   }
 
-  /* #searchTextField {
-    font-size: 1.4rem;
-    margin-top: 0;
-  } */
 
   #searchTextField:disabled {
     border: 0;
@@ -345,7 +341,5 @@
     font-weight: 700;
   }
 
-  /* #titleField {
-    font-size: 1.4rem;
-  } */
+
 </style>
