@@ -28,11 +28,11 @@
     </div>
   </div>
   <section class="aboutBottom mt-12">
-    <div class="aboutAuthorInfo sm:flex-row  ">
+    <div class="aboutAuthorInfo text-sm sm:flex-row flex flex-col justify-center ">
       <div >
         <img class="rounded-full h-28 float-left mt-1 mr-4 mb-0 ml-0 bottom-0" src="@/assets/Steffen_square.png" />
       </div>
-      <p class="author mt-2 text-gray-700" >Steffen Häfelinger</p>
+      <p class="author mt-2 text-gray-700 text-xl inline-block" >Steffen Häfelinger</p>
     </div>
     <p class="aboutAuthorText text-sm text-gray-500 sm:mt-4 text-center px-12">
       Steffen Häfelinger is a web developer located in Hamburg, Germany. He is currently studying Full Stack Web Developement at
@@ -89,22 +89,22 @@
   }
 
   .aboutAuthorInfo {
-    display: flex;
+    /* padding-left: 30%;
+    padding-right: 30%; */
+    /* display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding-left: 30%;
-    padding-right: 30%;
-    font-size: 0.8rem;
-    color: #888;
-    height: 100%;
+    justify-content: center; */
+    /* align-items: center;
+    text-align: center; */
+    /* font-size: 0.8rem; */
+    /* color: #888; */
+    /* height: 100%; */
   }
 
-  .aboutAuthorInfo .author {
+  /* .aboutAuthorInfo .author {
     font-size: 1.2rem;
     margin-bottom: 0;
-  }
+  } */
 
   .aboutAuthorText {
     /* padding: 0 15%; */
@@ -140,6 +140,12 @@
   /* ABOUT RESPONSIVE */
   /* ========================================================================== */
   @media (min-width: 640px) {
+     .aboutAuthorText { 
+      padding-left: 30%;
+      padding-right: 30%;
+     }
+
+     
     /* #aboutContainer {
       flex-wrap: wrap;
       flex-direction: row;
@@ -148,10 +154,7 @@
       flex-direction: row;
     } */
 
-    .aboutAuthorText { 
-      padding-left: 30%;
-      padding-right: 30%;
-     }
+   
 
      /* .aboutArticle {
       width: 60%;

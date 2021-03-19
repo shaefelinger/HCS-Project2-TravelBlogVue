@@ -1,5 +1,4 @@
 <template>
-  <!-- Prop: {{ location }} -->
   <div id="singleMapComponent" class="mt-8 mb-12 mx-0 sm:mx-8 flex flex-col justify-evenly items-center flex-shrink-0"></div>
 </template>
 
@@ -10,7 +9,6 @@
   export default {
     props: ['location'],
     mounted() {
-      // console.log('props versuch single', this.location);
       const markers = { 
         coords: this.location
         } 

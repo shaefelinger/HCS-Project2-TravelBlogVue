@@ -31,8 +31,6 @@
   import Map from '@/components/Map.vue';
   import Spinner from '@/components/Spinner.vue';
 
-  // import { getBlogposts, getUsers, to } from '../utils/io.js';
-
   export default {
     name: 'Home',
     components: {
@@ -87,4 +85,3 @@
     },
   };
 </script>
-

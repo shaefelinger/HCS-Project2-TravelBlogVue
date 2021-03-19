@@ -79,23 +79,5 @@
     height: 400px;
   }
 
-  /* #overviewMap {
-    height: 700px;
-    width: 100%;
-  } */
 
-  /* #overviewMapContainer {
-    display: flex;
-    justify-content: center;
-  } */
-
-  /* 
-
-  .miniButton {
-    font-size: 0.6rem;
-    height: 2rem;
-    color: #555;
-  }
-
- */
 </style>
