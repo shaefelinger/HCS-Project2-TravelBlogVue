@@ -26,39 +26,3 @@
   };
 </script>
 
-
-
-<!-- ============================================================== -->
-<style>
- 
-
- 
-
-  /* .hidden {
-    display: none !important;
-  } */
-
-
-
-  /* ========================================================================== */
-  /* MAIN-PAGE LAYOUT */
-  /* ========================================================================== */
-
-  /* .container {
-    display: grid;
-    grid-template-areas:
-      'hd '
-      'main'
-      'ft ';
-  } */
-
-/* 
-  .main {
-    grid-area: main;
-    min-height: 800px;
-    margin-top: 7rem;
-    background-color: #fff;
-  } */
-
-
-</style>

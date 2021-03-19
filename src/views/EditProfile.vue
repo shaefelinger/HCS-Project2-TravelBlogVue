@@ -37,7 +37,7 @@
   import Banner from '@/components/Banner.vue';
   import bannerImage from '@/assets/banner2.jpg';
   export default {
-    name: 'SignIn',
+    name: 'EditProfile',
     components: {
       Banner,
     },

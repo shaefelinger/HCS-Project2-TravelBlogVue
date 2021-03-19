@@ -7,6 +7,7 @@
   import { Loader } from '@googlemaps/js-api-loader';
 
   export default {
+    name: 'SingleMap',
     props: ['location'],
     mounted() {
       const markers = { 

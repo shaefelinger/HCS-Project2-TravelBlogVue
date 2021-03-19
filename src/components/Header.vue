@@ -68,11 +68,10 @@
         <!-- <router-link v-if="userIsLoggedIn" to="/editprofile">
           <img class=" rounded-full w-12 h-12 " :src="currentUser.profilePic" alt="" />
         </router-link> -->
-        <div v-if="userIsLoggedIn" class="text-gray-600 text-xs">
-          <!-- <span>Welcome </span> -->
+        <div v-if="userIsLoggedIn" class="text-gray-600 text-xs mt-2 mb-6">
           <p>{{ currentUser.name }}</p>
         </div>
-        <router-link class=" text-gray-700 mt-2" to="/about">
+        <router-link class=" text-gray-700 " to="/about">
           <div class="flex justify-end">
             <span class="text-right">About</span>
           </div>
@@ -85,14 +84,14 @@
           </div>
         </router-link>
 
-        <a @click="toggleModal" v-if="!userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded hover:text-gray-700">
+        <a @click="toggleModal" v-if="!userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded hover:text-green-800 mt-4">
           <div class=" flex justify-end text-white hover:text-gray-700  ">
             <span class="material-icons">login</span>
             <span class="ml-3 mr-1">Login</span>
           </div>
         </a>
 
-        <a @click="logout" v-if="userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">
+        <a @click="logout" v-if="userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded mt-6">
           <div class="flex items-end text-white">
             <span class="mx-3 ">Logout</span>
             <span class="material-icons">logout</span>

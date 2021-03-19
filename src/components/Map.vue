@@ -7,6 +7,7 @@
   import { Loader } from '@googlemaps/js-api-loader';
 
   export default {
+    name: 'Map',
     props: ['locations'],
     computed: {
       blogpostsFromStore() {
@@ -46,7 +47,7 @@
             const infoWindow = new google.maps.InfoWindow({
               content: `
                 <div class=" w-44">
-                  <h3 class="text-xl">${location.name}</h3>
+                  <h3 class="text-xl text-gray-800 font-semibold">${location.name}</h3>
                   <p class="my-2">${location.title}</p>
                   <p class="my-2 text-xs text-gray-500">Visited in ${location.month} ${location.year}</p>
 
@@ -55,7 +56,7 @@
                       <p class=" text-xs text-gray-500">${location.author}</p>
                   </div>
 
-                  <a href="/#/details/${location._id}"> <button class=" text-gray-500 h-6">read more</button></a> 
+                  <a href="/#/details/${location._id}"> <button class=" text-gray-500 h-8 p-0 border-gray-400">read more</button></a> 
                 </div>
                 <MapInfoWindow />
                 `,

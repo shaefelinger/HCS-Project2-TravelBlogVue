@@ -13,6 +13,7 @@
 
 <script>
   export default {
+    name: 'Banner',
     props: ['bannerImage', 'bannerText', 'bannerButtonText', 'bannerButtonLink'],
   };
 </script>

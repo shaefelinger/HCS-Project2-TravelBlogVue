@@ -92,8 +92,6 @@
         name: '',
         longName: '',
         coords: {},
-        // lat: 54,
-        // lng: 33,
         title: '',
         description: '',
         rating: '4',
@@ -116,7 +114,6 @@
         if (!this.currentPlace.name) {
           return;
         }
-        //  alert(JSON.stringify(this.currentPlace));
         const completeNewPost = {
           name: this.name,
           longName: this.longName,
@@ -134,7 +131,6 @@
           author: this.user.name,
           authorPic: this.user.profilePic,
         };
-        //  alert(JSON.stringify(completeNewPost))
         fetch('https://aroundtheworld-blog-server.herokuapp.com/blogposts', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -211,9 +207,7 @@
           let place = autocomplete.getPlace();
           if (place.place_id) {
             // => this is a valid location, if place_id exist
-            // console.log('complete Location');
             this.currentPlace = place;
-            // getWiki(place.name);
             this.locationIsValid();
           } else {
             // -> inclomplete location
@@ -260,7 +254,6 @@
     font-size: 0.6rem;
   }
 
- 
   #monthField,
   #yearField {
     width: 7rem;

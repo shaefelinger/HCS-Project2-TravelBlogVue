@@ -3,7 +3,6 @@
     class="  overflow-hidden m-2 rounded-lg w-11/12 max-w-screen-sm  bg-white shadow-md transition duration-500 ease-in-out transform hover:bg-white hover:scale-102 hover:shadow-2xl cursor-pointer"
   >
   
-
     <img class="h-52 w-full object-cover  "  v-bind:src="blogpost.image1URL" alt="character" />
     <div class=" h-44 overflow-hidden px-8 pb-10 ">
       <div class="mt-4 flex items-center">
