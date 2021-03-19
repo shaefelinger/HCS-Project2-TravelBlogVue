@@ -242,10 +242,6 @@
     color: #111;
   }
 
-  /* .sideMenu-hiding {
-    margin-right: -320px;
-  } */
-
   /* HEADER RESPONSIVE  */
   /* ========================================================================== */
 
@@ -283,39 +279,12 @@
     }
   }
 
-  /* lg 1024px */
-  /* @media (min-width: 1024px) {
-    .header #companyName {
-      font-size: 2rem;
-    }
-  } */
-
   /* xl 1280px */
   @media (min-width: 1280px) {
-    /* .header #companyName {
-      font-size: 2.5rem;
-    } */
-
-    /* .worldLogo {
-      margin-bottom: 10px;
-      height: 4rem;
-    } */
-
     .header nav a {
       font-size: 1rem;
     }
   }
 
-  /* small horizontal devices */
-  @media (max-height: 500px) {
-    /* .header {
-      height: 50px;
-    }
-    .main {
-      margin-top: 40px;
-    }
-    a#companyName {
-      line-height: 50px;
-    } */
-  }
+ 
 </style>
