@@ -11,7 +11,6 @@
 
     <nav>
       <div class="p-6 flex items-center justify-between" id="nav">
-        <!-- <router-link class=" text-gray-700" :to="{ name: 'Home' }">Overview</router-link> -->
         <router-link class=" text-gray-700" to="/about">
           <div class="flex items-end">
             <span class="material-icons"></span>
@@ -25,49 +24,86 @@
             <span class="ml-2 ">new post</span>
           </div>
         </router-link>
-       
-       <div v-if="userIsLoggedIn">
+
+        <div v-if="userIsLoggedIn">
           <img class=" rounded-full w-12 h-12 " :src="currentUser.profilePic" alt="" />
-       </div>
+        </div>
         <!-- <router-link v-if="userIsLoggedIn" to="/editprofile">
           <img class=" rounded-full w-12 h-12 " :src="currentUser.profilePic" alt="" />
         </router-link> -->
 
         <div v-if="userIsLoggedIn" class="text-gray-600 text-xs">
-          <span >Welcome </span>
+          <span>Welcome </span>
           <p>{{ currentUser.name }}</p>
         </div>
 
-         <a @click="toggleModal" v-if="!userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">
+        <a @click="toggleModal" v-if="!userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">
           <div class="flex items-end text-white">
             <span class="material-icons">login</span>
             <span class="ml-3 ">Login</span>
           </div>
         </a>
 
-         <a @click="logout" v-if="userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">
+        <a @click="logout" v-if="userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">
           <div class="flex items-end text-white">
-            <span class="material-icons">logout</span>
             <span class="ml-3 ">Logout</span>
+            <span class="material-icons">logout</span>
           </div>
         </a>
       </div>
     </nav>
 
-    <a id="burger" class="burger" href="#">
-      <!-- <i class="fas fa-bars">🍔</i> -->
-      <!-- <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg> -->
+    <!-- ///////// BURGER-MENU //////// -->
+
+    <div id="burger" class="burger" href="#" @click="toggleBurgerMenu">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
-    </a>
-    <div id="sideMenu" class="sideMenu-hiding">
-      <div>
-        <a id="gotoOverviewSideMenu" onclick="gotoOverviewPage()" class="active">overview</a>
-        <a id="gotoMapSideMenu" onclick="gotoMapPage()">map</a>
-        <a id="gotoNewPostSideMenu" onclick="gotoAddPostPage()">+ add post</a>
-        <a id="gotoResetAllSideMenu" onclick="resetLocalStorage()">reset all</a>
-        <a id="gotoAboutPageSideMenu" onclick="gotoAboutPage()">about</a>
+    </div>
+    <div id="sideMenu" class="sideMenu-hiding" v-if="showBurgerMenu" @click="toggleBurgerMenu">
+      <div class="flex flex-col items-end">
+        <div v-if="userIsLoggedIn">
+          <img class=" rounded-full w-12 h-12 " :src="currentUser.profilePic" alt="" />
+        </div>
+        <!-- <router-link v-if="userIsLoggedIn" to="/editprofile">
+          <img class=" rounded-full w-12 h-12 " :src="currentUser.profilePic" alt="" />
+        </router-link> -->
+        <div v-if="userIsLoggedIn" class="text-gray-600 text-xs">
+          <span>Welcome </span>
+          <p>{{ currentUser.name }}</p>
+        </div>
+        <router-link class=" text-gray-700" to="/about">
+          <div class="flex items-end">
+            <span class="ml-2 ">About</span>
+            <span class="material-icons"></span>
+          </div>
+        </router-link>
+
+        <router-link v-if="userIsLoggedIn" to="/new" class=" text-gray-700 rounded p-3  border-green-700">
+          <div class="flex items-end">
+            <span class="material-icons">library_add</span>
+            <span class="ml-2 ">new post</span>
+          </div>
+        </router-link>
+
+        <a @click="toggleModal" v-if="!userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">
+          <div class="flex items-end text-white">
+            <span class="material-icons">login</span>
+            <span class="ml-3 ">Login</span>
+          </div>
+        </a>
+
+        <a @click="logout" v-if="userIsLoggedIn" class=" text-gray-700 bg-green-700 p-3 rounded">
+          <div class="flex items-end text-white">
+            <span class="ml-3 ">Logout</span>
+            <span class="material-icons">logout</span>
+          </div>
+        </a>
+
+        <!-- <a id="gotoMapSideMenu" onclick="gotoMapPage()">map</a>
+          <a id="gotoNewPostSideMenu" onclick="gotoAddPostPage()">+ add post</a>
+          <a id="gotoResetAllSideMenu" onclick="resetLocalStorage()">reset all</a>
+          <a id="gotoAboutPageSideMenu" onclick="gotoAboutPage()">about</a> -->
       </div>
     </div>
   </header>
@@ -81,6 +117,12 @@
     name: 'Header',
     components: {
       Login,
+    },
+    data() {
+      return {
+        showModal: false,
+        showBurgerMenu: false,
+      };
     },
     methods: {
       setUserLogOut() {
@@ -99,7 +141,9 @@
             console.log(err);
           });
       },
-
+      toggleBurgerMenu() {
+        this.showBurgerMenu = !this.showBurgerMenu;
+      },
       toggleModal() {
         this.showModal = !this.showModal;
       },
@@ -114,11 +158,6 @@
       currentUser() {
         return this.$store.getters.getCurrentUser;
       },
-    },
-    data() {
-      return {
-        showModal: false,
-      };
     },
   };
 </script>
@@ -203,9 +242,9 @@
     color: #111;
   }
 
-  .sideMenu-hiding {
+  /* .sideMenu-hiding {
     margin-right: -320px;
-  }
+  } */
 
   /* HEADER RESPONSIVE  */
   /* ========================================================================== */

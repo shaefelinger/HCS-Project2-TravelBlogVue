@@ -6,7 +6,6 @@
     </div>
   <div v-show="false">{{ sortedBlogposts }}</div>
     
-
     <Map :locations="blogposts" />
 
     <div class="flex ">
@@ -77,7 +76,7 @@
           return 0;
         });
         return arr;
-        // sorted by year only... dirty quick hack with v-show=false
+        // sorted by year only... dirty quick last minute hack with v-show=false
       },
     },
     // get all blogposts
@@ -92,23 +91,5 @@
 </script>
 
 <style>
-  /* KANN WAHRSCHEINLICH WEG  */
 
-  /* #blogContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  } */
-
-  /* MAIN-PAGE RESPONSIVE */
-  /* ========================================================================== */
-
-  /* 640px */
-  /* @media (min-width: 640px) {
-    #blogContainer {
-      flex-wrap: wrap;
-      flex-direction: row;
-      justify-content: center;
-    }
-  } */
 </style>
