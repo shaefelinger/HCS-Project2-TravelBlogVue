@@ -41,17 +41,16 @@
     </div>
   </div>
 
+  <!-- ///// EDIT MODE ///// -->
   <div v-if="editMode">
     <Banner :bannerImage="post.image1URL" :bannerText="post.name" :bannerButtonText="bannerButtonText" :bannerButtonLink="bannerButtonLink" />
     <div class="formContainer flex justify-center flex-row items-center">
       <div class="max-w-screen-sm px-8">
         <h1 class="text-3xl">{{ post.longName }}</h1>
-        <hr>
+        <hr />
         <form @submit.prevent="handleEditSubmit">
-          <!-- <p class="text-gray-900 mt-6">Edit the details</p> -->
-
           <label for="titleField">Enter a Title for the post*</label>
-          <input required type="text" v-model="title" name="titleField" class="text-2xl  " />
+          <input required type="text" v-model="title" name="titleField" class="text-2xl pl-2 " />
 
           <label for="monthInput">Enter the date of your trip</label>
           <div class="dateContainer">
@@ -69,7 +68,7 @@
               <option value="November">November</option>
               <option value="December">December</option>
             </select>
-            <input required v-model="year" class="yearInput" type="number" placeholder="Enter the year" min="1900" max="2100" id="yearField" />
+            <input required v-model="year" class="yearInput ml-2" type="number" placeholder="Enter the year" min="1900" max="2100" id="yearField" />
           </div>
 
           <label for="rating">Rate your trip </label>
@@ -90,11 +89,11 @@
           <p class="miniText">* = required</p>
 
           <div class="buttonContainer">
-            <button class="primaryButton" id="submitButton" >SUBMIT</button>
+            <button class="primaryButton" id="submitButton">SUBMIT</button>
           </div>
         </form>
-          <button @click="cancelEdit" class="secondaryButton">CANCEL</button>
-          <button @click="deletePost" class="border-gray-400 text-red-500">DELETE POST</button>
+        <button @click="cancelEdit" class="secondaryButton">CANCEL</button>
+        <button @click="deletePost" class="border-gray-400 text-red-500">DELETE POST</button>
       </div>
     </div>
   </div>
@@ -109,6 +108,7 @@
   import Spinner from '@/components/Spinner.vue';
   import Banner from '@/components/Banner.vue';
   import StarRating from '@/components/StarRating.vue';
+  
   export default {
     name: 'Details',
     components: {
@@ -136,15 +136,15 @@
         this.wiki = post.wiki;
       },
       cancelEdit() {
-        this.editMode =false
+        this.editMode = false;
       },
       deletePost() {
-        const url ='https://aroundtheworld-blog-server.herokuapp.com/blogposts/'+this.post._id
-         fetch(url, {
+        const url = 'https://aroundtheworld-blog-server.herokuapp.com/blogposts/' + this.post._id;
+        fetch(url, {
           method: 'DELETE',
         }).then((res) => {
           console.log(res);
-          this.$router.push({ name: 'Home'});
+          this.$router.push({ name: 'Home' });
         });
       },
       handleEditSubmit() {
@@ -165,17 +165,17 @@
           author: this.post.author,
           authorPic: this.post.authorPic,
         };
-         const url ='https://aroundtheworld-blog-server.herokuapp.com/blogposts/'+this.post._id
+        const url = 'https://aroundtheworld-blog-server.herokuapp.com/blogposts/' + this.post._id;
         fetch(url, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(completeNewPost),
         }).then((res) => {
           console.log(res);
-          this.editMode = false
-          this.$router.push({ name: 'Home'});
+          this.editMode = false;
+          this.$router.push({ name: 'Home' });
         });
-      }
+      },
     },
     setup() {
       const route = useRoute();
