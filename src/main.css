@@ -74,3 +74,45 @@ button {
     color: #111;
     background-color: #fefefe;
   }
+
+
+/* FORMS 
+/* ========================================================================== */
+
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:focus,
+  a:focus {
+    outline: none;
+    box-shadow: 0 0 0px 1px #777;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    border-radius: 5px;
+    border: black solid 1px;
+  }
+
+  input,
+  select {
+    height: 50px;
+  }
+
+  input {
+    display: block;
+  }
+
+  label {
+    color: #777;
+    /* margin: 0; */
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+  }
+ 
+   textarea {
+    resize: none;
+  }
