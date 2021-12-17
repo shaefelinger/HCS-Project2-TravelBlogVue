@@ -2,7 +2,15 @@ module.exports = {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        '72': '18rem',
+        '84': '21rem',
+        '96': '24rem',
+        '120': '36rem',
+      },
+    },
+
     minHeight: {
       '0': '0',
       '1/4': '25%',
@@ -25,7 +33,6 @@ module.exports = {
       '150': '1.5',
       '200': '2',
     },
-    
   },
   variants: {
     extend: {
