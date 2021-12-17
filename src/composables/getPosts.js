@@ -7,6 +7,7 @@ const getPosts = () => {
   // const url = 'http://localhost:3000/';
   // const url = process.env.VUE_APP_BACKENDURL;
   const url = 'https://aroundtheworld-backend.apps.functionfactory.de/';
+  // still experimenting
   console.log('backend:', url);
 
   const load = async () => {
