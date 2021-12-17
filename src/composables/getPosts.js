@@ -5,7 +5,8 @@ const getPosts = () => {
   const error = ref(null);
   // const url = 'https://aroundtheworld-blog-server.herokuapp.com/';
   // const url = 'http://localhost:3000/';
-  const url = process.env.VUE_APP_BACKENDURL;
+  // const url = process.env.VUE_APP_BACKENDURL;
+  const url = 'https://aroundtheworld-backend.apps.functionfactory.de/';
   console.log('backend:', url);
 
   const load = async () => {
