@@ -1,15 +1,13 @@
 import { createStore } from 'vuex';
 
-
 export default createStore({
-  modules: {
-  },
+  modules: {},
   state: {
     // user: 1,
     currentUser: {
-      name: 'Logged Out'
+      name: 'Logged Out',
     },
-    isLoggedIn: false,
+    isLoggedIn: true,
   },
 
   getters: {
@@ -20,19 +18,19 @@ export default createStore({
   mutations: {
     setCurrentUser: (state, data) => {
       state.currentUser = data;
-      },
+    },
     setLoggedIn(state, payload) {
       state.isLoggedIn = payload;
     },
   },
   actions: {
-   // login(context) {
-        //   context.commit('setAuth', { isAuth: true });
-        //   console.log('login');
-        // },
-        // logout(context) {
-        //   context.commit('setAuth', { isAuth: false });
-        //   console.log('logout');
-        // },
+    // login(context) {
+    //   context.commit('setAuth', { isAuth: true });
+    //   console.log('login');
+    // },
+    // logout(context) {
+    //   context.commit('setAuth', { isAuth: false });
+    //   console.log('logout');
+    // },
   },
 });
