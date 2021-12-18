@@ -1,6 +1,6 @@
 <template>
   <div
-    class="overview-card  overflow-hidden m-4 rounded-lg md:w-120 w-96 bg-white shadow-md transition duration-500 ease-in-out transform hover:bg-white hover:scale-102 hover:shadow-2xl cursor-pointer"
+    class="overflow-hidden m-4 rounded-lg md:w-120 w-96 bg-white shadow-md transition duration-500 ease-in-out transform hover:bg-white hover:scale-102 hover:shadow-2xl cursor-pointer"
   >
     <img
       class="h-52 w-full object-cover  "
@@ -59,9 +59,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-/* .overview-card {
-  width: 500px;
-} */
-</style>

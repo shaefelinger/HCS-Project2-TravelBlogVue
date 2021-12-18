@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router';
 
 import Home from '../views/Home.vue';
 import Details from '../views/Details.vue';
@@ -46,9 +46,44 @@ const routes = [
   },
 ];
 
+// function guard(to, from, next) {
+//   console.log("guard");
+//   const user = firebaseAuth.currentUser;
+//   if (user) {
+//     // User is signed in, see docs for a list of available properties
+//     // https://firebase.google.com/docs/reference/js/firebase.User
+//     // var uid = user.refreshToken;
+//     console.log("user is logged in");
+//     next();
+//     // ...
+//   } else {
+//     // User is signed out
+//     // ...
+//     console.log("not allowed");
+//     next("/auth");
+//   }
+// }
+function guard(to, from, next) {
+  console.log('guard');
+  // const user = firebaseAuth.currentUser;
+  // if (user) {
+  //   // User is signed in, see docs for a list of available properties
+  //   // https://firebase.google.com/docs/reference/js/firebase.User
+  //   // var uid = user.refreshToken;
+  //   console.log("user is logged in");
+  //   next();
+  //   // ...
+  // } else {
+  //   // User is signed out
+  //   // ...
+  //   console.log("not allowed");
+  //   next("/auth");
+  // }
+}
+
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
-})
+  routes,
+});
 
 export default router;
