@@ -1,36 +1,53 @@
+// import Vue from 'vue';
+// import Vuex from 'vuex';
+
+import axios from 'axios';
+
 import { createStore } from 'vuex';
+const url = process.env.VUE_APP_BACKENDURL;
 
 export default createStore({
-  modules: {},
   state: {
-    // user: 1,
-    currentUser: {
-      name: 'Logged Out',
-    },
-    isLoggedIn: true,
+    user: null,
   },
-
-  getters: {
-    userIsLoggedIn: (state) => state.isLoggedIn,
-    getCurrentUser: (state) => state.currentUser,
-  },
-
   mutations: {
-    setCurrentUser: (state, data) => {
-      state.currentUser = data;
+    SET_USER_DATA(state, userData) {
+      console.log('SET_USER_DATA', userData);
+      state.user = userData;
+      localStorage.setItem('user', JSON.stringify(userData));
+      axios.defaults.headers.common[
+        'Authorization'
+      ] = `Bearer ${userData.token}`;
     },
-    setLoggedIn(state, payload) {
-      state.isLoggedIn = payload;
+    LOGOUT(state) {
+      localStorage.removeItem('user');
+      location.reload();
     },
   },
   actions: {
-    // login(context) {
-    //   context.commit('setAuth', { isAuth: true });
-    //   console.log('login');
-    // },
-    // logout(context) {
-    //   context.commit('setAuth', { isAuth: false });
-    //   console.log('logout');
-    // },
+    register({ commit }, credentials) {
+      console.log(url, credentials);
+      return axios.put(url + 'auth/signup', credentials).then(({ data }) => {
+        console.log('user data is', data);
+        commit('SET_USER_DATA', data);
+      });
+    },
+    login({ commit }, credentials) {
+      const url = process.env.VUE_APP_BACKENDURL;
+      console.log('commit login', url);
+      return axios.post(url + 'auth/login', credentials).then(({ data }) => {
+        console.log(data);
+        commit('SET_USER_DATA', data);
+      });
+    },
+    logout({ commit }) {
+      commit('LOGOUT');
+    },
+  },
+  getters: {
+    userIsLoggedIn(state) {
+      return !!state.user;
+    },
+    getCurrentUser: (state) => state.user,
   },
 });

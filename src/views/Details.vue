@@ -155,6 +155,7 @@
 
 <script>
 /* eslint-disable no-undef */
+import axios from 'axios';
 
 import SingleMap from '@/components/SingleMap.vue';
 import getPost from '@/composables/getPost';
@@ -192,21 +193,37 @@ export default {
     cancelEdit() {
       this.editMode = false;
     },
-    deletePost() {
+    // deletePost() {
+    //   // const url =
+    //   //   'https://aroundtheworld-blog-server.herokuapp.com/blogposts/' +
+    //   //   this.post._id;
+
+    //   const url = process.env.VUE_APP_BACKENDURL + 'blogposts/' + this.post._id;
+
+    //   fetch(url, {
+    //     method: 'DELETE',
+    //   }).then((res) => {
+    //     console.log(res);
+    //     this.$router.push({ name: 'Home' });
+    //   });
+    // },
+    async deletePost() {
       // const url =
       //   'https://aroundtheworld-blog-server.herokuapp.com/blogposts/' +
       //   this.post._id;
 
       const url = process.env.VUE_APP_BACKENDURL + 'blogposts/' + this.post._id;
 
-      fetch(url, {
-        method: 'DELETE',
-      }).then((res) => {
+      try {
+        const res = await axios.delete(url);
         console.log(res);
         this.$router.push({ name: 'Home' });
-      });
+      } catch (error) {
+        console.log(error);
+      }
     },
-    handleEditSubmit() {
+
+    async handleEditSubmit() {
       const completeNewPost = {
         name: this.post.name,
         longName: this.post.longName,
@@ -229,15 +246,24 @@ export default {
       //   this.post._id;
       const url = process.env.VUE_APP_BACKENDURL + 'blogposts/' + this.post._id;
 
-      fetch(url, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(completeNewPost),
-      }).then((res) => {
+      // fetch(url, {
+      //   method: 'PUT',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(completeNewPost),
+      // }).then((res) => {
+      //   console.log(res);
+      //   this.editMode = false;
+      //   this.$router.push({ name: 'Home' });
+      // });
+
+      try {
+        const res = await axios.put(url, completeNewPost);
         console.log(res);
         this.editMode = false;
         this.$router.push({ name: 'Home' });
-      });
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
   setup() {

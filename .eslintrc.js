@@ -4,6 +4,7 @@ module.exports = {
     node: true,
   },
   extends: ['plugin:vue/vue3-essential', 'eslint:recommended'],
+  // extends: ['plugin:prettier/recommended'],
   parserOptions: {
     parser: 'babel-eslint',
   },
@@ -11,6 +12,6 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-unused-vars': 'warn',
-    'vue/no-unused-components': 'warn'
+    'vue/no-unused-components': 'warn',
   },
 };

@@ -140,6 +140,7 @@
 
 <script>
 /* eslint-disable no-undef */
+import axios from 'axios';
 
 import Banner from '@/components/Banner.vue';
 import bannerImage from '@/assets/banner2.jpg';
@@ -182,7 +183,7 @@ export default {
     getCurrentUser() {
       return this.$store.getters.getCurrentUser;
     },
-    handleSubmit() {
+    async handleSubmit() {
       if (!this.currentPlace.name) {
         return;
       }
@@ -205,16 +206,28 @@ export default {
       };
 
       const url = process.env.VUE_APP_BACKENDURL + 'blogposts';
+      // axios.post(url, completeNewPost).then((res) => {
+      //   console.log(res);
+      //   this.$router.push({ name: 'Home' });
+      // });
 
-      // fetch('https://aroundtheworld-blog-server.herokuapp.com/blogposts', {
-      fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(completeNewPost),
-      }).then((res) => {
+      try {
+        const res = await axios.post(url, completeNewPost);
         console.log(res);
         this.$router.push({ name: 'Home' });
-      });
+      } catch (err) {
+        console.log(err);
+      }
+
+      // fetch('https://aroundtheworld-blog-server.herokuapp.com/blogposts', {
+      // fetch(url, {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(completeNewPost),
+      // }).then((res) => {
+      //   console.log(res);
+      //   this.$router.push({ name: 'Home' });
+      // });
     },
 
     resetInputForm() {

@@ -35,6 +35,9 @@
         class="w-full pl-2"
         type="password"
       />
+      <ul>
+        <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
+      </ul>
       <button class="primaryButton">Sign In</button>
     </form>
   </div>
@@ -50,6 +53,7 @@ export default {
   },
   data() {
     return {
+      errors: null,
       bannerImage,
       bannerText: 'Sign In...',
       bannerButtonText: 'Back',
@@ -60,8 +64,9 @@ export default {
       newUserName: '',
       newUserEmail: '',
       newUserPassword: '',
-      newUserProfilePic:
-        'https://aroundtheworld-blog-server.herokuapp.com/images/dummy.jpg',
+      newUserProfilePic: process.env.VUE_APP_BACKENDURL + 'images/dummy.jpg',
+      // newUserProfilePic:
+      //   'https://aroundtheworld-blog-server.herokuapp.com/images/dummy.jpg',
     };
   },
   methods: {
@@ -72,28 +77,35 @@ export default {
         name: this.newUserName,
         email: this.newUserEmail,
         password: this.newUserPassword,
-        profilePic:
-          'https://aroundtheworld-blog-server.herokuapp.com/images/dummy.jpg',
+        profilePic: url + 'images/dummy.jpg',
       };
-      console.log(newUser);
-      fetch('https://aroundtheworld-blog-server.herokuapp.com/users', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newUser),
-      })
-        .then((res) => {
-          console.log(res);
-          if (res.ok) {
-            alert('Successfully created new user - now please log in');
-            this.$router.push({ name: 'Home' });
-          } else {
-            alert('There was an error creating the new user');
-          }
+
+      this.$store
+        .dispatch('register', newUser)
+        .then(() => {
+          this.$router.push({ name: 'Home' });
         })
         .catch((err) => {
-          alert('There was an error creating the new user', err);
+          this.errors = err.response.data.errors;
+          // this.errors = err.response;
         });
-      // catch not working???
+      // fetch('https://aroundtheworld-blog-server.herokuapp.com/users', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(newUser),
+      // })
+      //   .then((res) => {
+      //     console.log(res);
+      //     if (res.ok) {
+      //       alert('Successfully created new user - now please log in');
+      //       this.$router.push({ name: 'Home' });
+      //     } else {
+      //       alert('There was an error creating the new user');
+      //     }
+      //   })
+      //   .catch((err) => {
+      //     alert('There was an error creating the new user', err);
+      //   });
     },
     onFileChange(e) {
       const file = e.target.files[0];
