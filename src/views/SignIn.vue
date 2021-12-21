@@ -19,10 +19,10 @@
           :src="newUserProfilePic"
           alt="picPreview"
         />
-        <!-- <div class="ml-4">
+        <div class="ml-4">
           <label>Upload Profile Image</label>
           <input @change="onFileChange" class="border-0 " type="file" />
-        </div> -->
+        </div>
       </div>
       <label>Name</label>
       <input required v-model="newUserName" class="w-full pl-2" type="text" />
