@@ -64,6 +64,7 @@ export default {
       this.$store.commit('setLoggedIn', true);
     },
     submitLogin() {
+      // event.preventDefault();
       this.$store
         .dispatch('login', {
           email: this.email,
@@ -77,6 +78,7 @@ export default {
         //   this.$router.push({ name: 'Home' });
         // })
         .catch((err) => {
+          // alert('error');
           this.error = err.response.data.message;
         });
     },

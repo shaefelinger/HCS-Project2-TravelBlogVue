@@ -99,7 +99,7 @@
             <input
               required
               v-model="year"
-              class="yearInput ml-2"
+              class="yearInput ml-2 pl-2"
               type="number"
               placeholder="Enter the year"
               min="1900"
@@ -122,6 +122,7 @@
 
           <label for="descriptionField">Enter a description</label>
           <textarea
+            class="p-2"
             v-model="description"
             id="descriptionField"
             name="descriptionField"
@@ -132,6 +133,7 @@
 
           <label for="wikiField">Edit Wikipedia Information</label>
           <textarea
+            class="p-2"
             id="wikiField"
             name="wikiField"
             rows="6"
@@ -157,12 +159,12 @@
 /* eslint-disable no-undef */
 import axios from 'axios';
 
-import SingleMap from '@/components/SingleMap.vue';
+import SingleMap from '@/components/maps/SingleMap.vue';
 import getPost from '@/composables/getPost';
 import { useRoute } from 'vue-router';
-import Spinner from '@/components/Spinner.vue';
+import Spinner from '@/components/elements/Spinner.vue';
 import Banner from '@/components/Banner.vue';
-import StarRating from '@/components/StarRating.vue';
+import StarRating from '@/components/elements/StarRating.vue';
 
 export default {
   name: 'Details',

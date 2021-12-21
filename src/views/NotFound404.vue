@@ -4,5 +4,3 @@
     <h3 class="text-4xl">Page not Found</h3>
   </div>
 </template>
-
-

@@ -36,7 +36,13 @@
         type="password"
       />
       <ul>
-        <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
+        <li
+          v-for="(error, index) in errors"
+          :key="index"
+          class="text-red-600 text-sm pl-2"
+        >
+          {{ error }}
+        </li>
       </ul>
       <button class="primaryButton">Sign In</button>
     </form>

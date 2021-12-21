@@ -4,7 +4,7 @@ import Home from '../views/Home.vue';
 import Details from '../views/Details.vue';
 import About from '../views/About.vue';
 import NewPost from '../views/NewPost.vue';
-import NotFound from '../views/NotFound.vue';
+import NotFound404 from '../views/NotFound404.vue';
 import SignIn from '../views/SignIn.vue';
 
 const routes = [
@@ -41,8 +41,8 @@ const routes = [
   // catchall 404
   {
     path: '/:catchAll(.*)',
-    name: 'NotFound',
-    component: NotFound,
+    name: 'NotFound404',
+    component: NotFound404,
   },
 ];
 

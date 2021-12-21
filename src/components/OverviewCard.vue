@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import StarRating from '@/components/StarRating.vue';
+import StarRating from '@/components/elements/StarRating.vue';
 
 export default {
   name: 'OverviewCard',
