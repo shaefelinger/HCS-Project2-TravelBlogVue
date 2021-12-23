@@ -11,7 +11,12 @@
     <!-- <div id="preview">
     <img v-if="url" :src="url" />
   </div> -->
-    <form class="w-96" @submit.prevent="handleUserSignIn">
+    <form
+      ref="myForm"
+      class="w-96"
+      @submit.prevent="handleUserSignIn"
+      enctype="multipart/form-data"
+    >
       <div class="flex items-end">
         <img
           class="w-20 h-20  mt-10 rounded-full object-contain"
@@ -21,7 +26,16 @@
         />
         <div class="ml-4">
           <label>Upload Profile Image</label>
-          <input @change="onFileChange" class="border-0 " type="file" />
+          <input
+            @change="onFileChange"
+            class="border-0 "
+            type="file"
+            ref="file"
+          />
+        </div>
+        <div v-if="profilePicIsSelected">
+          <label>Reset Profile Image</label>
+          <input class="p-4" @click="onFileReset" type="button" value="X" />
         </div>
       </div>
       <label>Name</label>
@@ -52,6 +66,8 @@
 <script>
 import Banner from '@/components/Banner.vue';
 import bannerImage from '@/assets/banner2.jpg';
+import axios from 'axios';
+
 export default {
   name: 'SignIn',
   components: {
@@ -70,52 +86,85 @@ export default {
       newUserName: '',
       newUserEmail: '',
       newUserPassword: '',
+      defaultProfilePic: process.env.VUE_APP_BACKENDURL + 'images/dummy.jpg',
       newUserProfilePic: process.env.VUE_APP_BACKENDURL + 'images/dummy.jpg',
+      profilePicIsSelected: false,
+
+      images: null,
       // newUserProfilePic:
       //   'https://aroundtheworld-blog-server.herokuapp.com/images/dummy.jpg',
     };
   },
   methods: {
-    handleUserSignIn() {
+    async handleUserSignIn() {
       const url = process.env.VUE_APP_BACKENDURL;
+
+      // const fileTest = this.$refs.file.files[0];
+      // const formTest = this.$refs.myForm;
+
+      // console.log('tests-ref', fileTest, formTest);
 
       const newUser = {
         name: this.newUserName,
         email: this.newUserEmail,
         password: this.newUserPassword,
+        image: this.newUserProfilePic,
         profilePic: url + 'images/dummy.jpg',
       };
 
-      this.$store
-        .dispatch('register', newUser)
-        .then(() => {
-          this.$router.push({ name: 'Home' });
-        })
-        .catch((err) => {
-          this.errors = err.response.data.errors;
-          // this.errors = err.response;
-        });
-      // fetch('https://aroundtheworld-blog-server.herokuapp.com/users', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(newUser),
-      // })
+      const formData = new FormData();
+      formData.append('image', this.images);
+
+      const headers = { 'Content-Type': 'multipart/form-data' };
+
+      try {
+        const uploadedProfilePic = await axios.post(
+          'http://localhost:3000/upload/ProfilePic',
+          formData,
+          { headers }
+        );
+        newUser.profilePic =
+          url + 'uploads/' + uploadedProfilePic.data.filename;
+        console.log('new user', newUser);
+        await this.$store.dispatch('register', newUser);
+        this.$router.push({ name: 'Home' });
+      } catch (err) {
+        this.errors = err.response.data.errors;
+        // console.log(err);
+      }
+
+      // axios
+      //   .post('http://localhost:3000/upload/ProfilePic', formData, { headers })
       //   .then((res) => {
-      //     console.log(res);
-      //     if (res.ok) {
-      //       alert('Successfully created new user - now please log in');
-      //       this.$router.push({ name: 'Home' });
-      //     } else {
-      //       alert('There was an error creating the new user');
-      //     }
+      //     console.log(res.data.path);
+      //     newUser.profilePic = url + res.data.path;
+      //     console.log(res.status); // HTTP status
       //   })
       //   .catch((err) => {
-      //     alert('There was an error creating the new user', err);
+      //     console.log(err);
+      //     this.errors = ['Could not upload image'];
+      //   });
+
+      // this.$store
+      //   .dispatch('register', newUser)
+      //   .then(() => {
+      //     this.$router.push({ name: 'Home' });
+      //   })
+      //   .catch((err) => {
+      //     this.errors = err.response.data.errors;
+      //     // this.errors = err.response;
       //   });
     },
     onFileChange(e) {
       const file = e.target.files[0];
+      this.images = this.$refs.file.files[0];
       this.newUserProfilePic = URL.createObjectURL(file);
+      this.profilePicIsSelected = true;
+    },
+    onFileReset() {
+      this.newUserProfilePic = this.defaultProfilePic;
+      this.images = null;
+      this.profilePicIsSelected = false;
     },
   },
   mounted() {

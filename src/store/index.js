@@ -40,7 +40,7 @@ export default createStore({
   actions: {
     register({ commit }, credentials) {
       console.log(url, credentials);
-      return axios.put(url + 'auth/signup', credentials).then(({ data }) => {
+      return axios.post(url + 'auth/signup', credentials).then(({ data }) => {
         console.log('user data is', data);
         commit('SET_USER_DATA', data);
       });
