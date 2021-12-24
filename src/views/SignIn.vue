@@ -33,10 +33,10 @@
             ref="file"
           />
         </div>
-        <div v-if="profilePicIsSelected">
-          <label>Reset Profile Image</label>
-          <input class="p-4" @click="onFileReset" type="button" value="X" />
-        </div>
+        <!-- <div v-if="profilePicIsSelected">
+          <label>Reset</label>
+          <input class="" @click="onFileReset" type="button" value="reset" />
+        </div> -->
       </div>
       <label>Name</label>
       <input required v-model="newUserName" class="w-full pl-2" type="text" />
@@ -118,13 +118,16 @@ export default {
       const headers = { 'Content-Type': 'multipart/form-data' };
 
       try {
-        const uploadedProfilePic = await axios.post(
-          'http://localhost:3000/upload/ProfilePic',
-          formData,
-          { headers }
-        );
-        newUser.profilePic =
-          url + 'uploads/' + uploadedProfilePic.data.filename;
+        if (this.images) {
+          const uploadedProfilePic = await axios.post(
+            'http://localhost:3000/upload/ProfilePic',
+            formData,
+            { headers }
+          );
+          newUser.profilePic =
+            url + 'uploads/' + uploadedProfilePic.data.filename;
+        }
+
         console.log('new user', newUser);
         await this.$store.dispatch('register', newUser);
         this.$router.push({ name: 'Home' });
@@ -156,12 +159,20 @@ export default {
       //   });
     },
     onFileChange(e) {
+      console.log(e.target.files);
       const file = e.target.files[0];
-      this.images = this.$refs.file.files[0];
-      this.newUserProfilePic = URL.createObjectURL(file);
-      this.profilePicIsSelected = true;
+      if (!file) {
+        this.newUserProfilePic = this.defaultProfilePic;
+        this.images = null;
+        this.profilePicIsSelected = false;
+      } else {
+        this.images = this.$refs.file.files[0];
+        this.newUserProfilePic = URL.createObjectURL(file);
+        this.profilePicIsSelected = true;
+      }
     },
     onFileReset() {
+      // not needed
       this.newUserProfilePic = this.defaultProfilePic;
       this.images = null;
       this.profilePicIsSelected = false;
