@@ -13,7 +13,7 @@ const getPost = (id) => {
       let data = await fetch(url + 'blogposts/' + id);
       if (!data.ok) {
         console.log('jetzt gibt es einen fehler...');
-        throw Error('🚫that post does not exist');
+        throw Error('🚫cant load blogpost');
       }
       post.value = await data.json();
     } catch (err) {

@@ -86,7 +86,7 @@ export default {
         return 0;
       });
       return arr;
-      // sorted by year only... dirty quick last minute hack with v-show=false
+      // sorted by year
     },
   },
   // get all blogposts

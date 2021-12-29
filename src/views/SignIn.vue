@@ -29,10 +29,6 @@
             ref="file"
           />
         </div>
-        <!-- <div v-if="profilePicIsSelected">
-          <label>Reset</label>
-          <input class="" @click="onFileReset" type="button" value="reset" />
-        </div> -->
       </div>
       <label>Name</label>
       <input required v-model="newUserName" class="w-full pl-2" type="text" />
@@ -93,11 +89,6 @@ export default {
     async handleUserSignIn() {
       const url = process.env.VUE_APP_BACKENDURL;
 
-      // const fileTest = this.$refs.file.files[0];
-      // const formTest = this.$refs.myForm;
-
-      // console.log('tests-ref', fileTest, formTest);
-
       const newUser = {
         name: this.newUserName,
         email: this.newUserEmail,
@@ -114,7 +105,6 @@ export default {
       try {
         if (this.images) {
           const uploadedProfilePic = await axios.post(
-            // 'http://localhost:3000/upload/ProfilePic',
             url + 'upload/ProfilePic',
             formData,
             { headers }
@@ -128,30 +118,7 @@ export default {
         this.$router.push({ name: 'Home' });
       } catch (err) {
         this.errors = err.response.data.errors;
-        // console.log(err);
       }
-
-      // axios
-      //   .post('http://localhost:3000/upload/ProfilePic', formData, { headers })
-      //   .then((res) => {
-      //     console.log(res.data.path);
-      //     newUser.profilePic = url + res.data.path;
-      //     console.log(res.status); // HTTP status
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //     this.errors = ['Could not upload image'];
-      //   });
-
-      // this.$store
-      //   .dispatch('register', newUser)
-      //   .then(() => {
-      //     this.$router.push({ name: 'Home' });
-      //   })
-      //   .catch((err) => {
-      //     this.errors = err.response.data.errors;
-      //     // this.errors = err.response;
-      //   });
     },
     onFileChange(e) {
       console.log(e.target.files);
@@ -166,15 +133,6 @@ export default {
         this.profilePicIsSelected = true;
       }
     },
-    onFileReset() {
-      // not needed
-      this.newUserProfilePic = this.defaultProfilePic;
-      this.images = null;
-      this.profilePicIsSelected = false;
-    },
-  },
-  mounted() {
-    console.log('/signin mounted');
   },
 };
 </script>

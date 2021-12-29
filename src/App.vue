@@ -28,6 +28,7 @@ export default {
   created() {
     console.log('app created');
 
+    // check if user is logged in
     const userString = localStorage.getItem('user');
     if (userString) {
       const userData = JSON.parse(userString);

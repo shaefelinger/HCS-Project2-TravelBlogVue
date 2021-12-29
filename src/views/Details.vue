@@ -195,25 +195,8 @@ export default {
     cancelEdit() {
       this.editMode = false;
     },
-    // deletePost() {
-    //   // const url =
-    //   //   'https://aroundtheworld-blog-server.herokuapp.com/blogposts/' +
-    //   //   this.post._id;
 
-    //   const url = process.env.VUE_APP_BACKENDURL + 'blogposts/' + this.post._id;
-
-    //   fetch(url, {
-    //     method: 'DELETE',
-    //   }).then((res) => {
-    //     console.log(res);
-    //     this.$router.push({ name: 'Home' });
-    //   });
-    // },
     async deletePost() {
-      // const url =
-      //   'https://aroundtheworld-blog-server.herokuapp.com/blogposts/' +
-      //   this.post._id;
-
       const url = process.env.VUE_APP_BACKENDURL + 'blogposts/' + this.post._id;
 
       try {
@@ -243,20 +226,8 @@ export default {
         author: this.post.author,
         authorPic: this.post.authorPic,
       };
-      // const url =
-      //   'https://aroundtheworld-blog-server.herokuapp.com/blogposts/' +
-      //   this.post._id;
-      const url = process.env.VUE_APP_BACKENDURL + 'blogposts/' + this.post._id;
 
-      // fetch(url, {
-      //   method: 'PUT',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(completeNewPost),
-      // }).then((res) => {
-      //   console.log(res);
-      //   this.editMode = false;
-      //   this.$router.push({ name: 'Home' });
-      // });
+      const url = process.env.VUE_APP_BACKENDURL + 'blogposts/' + this.post._id;
 
       try {
         const res = await axios.put(url, completeNewPost);

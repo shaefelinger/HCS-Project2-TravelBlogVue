@@ -211,10 +211,6 @@ export default {
       };
 
       const url = process.env.VUE_APP_BACKENDURL + 'blogposts';
-      // axios.post(url, completeNewPost).then((res) => {
-      //   console.log(res);
-      //   this.$router.push({ name: 'Home' });
-      // });
 
       try {
         const res = await axios.post(url, completeNewPost);
@@ -223,16 +219,6 @@ export default {
       } catch (err) {
         console.log(err);
       }
-
-      // fetch('https://aroundtheworld-blog-server.herokuapp.com/blogposts', {
-      // fetch(url, {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(completeNewPost),
-      // }).then((res) => {
-      //   console.log(res);
-      //   this.$router.push({ name: 'Home' });
-      // });
     },
 
     resetInputForm() {
@@ -262,38 +248,6 @@ export default {
           this.image2URL = newPlace.photos[1].getUrl();
         }
       }
-
-      // // IMG TEST <<<<<<<<<<<<<<
-
-      // console.log('image1', this.image1URL);
-      // // trying to download the pics
-
-      // const myInit = {
-      //   method: 'HEAD',
-      //   mode: 'no-cors',
-      // };
-
-      // const myRequest = new Request(this.image1URL, myInit);
-
-      // fetch(myRequest)
-      //   .then((res) => {
-      //     console.log('dl img', res);
-      //     this.image1 = res;
-      //     // const url = process.env.VUE_APP_BACKENDURL + 'upload/profilepic';
-      //     const formData = new FormData();
-      //     formData.append('image', res);
-
-      //     const headers = { 'Content-Type': 'multipart/form-data' };
-      //     console.log(('post', formData));
-      //     axios.post('http://localhost:3000/upload/profilepic', formData, {
-      //       headers,
-      //     });
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
-      // // IMG TEST <<<<<<<<<<<<
-      // /////
 
       // console.log('banner', this.$refs.banner);
       this.bannerImage = this.image1URL;
