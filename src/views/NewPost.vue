@@ -356,10 +356,10 @@ export default {
   },
 
   mounted() {
-    const check = this.userIsLoggedIn();
-    if (!check) {
-      this.$router.push('/home');
-    }
+    // const check = this.userIsLoggedIn();
+    // if (!check) {
+    //   this.$router.push('/home');
+    // }
     this.user = this.getCurrentUser();
 
     this.initialize();

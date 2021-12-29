@@ -7,10 +7,6 @@
   />
 
   <div class=" flex justify-center flex-row items-center ">
-    <!-- <input type="file" @change="onFileChange" /> -->
-    <!-- <div id="preview">
-    <img v-if="url" :src="url" />
-  </div> -->
     <form
       ref="myForm"
       class="w-96"

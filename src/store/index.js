@@ -14,19 +14,6 @@ export default createStore({
     SET_USER_DATA(state, userData) {
       console.log('SET_USER_DATA', userData);
       state.user = userData;
-
-      // const localUser = (({ name, token, profilePic }) => ({
-      //   name,
-      //   token,
-      //   profilePic,
-      // }))(userData);
-
-      // const localUser = {
-      //   name: userData.name,
-      //   token: userData.token,
-      //   profilePic: userData.profilePic,
-      // };
-
       localStorage.setItem('user', JSON.stringify(userData));
       axios.defaults.headers.common[
         'Authorization'
