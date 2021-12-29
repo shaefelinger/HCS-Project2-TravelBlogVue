@@ -120,12 +120,13 @@ export default {
       try {
         if (this.images) {
           const uploadedProfilePic = await axios.post(
-            'http://localhost:3000/upload/ProfilePic',
+            // 'http://localhost:3000/upload/ProfilePic',
+            url + 'upload/ProfilePic',
             formData,
             { headers }
           );
           newUser.profilePic =
-            url + 'uploads/' + uploadedProfilePic.data.filename;
+            url + 'profilePics/' + uploadedProfilePic.data.filename;
         }
 
         console.log('new user', newUser);

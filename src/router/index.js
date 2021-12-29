@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
+import store from '../store/index.js';
 
 import Home from '../views/Home.vue';
 import Details from '../views/Details.vue';
@@ -21,6 +22,7 @@ const routes = [
     path: '/new',
     name: 'NewPost',
     component: NewPost,
+    beforeEnter: guard,
   },
   {
     path: '/details/:id',
@@ -65,20 +67,21 @@ const routes = [
 // }
 function guard(to, from, next) {
   console.log('guard');
-  // const user = firebaseAuth.currentUser;
-  // if (user) {
-  //   // User is signed in, see docs for a list of available properties
-  //   // https://firebase.google.com/docs/reference/js/firebase.User
-  //   // var uid = user.refreshToken;
-  //   console.log("user is logged in");
-  //   next();
-  //   // ...
-  // } else {
-  //   // User is signed out
-  //   // ...
-  //   console.log("not allowed");
-  //   next("/auth");
-  // }
+  const user = store.getters.userIsLoggedIn;
+  console.log(user);
+  if (user) {
+    // User is signed in
+
+    console.log('user is logged in');
+    next();
+    // ...
+  } else {
+    // User is signed out
+    // ...
+    console.log('not allowed');
+    next('/');
+  }
+  next();
 }
 
 const router = createRouter({
