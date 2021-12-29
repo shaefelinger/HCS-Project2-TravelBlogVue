@@ -65,8 +65,16 @@ const routes = [
 //     next("/auth");
 //   }
 // }
+
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes,
+});
+
 function guard(to, from, next) {
   console.log('guard');
+  // const test = router.app.$store.getters.userIsLoggedIn;
+
   const user = store.getters.userIsLoggedIn;
   console.log(user);
   if (user) {
@@ -83,10 +91,5 @@ function guard(to, from, next) {
   }
   next();
 }
-
-const router = createRouter({
-  history: createWebHashHistory(),
-  routes,
-});
 
 export default router;
