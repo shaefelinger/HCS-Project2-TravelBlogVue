@@ -87,8 +87,6 @@ export default {
       profilePicIsSelected: false,
 
       images: null,
-      // newUserProfilePic:
-      //   'https://aroundtheworld-blog-server.herokuapp.com/images/dummy.jpg',
     };
   },
   methods: {
