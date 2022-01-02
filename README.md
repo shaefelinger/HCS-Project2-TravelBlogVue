@@ -6,9 +6,9 @@
 
 This is my contribution for the final Project for the Full-Stack Web Development-Course at the [Hamburg Coding School.](https://hamburgcodingschool.com/)
 
-The page is live here: (the Heroku-Server might need a moment to 'wake up')
+The page is live here:
 
-https://aroundtheworld-blog-server.herokuapp.com/
+https://aroundtheworld-blog.netlify.app/
 
 ##### Github-links
 
@@ -20,10 +20,10 @@ https://aroundtheworld-blog-server.herokuapp.com/
 
 - The page is fully responsive.  
 - The frontend is using Vue.js (incl. Router and Vuex) and Tailwind CSS
-- The backend is a Node/Express Server running on Heroku 
+- The backend is a Node/Express Server running on Caprover/Digitalocean 
 - The data is stored in a Mongo DB-Atlas Cloud database - handled by the server using Mongoose
 - The server provides a REST API for the Blog-Posts and User-Data
-- Authentification is handled by the server using passport.js
+- Authentification is handled by the server using  JWT-Tokens and bcrypt
 
 ------
 
@@ -38,10 +38,13 @@ https://aroundtheworld-blog-server.herokuapp.com/
 
   > ```
   > testuser@test.com 
-  > test123
+  > 12345
   > ```
 
-- or sign-in as a new user. After signing in you can log-in with your email & password
+- or sign-in as a new user:
+
+  - you can enter a name, email and password and upload a profile-picture
+
 
 ##### If you are logged-in: 
 
@@ -100,7 +103,7 @@ Allows to edit the Details of the Blog-Post. Buttons to:
 
 > only available, if  logged-In
 
-Here you enter a new post. Location, Title and Date are required, the rest is optional. 
+Here you enter a new post. Location, title and date are required, the rest is optional. 
 
 The Location-Field uses Googlemaps-Autocomplete.  
 
@@ -135,23 +138,21 @@ Shows some information about this project and about me.
 
 ------
 
-(c) 2021 - Steffen Häfelinger. Pictures by https://unsplash.com/ and https://picsum.photos/  
+2021 - Steffen Häfelinger. Pictures by https://unsplash.com/ and https://picsum.photos/  
 
-Steffen Häfelinger is a web developer located in Hamburg, Germany. He is currently studying Full Stack Web Developement at [Hamburg Coding School.](https://hamburgcodingschool.com/) He is also working as a professional Musician, Songwriter & Audio Engineer.
+Steffen Häfelinger is a web developer located in Hamburg, Germany. He is also working as a professional Musician, Songwriter & Audio Engineer.
 
-Web: www.steffen-haefelinger.com
+Web: www.functionfactory.de
 
-Mail: mail@steffen-haefelinger.com
+Mail: mail@functionfactory.de
 
 GitHub: https://github.com/shaefelinger
 
 Facebook: https://www.facebook.com/steffen.hafelinger/
 
-
-
 ------
 
-Version 1 of the Project can be found here: 
+Version 1 (using just vanilla HTML, CSS and Javascript) of the Project can be found here: 
 
 https://github.com/shaefelinger/HCS-project1-travelBlog
 
