@@ -23,16 +23,22 @@
 
       <div class="mt-4">
         <p>
-          - The Frontend is using Vue.js (incl. Router and Vuex) and Tailwind
+          - The frontend is using Vue.js (incl. Router and Vuex) and Tailwind
           CSS
         </p>
-        <p>- The Backend is a Node/Express Server running on Heroku</p>
         <p>
-          - The Data is stored in a Mongo DB-Atlas Cloud Database - handled by
-          the Server using mongoose
+          - The backend is a Node/Express server running on
+          Caprover/Digitalocean
+        </p>
+        <p>
+          - The data is stored in a Mongo DB-Atlas Cloud Database - handled by
+          the Server
         </p>
         <p>- The Server provides a REST API for the Blog-Posts and User-Data</p>
-        <p>- Authentification is handled by the Server using passport.js</p>
+        <p>
+          - Authentification is handled by the Server using JWT-Tokens and
+          bcrypt
+        </p>
       </div>
 
       <div class="mt-4">
