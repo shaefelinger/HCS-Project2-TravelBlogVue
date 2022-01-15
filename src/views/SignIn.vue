@@ -78,8 +78,10 @@ export default {
       newUserName: '',
       newUserEmail: '',
       newUserPassword: '',
-      defaultProfilePic: process.env.VUE_APP_BACKENDURL + 'images/dummy.jpg',
-      newUserProfilePic: process.env.VUE_APP_BACKENDURL + 'images/dummy.jpg',
+      defaultProfilePic:
+        process.env.VUE_APP_BACKENDURL + 'public/images/dummy.jpg',
+      newUserProfilePic:
+        process.env.VUE_APP_BACKENDURL + 'public/images/dummy.jpg',
       profilePicIsSelected: false,
 
       images: null,
@@ -94,7 +96,7 @@ export default {
         email: this.newUserEmail,
         password: this.newUserPassword,
         image: this.newUserProfilePic,
-        profilePic: url + 'images/dummy.jpg',
+        profilePic: url + 'public/images/dummy.jpg',
       };
 
       const formData = new FormData();
@@ -105,12 +107,12 @@ export default {
       try {
         if (this.images) {
           const uploadedProfilePic = await axios.post(
-            url + 'upload/ProfilePic',
+            url + 'upload/profilepic',
             formData,
             { headers }
           );
           newUser.profilePic =
-            url + 'profilePics/' + uploadedProfilePic.data.filename;
+            url + 'uploads/profilePics/' + uploadedProfilePic.data.filename;
         }
 
         console.log('new user', newUser);
@@ -121,7 +123,6 @@ export default {
       }
     },
     onFileChange(e) {
-      console.log(e.target.files);
       const file = e.target.files[0];
       if (!file) {
         this.newUserProfilePic = this.defaultProfilePic;
@@ -131,6 +132,7 @@ export default {
         this.images = this.$refs.file.files[0];
         this.newUserProfilePic = URL.createObjectURL(file);
         this.profilePicIsSelected = true;
+        console.log('newUserProfilePic', this.newUserProfilePic);
       }
     },
   },
