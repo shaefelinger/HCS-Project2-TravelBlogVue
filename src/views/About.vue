@@ -76,12 +76,8 @@
     </div>
   </div>
   <p class="aboutAuthorText text-sm text-gray-500 mt-4 text-center px-12">
-    Steffen Häfelinger is a web developer located in Hamburg, Germany. He is
-    currently studying Full Stack Web Developement at
-    <a class="underline" target="_blank" href="https://hamburgcodingschool.com/"
-      >Hamburg Coding School.</a
-    >
-    He is also working as a professional Musician, Songwriter & Audio Engineer.
+    Steffen Häfelinger is a software developer located in Hamburg, Germany. He
+    is also working as a professional songwriter, producer and musician.
   </p>
 </template>
 
