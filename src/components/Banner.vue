@@ -4,6 +4,11 @@
     id="bannerImage"
     :style="{ backgroundImage: `url(${bannerImage})` }"
   >
+    <!-- <img
+      class="h-full w-full object-cover"
+      :src="bannerImage"
+      alt="bannerImage"
+    /> -->
     <p
       class="bannerText text-3xl sm:text-5xl lg:text-6xl font-extralight text-white  "
       id="bannerTitle"

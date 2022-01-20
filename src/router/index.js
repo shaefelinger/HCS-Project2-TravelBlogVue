@@ -48,24 +48,6 @@ const routes = [
   },
 ];
 
-// function guard(to, from, next) {
-//   console.log("guard");
-//   const user = firebaseAuth.currentUser;
-//   if (user) {
-//     // User is signed in, see docs for a list of available properties
-//     // https://firebase.google.com/docs/reference/js/firebase.User
-//     // var uid = user.refreshToken;
-//     console.log("user is logged in");
-//     next();
-//     // ...
-//   } else {
-//     // User is signed out
-//     // ...
-//     console.log("not allowed");
-//     next("/auth");
-//   }
-// }
-
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
@@ -79,14 +61,11 @@ function guard(to, from, next) {
   console.log(user);
   if (user) {
     // User is signed in
-
     console.log('user is logged in');
     next();
-    // ...
   } else {
     // User is signed out
-    // ...
-    console.log('not allowed');
+    console.log('not logged in - not allowed');
     next('/');
   }
   next();

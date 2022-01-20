@@ -11,8 +11,6 @@ How to use it
   - update name in package.json file
   - npm run serve
 
-
-
 -----------------------------
 
 These are the steps that are required to properly set up tailwind in vue:
