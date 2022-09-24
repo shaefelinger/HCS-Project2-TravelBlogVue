@@ -120,7 +120,7 @@ Entering a valid location from the list. Then the Input-Field gets locked and th
 
 ###### From Wikipedia:
 
-- A short desciption  (if available). The text can then be edited.
+- A short description  (if available). The text can then be edited.
 
 ##### Step 2
 
