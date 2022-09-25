@@ -29,7 +29,9 @@
     </div>
   </div>
   <div v-else>
-    <p class="txt-xl text-center">Loading...</p>
+    <p class="txt-xl text-center">
+      Loading... The server might need a little time to start.
+    </p>
     <Spinner />
   </div>
 </template>
